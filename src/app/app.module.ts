@@ -9,6 +9,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { EMICalculatorComponent } from './emicalculator/emicalculator.component';
 import { ApplyLoanComponent } from './apply-loan/apply-loan.component';
 import { ErrorComponent } from './error/error.component';
+import { LoanOffersComponent } from './loan-offers/loan-offers.component';
+import { LoanQuotesComponent } from './loan-quotes/loan-quotes.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { ErrorComponent } from './error/error.component';
     AboutUsComponent,
     EMICalculatorComponent,
     ApplyLoanComponent,
-    ErrorComponent
+    ErrorComponent,
+    LoanOffersComponent,
+    LoanQuotesComponent
   ],
   imports: [
     BrowserModule,
