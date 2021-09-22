@@ -1,1 +1,172 @@
-<p>apply-loan works!</p>
+
+<!-- CSS -->
+<style>
+    .box{
+        padding: 10px;
+        height: max-content;
+        width: 600px;
+        margin: 40px auto;
+    }
+</style>
+
+
+<div class="container box">
+    <br>
+    <h2 class="text-danger" align="center">Apply for a Loan</h2>
+    <br>
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+              Vehicle Details
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+            <div class="accordion-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Type</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Select type of vehicle</option>
+                            <option value="2">Two wheeler</option>
+                            <option value="3">Four wheeler</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Manufacturer</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Select Manufacturer</option>
+                            <option value="1">Hyundai</option>
+                            <option value="2">TVS</option>
+                            <option value="3">TATA</option>
+                            <option value="4">MG</option>
+                            <option value="5">Honda</option>
+                            <option value="6">Yamaha</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Model</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Manufacture Year</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Showroom Price</label>
+                        <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">On Road Price</label>
+                        <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-danger">Submit</button>
+                  </form>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+              Applicant Details
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+            <div class="accordion-body">
+                <form>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Name</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Age</label>
+                      <input type="number" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Gender</label>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="female">
+                            <label class="form-check-label" for="exampleRadios1">
+                              Female
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="male">
+                            <label class="form-check-label" for="exampleRadios1">
+                              Male
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="na" checked>
+                            <label class="form-check-label" for="exampleRadios1">
+                              Prefer not to say
+                            </label>
+                          </div>
+                    </div>
+                   
+                      <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Type of employment</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Your employment type</option>
+                            <option value="2">Business</option>
+                            <option value="3">Service</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Annual salary</label>
+                          <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      </div>
+                      <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Existing EMI</label>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="yes">
+                          <label class="form-check-label" for="exampleRadios1">
+                            Yes
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="no" checked>
+                          <label class="form-check-label" for="exampleRadios1">
+                            No
+                          </label>
+                        </div>
+                      </div>
+                    <button type="submit" class="btn btn-danger">Submit</button>
+                  </form>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+              Contact Details
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+            <div class="accordion-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Mobile No.</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1">
+                      </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                   
+                   
+                    <button type="submit" class="btn btn-danger">Submit</button>
+                  </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <br>
+      <div class="eligibilityBtn" align="center">
+          <button class="btn btn-lg btn-danger">Check Your eligibility</button>
+      </div>
+      <br><br>
