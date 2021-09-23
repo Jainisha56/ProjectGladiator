@@ -1,0 +1,793 @@
+CSS (COMMON)
+
+.logincontainer OR registercontainer
+{
+  margin-top: 100px
+}
+.loginbox OR registerbox
+{
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+.header
+{
+  font-size: 27px;
+  /* text-decoration: underline; */
+  text-align: center;
+}
+.signin OR register
+{
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+}
+
+HTML ----- ADMIN LOGIN
+
+<nav class="navbar navbar-expand-md bg-danger navbar-dark navbar-fixed-top"> <!-- Brand -->
+    
+    
+  
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse text-left" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="Home">Home</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link text-white" routerLink="About Us">About Us</a>
+        </li>
+     
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="EMI Calculator">EMI Calculator</a>
+      </li>
+
+      <li class="nav-item">
+          <a class="nav-link text-white" routerLink="Apply Loan">Apply Loan</a>
+        </li>
+    </ul>
+    
+  </div> 
+</nav>
+
+<div class="container logincontainer" >
+  <div  class="col-md-6 offset-md-3 col-lg-4 offset-lg-4 loginbox">
+    <h1 class="mb-4 header">Admin Login</h1>
+    <form [formGroup]="adminlogin" (ngSubmit)="Admincredentials()">
+      <div class="form-group mb-4"><label for="form1Example1"
+          class="form-label">Email address</label>
+          <!-- Email input -->
+          <input type="text" id="form1Example1" name="email" formControlName="email" class="form-control "></div>
+          <div *ngIf="!Email?.valid && (Email?.dirty || Email?.touched)" class="error text-danger" role="alert">
+            <div *ngIf="Email?.errors?.required"><!--here the name firstname is from get method that is inside the ts file-->
+              User Name is required
+            </div>
+            <div *ngIf="Email?.errors?.pattern"class="error text-danger" role="alert">
+                Username unacceptable
+              </div>
+            </div>
+
+      <div  class="form-group mb-4"><label  for="form1Example2"
+          class="form-label">Password</label>
+          <!-- Password input -->
+          <input  type="password" id="form1Example2"
+          name="password" formControlName="password" class="form-control "></div>
+          <div *ngIf="!Password?.valid && (Password?.dirty || Password?.touched)" class="error text-danger" role="alert">
+            <div *ngIf="Password?.errors?.required"><!--here the name firstname is from get method that is inside the ts file-->
+              Password required
+            </div>
+            <div *ngIf="Password?.errors?.pattern"class="error text-danger" role="alert">
+                Type a secured password
+              </div>
+            </div>
+      <div  class="row mb-4">
+        <div  class="col d-flex justify-content-center">
+          <div  class="form-check">
+            <input  type="checkbox" id="form1Example3"  class="form-check-input"><label  for="form1Example3"
+              class="form-check-label"> Remember me </label></div>
+        </div>
+        <div  class="col"><a  href="#!">Forgot password?</a></div>
+      </div><button  type="submit" class="btn btn-danger btn-block text-center signin"  [disabled] = "!userlogin.valid">Sign in</button>
+      <div  class="col"><a  href="#!">Are you an Admin?</a></div>
+    </form>
+  </div>
+</div>
+
+-------------->
+TS ------- ADMIN LOGIN
+
+import { Component, OnInit } from '@angular/core';
+import { FormGroup,FormControl,Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-adminlogin',
+  templateUrl: './adminlogin.component.html',
+  styleUrls: ['./adminlogin.component.css']
+})
+export class AdminloginComponent implements OnInit {
+
+  adminlogin:FormGroup = new FormGroup(
+    {
+      Email:new FormControl('',[Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"),Validators.required]),
+      Password:new FormControl('',[Validators.pattern("(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"),Validators.required])
+    }
+  )
+
+  Admincredentials()
+  {
+     console.log(this.adminlogin.value)
+  }
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+  get Email()
+  {
+    return this.adminlogin.get("Email")
+  }
+  get Password()
+  {
+    return this.adminlogin.get("Password")
+  }
+
+}
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+HTML ----- USER LOGIN
+
+<nav class="navbar navbar-expand-md bg-danger navbar-dark navbar-fixed-top"> <!-- Brand -->
+    
+    
+  
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse text-left" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="Home">Home</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link text-white" routerLink="About Us">About Us</a>
+        </li>
+     
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="EMI Calculator">EMI Calculator</a>
+      </li>
+
+      <li class="nav-item">
+          <a class="nav-link text-white" routerLink="Apply Loan">Apply Loan</a>
+        </li>
+    </ul>
+    
+  </div> 
+</nav>
+<div class="container logincontainer" >
+  <div  class="col-md-6 offset-md-3 col-lg-4 offset-lg-4 loginbox">
+    <h1 class="mb-4 header">User Login</h1>
+    <form [formGroup]="userlogin" (ngSubmit)="Usercredentials()">
+      <div class="form-group mb-4"><label for="form1Example1"
+          class="form-label">Email address</label>
+          <!-- Email input -->
+          <input type="text" id="form1Example1" name="Email" formControlName="Email" class="form-control "></div>
+          <div *ngIf="!Email?.valid && (Email?.dirty || Email?.touched)" class="error text-danger" role="alert">
+            <div *ngIf="Email?.errors?.required"><!--here the name firstname is from get method that is inside the ts file-->
+              User Name is required
+            </div>
+            <div *ngIf="Email?.errors?.pattern"class="error text-danger" role="alert">
+                Username unacceptable
+              </div>
+            </div>
+
+      <div  class="form-group mb-4"><label  for="form1Example2"
+          class="form-label">Password</label>
+          <!-- Password input -->
+          <input  type="password" id="form1Example2"
+          name="Password" formControlName="Password" class="form-control "></div>
+          <div *ngIf="!Password?.valid && (Password?.dirty || Password?.touched)" class="error text-danger" role="alert">
+            <div *ngIf="Password?.errors?.required"><!--here the name firstname is from get method that is inside the ts file-->
+              Password required
+            </div>
+            <div *ngIf="Password?.errors?.pattern" class="error text-danger" role="alert">
+                Type a secured password
+              </div>
+            </div>
+      <div  class="row mb-4">
+        <div  class="col d-flex justify-content-center">
+          <div  class="form-check">
+            <input  type="checkbox" id="form1Example3"  class="form-check-input"><label  for="form1Example3"
+              class="form-check-label"> Remember me </label></div>
+        </div>
+        <div  class="col"><a  href="#!">Forgot password?</a></div>
+      </div><button  type="submit" class="btn btn-danger btn-block text-center signin"  [disabled] = "!userlogin.valid">Sign in</button>
+      <div  class="col"><a  href="#!">Are you an Admin?</a></div>
+    </form>
+  </div>
+</div>
+--------------------------->
+
+TS ----- USER LOGIN
+
+import { Component, OnInit } from '@angular/core';
+import { FormGroup,FormControl, PatternValidator, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-userlogin',
+  templateUrl: './userlogin.component.html',
+  styleUrls: ['./userlogin.component.css']
+})
+export class UserloginComponent implements OnInit {
+
+  userlogin:FormGroup = new FormGroup(
+    {
+      Email:new FormControl('',[Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"),Validators.required]),
+      Password:new FormControl('',[Validators.pattern("(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"),Validators.required])
+    }
+  )
+
+  Usercredentials()
+  {
+     console.log(this.userlogin.value)
+  }
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+  get Email()
+  {
+    return this.userlogin.get("Email")
+  }
+  get Password()
+  {
+    return this.userlogin.get("Password")
+  }
+  
+
+}
+
+----------------------------------------------------------------------------------------
+
+HTML ---- USER REGISTRATION
+
+<nav class="navbar navbar-expand-md bg-danger navbar-dark navbar-fixed-top"> <!-- Brand -->
+    
+    
+  
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse text-left" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="Home">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" routerLink="About Us">About Us</a>
+          </li>
+       
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="EMI Calculator">EMI Calculator</a>
+        </li>
+  
+        <li class="nav-item">
+            <a class="nav-link text-white" routerLink="Apply Loan">Apply Loan</a>
+          </li>
+      </ul>
+      
+    </div> 
+  </nav>
+  
+  <div class="container registercontainer" >
+    <div  class="col-md-6 offset-md-3 col-lg-4 offset-lg-4 registerbox">
+      <h1 class="mb-4 header">Registration</h1>
+      <form [formGroup]="Personaldetails" (ngSubmit)="Userregistrationdetails()">
+        <div class="form-group mb-4"><label for="form1Example1" class="form-label">Firstname</label>
+            <!-- Firstname input -->
+            <input type="text" id="form1Example1" name="Firstname" formControlName="Firstname" class="form-control "></div>
+
+        <div class="form-group mb-4"><label for="form1Example2" class="form-label">Lastname</label>
+            <!-- Lastname input -->
+            <input type="text" id="form1Example2" name="Lastname" formControlName="Lastname" class="form-control "></div>
+  
+        <div  class="form-group mb-4"><label  for="form1Example3" class="form-label">Date of Birth</label>
+            <!-- Date of Birth input -->
+            <input  type="datetime" id="form1Example3" name="Age" formControlName="Age" class="form-control "></div>
+
+        <div class="form-group mb-4"><label for="form1Example4" class="form-label">Gender</label><br>
+            <!-- Gender input -->
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="Gender" id="inlineRadio1" value="Male" formControlName="Gender">
+                <label class="form-check-label" for="inlineRadio1">Male</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="Gender" id="inlineRadio2" value="Female" formControlName="Gender">
+                <label class="form-check-label" for="inlineRadio2">Female</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="Gender" id="inlineRadio3" value="Others" formControlName="Gender">
+                <label class="form-check-label" for="inlineRadio3">Preferred not to say</label>
+              </div></div>
+
+        <div class="form-group mb-4"><label for="form1Example5" class="form-label">Mobile No</label>
+            <!-- Mobile number input -->
+            <input type="text" id="form1Example5" name="MobileNo" formControlName="MobileNo" class="form-control "></div>
+
+        <div class="form-group mb-4"><label for="form1Example6" class="form-label">Email Address</label>
+            <!-- Email input -->
+            <input type="text" id="form1Example6" name="Emailid" formControlName="Emailid" class="form-control "></div>
+                
+        <div class="form-group mb-4"><label for="form1Example7" class="form-label">Password</label>
+            <!-- Password input -->
+            <input type="password" id="form1Example7" name="Password" formControlName="Password" class="form-control "></div>
+        
+            <div *ngIf="!Password?.valid && (Password?.dirty || Password?.touched)" class="error text-danger" role="alert">
+                <div *ngIf="Password?.errors?.required"><!--here the name firstname is from get method that is inside the ts file-->
+                  Password required
+                </div>
+                <div *ngIf="Password?.errors?.pattern"class="error text-danger" role="alert">
+                    Type a secured password
+                  </div>
+            </div>
+            <button  type="submit" class="btn btn-danger btn-block text-center register"  [disabled] = "!Personaldetails.valid">Register</button>
+      </form>
+    </div>
+  </div>
+
+------------------------------->
+
+TS ------- USER REGISTRATION
+
+import { Component, OnInit } from '@angular/core';
+import { FormGroup,FormControl,Validators } from '@angular/forms';
+@Component({
+  selector: 'app-userregistration',
+  templateUrl: './userregistration.component.html',
+  styleUrls: ['./userregistration.component.css']
+})
+export class UserregistrationComponent implements OnInit {
+
+  Personaldetails:FormGroup = new FormGroup(
+    {
+      FirstName:new FormControl(),
+      LastName:new FormControl(),
+      Age:new FormControl(),
+      Gender:new FormControl(),
+      MobileNo:new FormControl(),
+      Emailid:new FormControl('',[Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"),Validators.required]),
+      Password:new FormControl('',[Validators.pattern("(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"),Validators.required]),
+      Address: new FormControl(),
+      State:new FormControl(),
+      City:new FormControl(),
+      Pincode:new FormControl()
+    }
+  )
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  Userregistrationdetails()
+  {
+     console.log(this.Personaldetails.value)
+  }
+
+  get Firstname()
+  {
+    return this.Personaldetails.get("Firstname")
+  }
+  get Lastname()
+  {
+    return this.Personaldetails.get("Lastname")
+  }
+  get Age()
+  {
+    return this.Personaldetails.get("Age")
+  }
+  get Gender()
+  {
+    return this.Personaldetails.get("Gender")
+  }
+  get MobileNo()
+  {
+    return this.Personaldetails.get("MobileNo")
+  }
+  get Emailid()
+  {
+    return this.Personaldetails.get("Emailid")
+  }
+  get Password()
+  {
+    return this.Personaldetails.get("Password")
+  } 
+}
+----------------------------------------------------------------------------------------------------------------------
+
+HTML ---- PERSONAL DETAILS
+
+<nav class="navbar navbar-expand-md bg-danger navbar-dark navbar-fixed-top"> <!-- Brand -->
+    
+    
+  
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse text-left" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="Home">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" routerLink="About Us">About Us</a>
+          </li>
+       
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="EMI Calculator">EMI Calculator</a>
+        </li>
+  
+        <li class="nav-item">
+            <a class="nav-link text-white" routerLink="Apply Loan">Apply Loan</a>
+          </li>
+      </ul>
+      
+    </div> 
+  </nav>
+  
+  <div class="container registercontainer" >
+    <div  class="col-md-6 offset-md-3 col-lg-4 offset-lg-4 registerbox">
+      <h1 class="mb-4 header">Registration</h1>
+      <form [formGroup]="Personaldetails" (ngSubmit)="Registrationdetails()">
+        <div class="form-group mb-4"><label for="form1Example1" class="form-label">Firstname</label>
+            <!-- Firstname input -->
+            <input type="text" id="form1Example1" name="Firstname" formControlName="Firstname" class="form-control "></div>
+
+        <div class="form-group mb-4"><label for="form1Example2" class="form-label">Lastname</label>
+            <!-- Lastname input -->
+            <input type="text" id="form1Example2" name="Lastname" formControlName="Lastname" class="form-control "></div>
+  
+        <div  class="form-group mb-4"><label  for="form1Example3" class="form-label">Age</label>
+            <!-- Password input -->
+            <input  type="password" id="form1Example3" name="Age" formControlName="Age" class="form-control "></div>
+
+        <div class="form-group mb-4"><label for="form1Example4" class="form-label">Gender</label><br>
+            <!-- Gender input -->
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="Gender" id="inlineRadio1" value="Male" formControlName="Gender">
+                <label class="form-check-label" for="inlineRadio1">Male</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="Gender" id="inlineRadio2" value="Female" formControlName="Gender">
+                <label class="form-check-label" for="inlineRadio2">Female</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="Gender" id="inlineRadio3" value="Others" formControlName="Gender">
+                <label class="form-check-label" for="inlineRadio3">Preferred not to say</label>
+              </div></div>
+
+        <div class="form-group mb-4"><label for="form1Example5" class="form-label">Mobile No</label>
+            <!-- Mobile number input -->
+            <input type="text" id="form1Example5" name="MobileNo" formControlName="MobileNo" class="form-control "></div>
+
+        <div class="form-group mb-4"><label for="form1Example6" class="form-label">Email Address</label>
+            <!-- Email input -->
+            <input type="text" id="form1Example6" name="Emailid" formControlName="Emailid" class="form-control "></div>
+                
+        <div class="form-group mb-4"><label for="form1Example7" class="form-label">Password</label>
+            <!-- Password input -->
+            <input type="password" id="form1Example7" name="Password" formControlName="Password" class="form-control "></div>
+        
+            <div *ngIf="!Password?.valid && (Password?.dirty || Password?.touched)" class="error text-danger" role="alert">
+                <div *ngIf="Password?.errors?.required"><!--here the name firstname is from get method that is inside the ts file-->
+                  Password required
+                </div>
+                <div *ngIf="Password?.errors?.pattern"class="error text-danger" role="alert">
+                    Type a secured password
+                  </div>
+            </div>
+
+        <div class="form-group mb-4"><label for="form1Example8" class="form-label">State</label>
+            <!-- State input -->
+            <select class="form-select" aria-label="Default select example" id="form1Example8" name="City" formControlName="City">
+                <option [ngValue]="s" *ngFor="let s of states">{{s}}</option>
+              </select>
+        </div>
+        
+        <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+            <!-- City input -->
+            <input type="text" id="form1Example9" name="City" formControlName="City" class="form-control "></div>
+        
+        <div class="form-group mb-4"><label for="form1Example10" class="form-label">Address</label>
+            <!-- Address input -->
+            <input type="text" id="form1Example10" name="Address" formControlName="Address" class="form-control "></div>
+        
+        <div class="form-group mb-4"><label for="form1Example11" class="form-label">Pincode</label>
+            <!-- Pincode input -->
+            <input type="number" id="form1Example11" name="Pincode" formControlName="Pincode" class="form-control "></div>
+
+            <button  type="submit" class="btn btn-danger btn-block text-center register"  [disabled] = "!Personaldetails.valid">Register</button>
+      </form>
+    </div>
+  </div>
+
+-------------------------------->
+
+TS ---- PERSONAL DETAILS
+
+import { Component, OnInit } from '@angular/core';
+import { FormGroup,FormControl,Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-registration1',
+  templateUrl: './registration1.component.html',
+  styleUrls: ['./registration1.component.css']
+})
+export class Registration1Component implements OnInit {
+
+  Personaldetails:FormGroup = new FormGroup(
+    {
+      FirstName:new FormControl(),
+      LastName:new FormControl(),
+      Age:new FormControl(),
+      Gender:new FormControl(),
+      MobileNo:new FormControl(),
+      Emailid:new FormControl('',[Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"),Validators.required]),
+      Password:new FormControl('',[Validators.pattern("(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"),Validators.required]),
+      Address: new FormControl(),
+      State:new FormControl(),
+      City:new FormControl(),
+      Pincode:new FormControl()
+    }
+  )
+
+  states = ["Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chandigarh", "Chhattisgarh", "Dadra and Nagar Haveli", "Daman and Diu", "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Lakshadweep", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Orissa", "Pondicherry", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Tripura", "Uttaranchal", "Uttar Pradesh", "West Bengal"]
+  Registrationdetails()
+  {
+     console.log(this.Personaldetails.value)
+  }
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  get Firstname()
+  {
+    return this.Personaldetails.get("Firstname")
+  }
+  get Lastname()
+  {
+    return this.Personaldetails.get("Lastname")
+  }
+  get Age()
+  {
+    return this.Personaldetails.get("Age")
+  }
+  get Gender()
+  {
+    return this.Personaldetails.get("Gender")
+  }
+  get MobileNo()
+  {
+    return this.Personaldetails.get("MobileNo")
+  }
+  get Emailid()
+  {
+    return this.Personaldetails.get("Emailid")
+  }
+  get Password()
+  {
+    return this.Personaldetails.get("Password")
+  } 
+  get Address()
+  {
+    return this.Personaldetails.get("Address")
+  }
+  get State()
+  {
+    return this.Personaldetails.get("State")
+  }
+  get City()
+  {
+    return this.Personaldetails.get("City")
+  }
+  get Pincode()
+  {
+    return this.Personaldetails.get("Pincode")
+  }
+}
+
+------------------------------------------------------------------------------------------------------------
+
+HTML --- EMPLOYMENT DETAILS
+
+<div class="container registercontainer" >
+    <div  class="col-md-6 offset-md-3 col-lg-4 offset-lg-4 registerbox">
+        <h1 class="mb-4 header">Employment details</h1>
+        <form [formGroup]="Employee" (ngSubmit)="Employmentdetails()">
+            <div class="form-group mb-4"><label for="form1Example1" class="form-label">Type of employment</label>
+                <!-- Type of employment input -->
+                <input type="text" id="form1Example1" name="Type of Employment" formControlName="Type of Employment" class="form-control "></div>
+            
+            <div class="form-group mb-4"><label for="form1Example2" class="form-label">Annual Salary</label>
+                <!-- Annual Salary input -->
+                <input type="number" id="form1Example2" name="Annual Salary" formControlName="Annual Salary" class="form-control "></div>
+          
+        
+            <div  class="form-group mb-4"><label  for="form1Example3" class="form-label">Work Experience</label>
+                <!-- Work Experience input -->
+                <input  type="text" id="form1Example3" name="Work Experience" formControlName="Work Experience" class="form-control "></div>
+                
+            <div  class="form-group mb-4"><label  for="form1Example4" class="form-label">Existing EMI</label>
+                <!-- Existing EMI input -->
+                <input  type="number" id="form1Example4" name="ExistingEMI" formControlName="ExistingEMI" class="form-control "></div>
+            <button  type="submit" class="btn btn-danger btn-block text-center register"  [disabled] = "!Employee.valid">Register</button>
+        </form>
+    </div>
+</div>
+
+----------------------------------->
+
+TS - EMPLOYMENT DETAILS
+
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+
+@Component({
+  selector: 'app-employeedetails',
+  templateUrl: './employeedetails.component.html',
+  styleUrls: ['./employeedetails.component.css']
+})
+export class EmployeedetailsComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+  Employee:FormGroup = new FormGroup(
+    {
+      Typeofemployment:new FormControl(),
+      AnnualSalary: new FormControl(),
+      Workexperience:new FormControl(),
+      ExitingEMI: new FormControl()
+    }
+  )
+
+ Employmentdetails()
+ {
+   console.log(this.Employee)
+ } 
+ get Typeofemployment()
+ {
+   return this.Employee.get("Typeofemployment")
+ }
+ get AnnualSalary()
+ {
+   return this.Employee.get("AnnualSalary")
+ }
+ get Workexperience()
+ {
+   return this.Employee.get("Workexperience")
+ }
+ get ExitingEMI()
+ {
+   return this.Employee.get("ExitingEMI")
+ }
+
+}
+
+------------------------------------------------------------------------------------
+
+HTML ---- VEHICLE DETAILS
+
+<div class="container registercontainer" >
+    <div  class="col-md-6 offset-md-3 col-lg-4 offset-lg-4 registerbox">
+        <h1 class="mb-4 header">Vehicle details</h1>
+        <form [formGroup]="Vehicle" (ngSubmit)="Vehicledetails()">
+            <div class="form-group mb-4"><label for="form1Example1" class="form-label">Vehicle Name</label>
+                <!-- Vehicle Name input -->
+                <input type="text" id="form1Example1" name="VehicleName" formControlName="VehicleName" class="form-control "></div>
+            
+            <div class="form-group mb-4"><label for="form1Example2" class="form-label">Vehicle Model</label>
+                <!-- Vehicle Model input -->
+                <input type="text" id="form1Example2" name="VehicleModel" formControlName="VehicleModel" class="form-control "></div>
+          
+            <div  class="form-group mb-4"><label  for="form1Example3" class="form-label">Vehicle Type</label>
+                <!-- Vehicle Type input -->
+                <input  type="text" id="form1Example3" name="VehicleType" formControlName="VehicleType" class="form-control "></div>
+                
+            <div class="form-group mb-4"><label for="form1Example4" class="form-label">Showroom Price</label>
+                <!-- Showroom Price input -->
+                <input type="number" id="form1Example4" name="ShowroomPrice" formControlName="ShowroomPrice" class="form-control "></div>
+    
+            <div class="form-group mb-4"><label for="form1Example5" class="form-label">On Road Price</label>                    
+                <!-- On Road Price input -->
+                <input type="number" id="form1Example5" name="OnroadPrice" formControlName="OnroadPrice" class="form-control "></div>
+              
+            <div  class="form-group mb-4"><label  for="form1Example6" class="form-label">Manufacture Year</label>
+                <!-- Year of Manufacture input -->
+                <input  type="number" id="form1Example6" name="YearofManufacture" formControlName="YearofManufacture" class="form-control "></div>
+                <button  type="submit" class="btn btn-danger btn-block text-center register"  [disabled] = "!Vehicle.valid">Register</button>
+        </form >
+    </div>
+</div>
+
+--------------------->
+
+TS ----- VEHICLE DETAILS
+
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+
+@Component({
+  selector: 'app-vehicledetails',
+  templateUrl: './vehicledetails.component.html',
+  styleUrls: ['./vehicledetails.component.css']
+})
+export class VehicledetailsComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  Vehicle:FormGroup = new FormGroup(
+    {
+      VehicleName:new FormControl(),
+      VehicleModel: new FormControl(),
+      VehicleType: new FormControl(),
+      ShowroomPrice: new FormControl(),
+      OnroadPrice: new FormControl(),
+      YearofManufacture: new FormControl()
+    }
+  )
+
+  Vehicledetails()
+  {
+      console.log(this.Vehicle)
+  }
+  
+  get VehicleName()
+  {
+    return this.Vehicle.get("VehicleName")
+  }
+  get VehicleModel()
+  {
+    return this.Vehicle.get("VehicleModel")
+  }
+  get VehicleType()
+  {
+    return this.Vehicle.get("VehicleType")
+  }
+  get ShowroomPrice()
+  {
+    return this.Vehicle.get("ShowroomPrice")
+  }
+  get OnroadPrice()
+  {
+    return this.Vehicle.get("OnroadPrice")
+  }
+  get YearofManufacture()
+  {
+    return this.Vehicle.get("YearofManufacture")
+  }
+  
+
+
+}
+
+--------------------------------------------------------------------------------------
