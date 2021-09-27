@@ -7,12 +7,12 @@
          <div class="form-group mb-4"><label for="form1Example1"
              class="form-label">Email address</label>
              <!-- Email input -->
-             <input type="text" id="form1Example1" name="Email" formControlName="Email" class="form-control "></div>
-             <div *ngIf="!Email?.valid && (Email?.dirty || Email?.touched)" class="error text-danger" role="alert">
-               <div *ngIf="Email?.errors?.required"><!--here the name firstname is from get method that is inside the ts file-->
+             <input type="text" id="form1Example1" name="UserEmail" formControlName="UserEmail" class="form-control "></div>
+             <div *ngIf="! UserEmail?.valid && ( UserEmail?.dirty ||  UserEmail?.touched)" class="error text-danger" role="alert">
+               <div *ngIf=" UserEmail?.errors?.required"><!--here the name firstname is from get method that is inside the ts file-->
                  User Name is required
                </div>
-               <div *ngIf="Email?.errors?.pattern"class="error text-danger" role="alert">
+               <div *ngIf=" UserEmail?.errors?.pattern"class="error text-danger" role="alert">
                    Username unacceptable
                  </div>
                </div>
@@ -21,12 +21,12 @@
              class="form-label">Password</label>
              <!-- Password input -->
              <input  type="password" id="form1Example2"
-             name="Password" formControlName="Password" class="form-control "></div>
-             <div *ngIf="!Password?.valid && (Password?.dirty || Password?.touched)" class="error text-danger" role="alert">
-               <div *ngIf="Password?.errors?.required"><!--here the name firstname is from get method that is inside the ts file-->
+             name="Userpassword" formControlName="Userpassword" class="form-control "></div>
+             <div *ngIf="!Userpassword?.valid && (Userpassword?.dirty ||Userpassword?.touched)" class="error text-danger" role="alert">
+               <div *ngIf="Userpassword?.errors?.required"><!--here the name firstname is from get method that is inside the ts file-->
                  Password required
                </div>
-               <div *ngIf="Password?.errors?.pattern" class="error text-danger" role="alert">
+               <div *ngIf="Userpassword?.errors?.pattern" class="error text-danger" role="alert">
                    Type a secured password
                  </div>
                </div>
@@ -37,7 +37,10 @@
                  class="form-check-label"> Remember me </label></div>
            </div>
            <div  class="col"><a  href="#!">Forgot password?</a></div>
-         </div><button  type="submit" class="btn btn-danger btn-block text-center signin"  routerLink="/user-nav" >Sign in</button>
+           <div *ngIf= "InUse === false">
+            <p>Login UnSuccessfull</p>
+          </div>
+         </div><button  type="submit" class="btn btn-danger btn-block text-center signin" >Sign in</button>
          <br><br><div  class="col"><p>Are you an Admin? &nbsp;<a  routerLink="/Alogin">Login here</a></p></div>
        </form>
      </div>

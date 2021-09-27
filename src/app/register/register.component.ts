@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { user } from '../classes/user';
+import { LoanService } from '../loan.service';
 
 @Component({
   selector: 'app-register',
@@ -8,59 +11,72 @@ import { FormGroup,FormControl,Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
+  register!:user
+  InUse:boolean = false
   Personaldetails:FormGroup = new FormGroup(
     {
-      FirstName:new FormControl(),
-      LastName:new FormControl(),
-      Age:new FormControl(),
-      Gender:new FormControl(),
-      MobileNo:new FormControl(),
-      Emailid:new FormControl('',[Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"),Validators.required]),
-      Password:new FormControl('',[Validators.pattern("(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"),Validators.required]),
-      Address: new FormControl(),
-      State:new FormControl(),
-      City:new FormControl(),
-      Pincode:new FormControl()
+      UserFirstName:new FormControl('',Validators.required),
+      UserLastName:new FormControl(),
+      UserDoB:new FormControl(),
+      Usergender:new FormControl(),
+      UserPhoneNum:new FormControl(),
+      UserEmail:new FormControl('',[Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"),Validators.required]),
+      Userpassword:new FormControl('',[Validators.pattern("(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"),Validators.required])
     }
   )
 
-  constructor() { }
+  constructor(private registerloan:LoanService,private router:Router) { }
 
   ngOnInit(): void {
   }
 
+
   Userregistrationdetails()
   {
+     
      console.log(this.Personaldetails.value)
+    this.registerloan.register(this.Personaldetails.value).subscribe( (res:any) => {
+      console.log(res["Success"]);
+      console.log(res)
+
+      if(res["Success"]==true){
+      console.log('User created!')
+      this.router.navigateByUrl('login')
+    }
+    else if (res["Success"]==false){
+      console.log('registration failed!')
+      this.InUse= true;
+    }
+    });
   }
 
-  get Firstname()
+  get UserFirstName()
   {
-    return this.Personaldetails.get("Firstname")
+    return this.Personaldetails.get("UserFirstName")
   }
-  get Lastname()
+  get UserLastName()
   {
-    return this.Personaldetails.get("Lastname")
+    return this.Personaldetails.get("UserLastName")
   }
-  get Age()
+  get UserDoB()
   {
-    return this.Personaldetails.get("Age")
+    return this.Personaldetails.get("UserDoB")
   }
-  get Gender()
+  get Usergender()
   {
-    return this.Personaldetails.get("Gender")
+    return this.Personaldetails.get("Usergender")
   }
-  get MobileNo()
+  get UserPhoneNum()
   {
-    return this.Personaldetails.get("MobileNo")
+    return this.Personaldetails.get("UserPhoneNum")
   }
-  get Emailid()
+  get UserEmail()
   {
-    return this.Personaldetails.get("Emailid")
+    return this.Personaldetails.get("UserEmail")
   }
-  get Password()
+  get Userpassword()
   {
-    return this.Personaldetails.get("Password")
+    return this.Personaldetails.get("Userpassword")
   }
 
 
