@@ -1,0 +1,40 @@
+body{
+    background-image: url("mockaroon-YqUeLG7fMr4-unsplash.jpg");
+    background-size: cover;
+    /* background-position:bottom; */
+    background-repeat: no-repeat;
+    
+    
+  }
+
+  nav{
+      box-shadow: rgb(39, 38, 38) 2px 2px 5px 1px;
+  }
+.one
+{
+   float: left;
+   font-size: x-large;
+   font-weight:500;
+   /* background-color: black; */
+   border-radius: 10px;
+   padding: 10px;
+}
+
+.two
+{
+   float: right;
+   height: 300px;
+   width: 350px;
+   /* margin-bottom: 400px; */
+}
+
+.three
+{
+float: left;
+margin-left: 50px;
+font-size: x-large;
+   font-weight:500;
+/* background-color: black; */
+border-radius: 10px;
+   padding: 10px;
+}
