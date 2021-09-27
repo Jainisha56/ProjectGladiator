@@ -1,0 +1,49 @@
+<style>
+    .box
+    {
+        padding: 10px;
+        height: max-content;
+        margin: 10px auto;
+        border-radius: 10px;
+        
+    }
+    tr{
+        font-family: cursive;
+    }
+    .table
+    {
+        text-align: center;
+    }
+    tr:hover {background-color :azure;}
+</style>
+<br>
+<div class="container box border border-primary">
+    <h1 class="text-primary" align="center">Loan Profile</h1>
+<table class="table table-hover">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">SL NO</th>
+        <th scope="col">Vehicle Name</th>
+        <th scope="col">Total Amount</th>
+        <th scope="col">Total Installments</th>
+        <th scope="col">Completed Installments</th>
+        <th scope="col">Remaining Amount</th>
+        <th scope="col">EMI</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+    </tr>
+    </thead>
+    <tr *ngFor="let lh of loanHistory; index as i">
+        <th scope="row">{{i+1}}</th>
+        <td>{{lh.VehicleName}}</td>
+        <td>{{lh.TotalAmount}}</td>
+        <td>{{lh.TotalInstallments}}</td>
+        <td>{{lh.CompletedInstallments}}</td>
+        <td>{{lh.RemainingAmount}}</td>
+        <td>{{lh.EMI}}</td>
+        <td>{{lh.LoanStartDate}}</td>
+        <td>{{lh.LoanEndDate}}</td>
+    </tr>
+</table>
+
+</div>

@@ -1,0 +1,47 @@
+<style>
+    .box
+    {
+        padding: 10px;
+        height: max-content;
+        margin: 10px auto;
+        border-radius: 10px;
+        
+    }
+    tr{
+        font-family: cursive;
+    }
+    .table
+    {
+        text-align: center;
+    }
+    tr:hover {background-color :azure;}
+</style>
+<br>
+<div class="container box border border-primary">
+    <h1 class="text-primary" align="center">List Of Approved Application</h1>
+<table class="table table-hover">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">SL NO</th>
+        <th scope="col">User Name</th>
+        <th scope="col">Annual Salary</th>
+        <th scope="col">Vehicle Name</th>
+        <th scope="col">Amount</th>
+        <th scope="col">EMI</th>
+        <th scope="col">Interest (%)</th>
+        <th scope="col">Duration (months)</th>
+    </tr>
+    </thead>
+    <tr *ngFor="let apr of ApprovedList; index as i">
+        <th scope="row">{{i+1}}</th>
+        <td>{{apr.UserName}}</td>
+        <td>{{apr.AnnualSalary}}</td>
+        <td>{{apr.VehicleName}}</td>
+        <td>{{apr.Amount}}</td>
+        <td>{{apr.EMI}}</td>
+        <td>{{apr.interest}}</td>
+        <td>{{apr.duration}}</td>
+    </tr>
+</table>
+
+</div>
