@@ -1,0 +1,36 @@
+
+<div class="container forgot">
+
+    <h1 class="mb-4 header text-danger" align="center">Forgot Password </h1>
+     <hr><br>
+
+     <div  class="col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+<form [formGroup]="forgot" (ngSubmit)="emailsubmit()">
+
+    <div class="form-group mb-4"><label for="form1Example1"
+        class="form-label">Email address</label>
+        <!-- Email input -->
+        <input type="text" id="form1Example1" name="Email" formControlName="Email" class="form-control "></div>
+        <div *ngIf="!Email?.valid && (Email?.dirty || Email?.touched)" class="error text-danger" role="alert">
+          <div *ngIf="Email?.errors?.required"><!--here the name firstname is from get method that is inside the ts file-->
+            Email is required
+          </div>
+          <div *ngIf="Email?.errors?.pattern"class="error text-danger" role="alert">
+            Email doesn't exist
+            </div>
+          </div>
+
+
+          <button  type="submit" class="btn btn-danger btn-block text-center signin"   > Send OTP </button>
+        </form>
+
+        <form [formGroup]="otp" (ngSubmit)="otpsubmit()">
+          <div class="form-group mb-4"><label for="form2ex1"
+            class="form-label">OTP</label>
+            <!-- Email input -->
+            <input type="text" id="form2ex1" name="OTP" class="form-control "></div>
+            <button  type="submit" class="btn btn-danger btn-block text-center signin"   > Verify </button>
+         
+
+</form>
+</div></div>

@@ -1,0 +1,41 @@
+<div class="container change">
+
+    <h1 class="mb-4 header text-danger" align="center">Change Password </h1>
+     <hr><br>
+
+     <div  class="col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+         <form [formGroup]="change" (ngSubmit)="reset()">
+
+            <div  class="form-group mb-4"><label  for="formch"
+                class="form-label">New Password</label>
+                <!-- Password input -->
+                <input  type="password" id="formch"
+                name="Password" formControlName="newpwd" class="form-control "></div>
+                <div *ngIf="!newpwd?.valid && (newpwd?.dirty || newpwd?.touched)" class="error text-danger" role="alert">
+                  <div *ngIf="newpwd?.errors?.required"><!--here the name firstname is from get method that is inside the ts file-->
+                    Password required
+                  </div>
+                  <div *ngIf="newpwd?.errors?.pattern" class="error text-danger" role="alert">
+                      Type a secured password
+                    </div>
+                  </div>
+
+
+
+                  <div  class="form-group mb-4"><label  for="formch"
+                    class="form-label">Confirm Password</label>
+                    <!-- Password input -->
+                    <input  type="password" id="formch"
+                    name="Password" formControlName="cnfpwd" class="form-control "></div>
+                    
+
+                      <button  type="submit" class="btn btn-danger btn-block text-center signin"   > Reset </button>                  
+
+
+         </form>
+    
+    
+    
+    
+    </div>
+         </div>
