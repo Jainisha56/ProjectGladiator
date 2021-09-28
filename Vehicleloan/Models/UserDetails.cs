@@ -12,8 +12,9 @@ namespace Vehicleloan.Models
         public UserDetails()
         {
             BankDetails = new HashSet<BankDetails>();
+            EmploymentDetails = new HashSet<EmploymentDetails>();
             LoanApplications = new HashSet<LoanApplications>();
-            RejectedList = new HashSet<RejectedList>();
+            LoanProfile = new HashSet<LoanProfile>();
             VehicleDetails = new HashSet<VehicleDetails>();
         }
 
@@ -31,10 +32,10 @@ namespace Vehicleloan.Models
         public decimal? UserPincode { get; set; }
         public string UserPassword { get; set; }
 
-        public virtual EmploymentDetails EmploymentDetails { get; set; }
         public virtual ICollection<BankDetails> BankDetails { get; set; }
+        public virtual ICollection<EmploymentDetails> EmploymentDetails { get; set; }
         public virtual ICollection<LoanApplications> LoanApplications { get; set; }
-        public virtual ICollection<RejectedList> RejectedList { get; set; }
+        public virtual ICollection<LoanProfile> LoanProfile { get; set; }
         public virtual ICollection<VehicleDetails> VehicleDetails { get; set; }
     }
 }

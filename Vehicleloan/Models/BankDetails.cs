@@ -10,7 +10,8 @@ namespace Vehicleloan.Models
     public partial class BankDetails
     {
         public decimal AccountNum { get; set; }
-        public int UserRefId { get; set; }
+        public int? UserRefId { get; set; }
+        public string BankName { get; set; }
         public string AccountType { get; set; }
         public string BranchName { get; set; }
         public string IfscCode { get; set; }

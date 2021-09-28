@@ -12,6 +12,7 @@ namespace Vehicleloan.Models
         public VehicleDetails()
         {
             LoanApplications = new HashSet<LoanApplications>();
+            LoanProfile = new HashSet<LoanProfile>();
         }
 
         public int VehicleId { get; set; }
@@ -25,5 +26,6 @@ namespace Vehicleloan.Models
 
         public virtual UserDetails User { get; set; }
         public virtual ICollection<LoanApplications> LoanApplications { get; set; }
+        public virtual ICollection<LoanProfile> LoanProfile { get; set; }
     }
 }

@@ -11,20 +11,20 @@ namespace Vehicleloan.Models
     {
         public LoanApplications()
         {
-            RejectedList = new HashSet<RejectedList>();
+            LoanProfile = new HashSet<LoanProfile>();
         }
 
         public int ApplicationId { get; set; }
         public int? UserRefId { get; set; }
         public int? VehicleId { get; set; }
         public decimal? Amount { get; set; }
-        public decimal? Interest { get; set; }
-        public decimal? Duration { get; set; }
+        public int? Interest { get; set; }
+        public int? Duration { get; set; }
         public string ApplicationStatus { get; set; }
         public DateTime? ApplicationDate { get; set; }
 
         public virtual UserDetails UserRef { get; set; }
         public virtual VehicleDetails Vehicle { get; set; }
-        public virtual ICollection<RejectedList> RejectedList { get; set; }
+        public virtual ICollection<LoanProfile> LoanProfile { get; set; }
     }
 }

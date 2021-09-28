@@ -24,7 +24,6 @@ namespace Vehicleloan.Models
         public virtual DbSet<EmploymentDetails> EmploymentDetails { get; set; }
         public virtual DbSet<LoanApplications> LoanApplications { get; set; }
         public virtual DbSet<LoanProfile> LoanProfile { get; set; }
-        public virtual DbSet<RejectedList> RejectedList { get; set; }
         public virtual DbSet<UserDetails> UserDetails { get; set; }
         public virtual DbSet<VehicleDetails> VehicleDetails { get; set; }
 
@@ -42,30 +41,27 @@ namespace Vehicleloan.Models
             modelBuilder.Entity<AdminDetails>(entity =>
             {
                 entity.HasKey(e => e.AdminId)
-                    .HasName("PK__Admin_De__4A311D2FD4DA98C5");
+                    .HasName("PK__Admin_De__4A311D2FD258DDFD");
 
                 entity.ToTable("Admin_Details");
 
                 entity.Property(e => e.AdminId).HasColumnName("Admin_id");
 
                 entity.Property(e => e.AdminEmail)
+                    .IsRequired()
                     .HasColumnName("Admin_Email")
                     .HasMaxLength(250);
 
                 entity.Property(e => e.AdminPassword)
+                    .IsRequired()
                     .HasColumnName("Admin_password")
                     .HasMaxLength(20);
-
-                entity.Property(e => e.AdminUserName)
-                    .IsRequired()
-                    .HasColumnName("Admin_UserName")
-                    .HasMaxLength(30);
             });
 
             modelBuilder.Entity<BankDetails>(entity =>
             {
-                entity.HasKey(e => new { e.AccountNum, e.UserRefId })
-                    .HasName("PK__bank_det__FE5041295FBF554F");
+                entity.HasKey(e => e.AccountNum)
+                    .HasName("PK__bank_det__EFC6E169A2249072");
 
                 entity.ToTable("bank_details");
 
@@ -73,11 +69,13 @@ namespace Vehicleloan.Models
                     .HasColumnName("Account_Num")
                     .HasColumnType("numeric(18, 0)");
 
-                entity.Property(e => e.UserRefId).HasColumnName("user_ref_id");
-
                 entity.Property(e => e.AccountType)
                     .HasColumnName("account_type")
                     .HasMaxLength(100);
+
+                entity.Property(e => e.BankName)
+                    .HasColumnName("bank_name")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.BranchName)
                     .HasColumnName("branch_name")
@@ -87,27 +85,26 @@ namespace Vehicleloan.Models
                     .HasColumnName("ifsc_code")
                     .HasMaxLength(20);
 
+                entity.Property(e => e.UserRefId).HasColumnName("user_ref_id");
+
                 entity.HasOne(d => d.UserRef)
                     .WithMany(p => p.BankDetails)
                     .HasForeignKey(d => d.UserRefId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__bank_deta__user___48CFD27E");
+                    .HasConstraintName("FK__bank_deta__user___4AB81AF0");
             });
 
             modelBuilder.Entity<EmploymentDetails>(entity =>
             {
-                entity.HasKey(e => e.UserId)
-                    .HasName("PK__Employme__B9BE370F4FD9D797");
+                entity.HasKey(e => e.EmpId)
+                    .HasName("PK__Employme__1299A8610E39FD9F");
 
                 entity.ToTable("Employment_Details");
 
-                entity.Property(e => e.UserId)
-                    .HasColumnName("user_id")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.EmpId).HasColumnName("emp_id");
 
                 entity.Property(e => e.AnnualSal)
                     .HasColumnName("annual_sal")
-                    .HasColumnType("numeric(20, 0)");
+                    .HasColumnType("money");
 
                 entity.Property(e => e.ExistingEmi)
                     .HasColumnName("existing_emi")
@@ -119,37 +116,38 @@ namespace Vehicleloan.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
+                entity.Property(e => e.UserId).HasColumnName("user_id");
+
+                entity.Property(e => e.WorkExperience).HasColumnName("Work_Experience");
+
                 entity.HasOne(d => d.User)
-                    .WithOne(p => p.EmploymentDetails)
-                    .HasForeignKey<EmploymentDetails>(d => d.UserId)
+                    .WithMany(p => p.EmploymentDetails)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK__Employmen__user___3A81B327");
             });
 
             modelBuilder.Entity<LoanApplications>(entity =>
             {
                 entity.HasKey(e => e.ApplicationId)
-                    .HasName("PK__Loan_App__E064DD938F008D07");
+                    .HasName("PK__Loan_App__E064DD9306C93C43");
 
                 entity.ToTable("Loan_Applications");
 
                 entity.Property(e => e.ApplicationId).HasColumnName("Application_id");
 
-                entity.Property(e => e.Amount).HasColumnType("numeric(18, 0)");
+                entity.Property(e => e.Amount).HasColumnType("money");
 
                 entity.Property(e => e.ApplicationDate)
                     .HasColumnName("Application_date")
-                    .HasColumnType("datetime");
+                    .HasColumnType("date");
 
                 entity.Property(e => e.ApplicationStatus)
                     .HasColumnName("Application_Status")
                     .HasMaxLength(30)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Duration)
-                    .HasColumnName("duration")
-                    .HasColumnType("numeric(18, 0)");
-
-                entity.Property(e => e.Interest).HasColumnType("numeric(18, 0)");
+                entity.Property(e => e.Duration).HasColumnName("duration");
 
                 entity.Property(e => e.UserRefId).HasColumnName("user_ref_id");
 
@@ -169,92 +167,64 @@ namespace Vehicleloan.Models
 
             modelBuilder.Entity<LoanProfile>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.LoanId)
+                    .HasName("PK__loan_pro__A1F7955412EAE8FB");
 
                 entity.ToTable("loan_profile");
 
-                entity.Property(e => e.CompletedInstallments)
-                    .HasColumnName("completed_installments")
-                    .HasColumnType("numeric(18, 0)");
+                entity.Property(e => e.LoanId).HasColumnName("loan_id");
+
+                entity.Property(e => e.CompletedInstallments).HasColumnName("completed_installments");
 
                 entity.Property(e => e.Emi)
                     .HasColumnName("emi")
-                    .HasColumnType("numeric(18, 0)");
+                    .HasColumnType("money");
+
+                entity.Property(e => e.LoanApplicationId).HasColumnName("loan_application_id");
 
                 entity.Property(e => e.LoanEndDate)
                     .HasColumnName("loan_end_date")
-                    .HasColumnType("datetime");
-
-                entity.Property(e => e.LoanId).HasColumnName("loan_id");
+                    .HasColumnType("date");
 
                 entity.Property(e => e.LoanStartDate)
                     .HasColumnName("loan_start_date")
-                    .HasColumnType("datetime");
+                    .HasColumnType("date");
 
                 entity.Property(e => e.RemainingAmount)
                     .HasColumnName("remaining_amount")
-                    .HasColumnType("numeric(18, 0)");
+                    .HasColumnType("money");
 
                 entity.Property(e => e.TotalAmount)
                     .HasColumnName("total_amount")
-                    .HasColumnType("numeric(18, 0)");
+                    .HasColumnType("money");
 
-                entity.Property(e => e.TotalInstallments)
-                    .HasColumnName("total_installments")
-                    .HasColumnType("numeric(18, 0)");
+                entity.Property(e => e.TotalInstallments).HasColumnName("total_installments");
 
                 entity.Property(e => e.UserRefId).HasColumnName("user_ref_id");
 
-                entity.HasOne(d => d.Loan)
-                    .WithMany()
-                    .HasForeignKey(d => d.LoanId)
-                    .HasConstraintName("FK__loan_prof__loan___45F365D3");
+                entity.Property(e => e.VehicleId).HasColumnName("Vehicle_id");
+
+                entity.HasOne(d => d.LoanApplication)
+                    .WithMany(p => p.LoanProfile)
+                    .HasForeignKey(d => d.LoanApplicationId)
+                    .HasConstraintName("FK__loan_prof__loan___47DBAE45");
 
                 entity.HasOne(d => d.UserRef)
-                    .WithMany()
+                    .WithMany(p => p.LoanProfile)
                     .HasForeignKey(d => d.UserRefId)
-                    .HasConstraintName("FK__loan_prof__user___44FF419A");
-            });
+                    .HasConstraintName("FK__loan_prof__user___45F365D3");
 
-            modelBuilder.Entity<RejectedList>(entity =>
-            {
-                entity.HasKey(e => e.RejectedId)
-                    .HasName("PK__Rejected__4A298A0621542B68");
-
-                entity.ToTable("Rejected_list");
-
-                entity.Property(e => e.RejectedId).HasColumnName("rejected_id");
-
-                entity.Property(e => e.AdminRefId).HasColumnName("admin_ref_id");
-
-                entity.Property(e => e.LoanId).HasColumnName("loan_id");
-
-                entity.Property(e => e.Reason)
-                    .HasColumnName("reason")
-                    .HasMaxLength(1000);
-
-                entity.Property(e => e.UserRefId).HasColumnName("user_ref_id");
-
-                entity.HasOne(d => d.AdminRef)
-                    .WithMany(p => p.RejectedList)
-                    .HasForeignKey(d => d.AdminRefId)
-                    .HasConstraintName("FK__Rejected___admin__4BAC3F29");
-
-                entity.HasOne(d => d.Loan)
-                    .WithMany(p => p.RejectedList)
-                    .HasForeignKey(d => d.LoanId)
-                    .HasConstraintName("FK__Rejected___loan___4D94879B");
-
-                entity.HasOne(d => d.UserRef)
-                    .WithMany(p => p.RejectedList)
-                    .HasForeignKey(d => d.UserRefId)
-                    .HasConstraintName("FK__Rejected___user___4CA06362");
+                entity.HasOne(d => d.Vehicle)
+                    .WithMany(p => p.LoanProfile)
+                    .HasForeignKey(d => d.VehicleId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK__loan_prof__Vehic__46E78A0C");
             });
 
             modelBuilder.Entity<UserDetails>(entity =>
             {
                 entity.HasKey(e => e.UserId)
-                    .HasName("PK__User_Det__206A9DF83C0C075D");
+                    .HasName("PK__User_Det__206A9DF8C7276CFA");
 
                 entity.ToTable("User_Details");
 
@@ -284,7 +254,7 @@ namespace Vehicleloan.Models
                 entity.Property(e => e.UserFirstName)
                     .IsRequired()
                     .HasColumnName("User_FirstName")
-                    .HasMaxLength(20);
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.UserGender)
                     .HasColumnName("User_gender")
@@ -293,7 +263,7 @@ namespace Vehicleloan.Models
 
                 entity.Property(e => e.UserLastName)
                     .HasColumnName("User_LastName")
-                    .HasMaxLength(20);
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.UserPassword)
                     .HasColumnName("User_password")
@@ -316,7 +286,7 @@ namespace Vehicleloan.Models
             modelBuilder.Entity<VehicleDetails>(entity =>
             {
                 entity.HasKey(e => e.VehicleId)
-                    .HasName("PK__Vehicle___CE64613D67E90C98");
+                    .HasName("PK__Vehicle___CE64613D765B1561");
 
                 entity.ToTable("Vehicle_Details");
 
@@ -329,11 +299,11 @@ namespace Vehicleloan.Models
 
                 entity.Property(e => e.OnRoadPrice)
                     .HasColumnName("On_road_price")
-                    .HasColumnType("numeric(18, 0)");
+                    .HasColumnType("money");
 
                 entity.Property(e => e.ShowroomPrice)
                     .HasColumnName("Showroom_price")
-                    .HasColumnType("numeric(18, 0)");
+                    .HasColumnType("money");
 
                 entity.Property(e => e.UserId).HasColumnName("user_id");
 

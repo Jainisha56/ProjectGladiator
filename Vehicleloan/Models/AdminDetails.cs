@@ -9,16 +9,8 @@ namespace Vehicleloan.Models
 {
     public partial class AdminDetails
     {
-        public AdminDetails()
-        {
-            RejectedList = new HashSet<RejectedList>();
-        }
-
         public int AdminId { get; set; }
-        public string AdminUserName { get; set; }
-        public string AdminPassword { get; set; }
         public string AdminEmail { get; set; }
-
-        public virtual ICollection<RejectedList> RejectedList { get; set; }
+        public string AdminPassword { get; set; }
     }
 }

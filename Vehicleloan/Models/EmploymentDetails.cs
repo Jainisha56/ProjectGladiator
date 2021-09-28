@@ -9,10 +9,12 @@ namespace Vehicleloan.Models
 {
     public partial class EmploymentDetails
     {
-        public int UserId { get; set; }
+        public int EmpId { get; set; }
+        public int? UserId { get; set; }
         public string TypeOfEmp { get; set; }
         public decimal? AnnualSal { get; set; }
         public string ExistingEmi { get; set; }
+        public int? WorkExperience { get; set; }
 
         public virtual UserDetails User { get; set; }
     }

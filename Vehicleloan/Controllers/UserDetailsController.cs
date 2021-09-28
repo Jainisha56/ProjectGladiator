@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -118,8 +119,30 @@ namespace Vehicleloan.Controllers
                 status.Add("Success", false);
                 return Ok(status);
             }
+            // return CreatedAtAction("GetUserDetails", new { id = userDetails.UserId }, userDetails);
+        }
 
+        [HttpPost("forgotpassword")]
+        public IActionResult ForgotUserlogin(UserDetails userDetails)
+        {
+            //_context.UserDetails.Add(userDetails);
+            var res = _context.UserDetails.Where(x => x.UserEmail == userDetails.UserEmail).FirstOrDefault();
 
+            if (res != null)
+            {
+                var random = new Random();
+                int code = random.Next(1000, 9999);
+                string Body = "hi heres your OTP as per your request for re-setting password " + code;
+                SendMail("jainishakhowal1998@gmail.com", userDetails.UserEmail, "JPAG Vehicle Loans", Body);
+                status.Add("Success", true);
+                return Ok(status);
+
+            }
+            else
+            {
+                status.Add("Success", false);
+                return Ok(status);
+            }
             // return CreatedAtAction("GetUserDetails", new { id = userDetails.UserId }, userDetails);
         }
 
@@ -143,5 +166,29 @@ namespace Vehicleloan.Controllers
         {
             return _context.UserDetails.Any(e => e.UserId == id);
         }
+
+        [NonAction]
+        public static void SendMail(string from, string To, String Subject, string Body)
+        {
+            MailMessage mail = new MailMessage(from, To);
+            mail.Subject = Subject;
+            mail.Body = Body;
+
+            //Attachment attachment = new Attachment(@"");
+            //mail.Attachments.Add(attachment);
+            SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+
+            client.Credentials = new System.Net.NetworkCredential()
+            {
+                UserName = "jainishakhowal1998@gmail.com",
+                Password = "jainishakhowal"
+
+            };
+            client.EnableSsl = true;
+            client.Send(mail);
+
+        }
+
+
     }
 }
