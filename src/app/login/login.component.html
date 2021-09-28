@@ -9,7 +9,7 @@
              <!-- Email input -->
              <input type="text" id="form1Example1" name="UserEmail" formControlName="UserEmail" class="form-control "></div>
              <div *ngIf="! UserEmail?.valid && ( UserEmail?.dirty ||  UserEmail?.touched)" class="error text-danger" role="alert">
-               <div *ngIf=" UserEmail?.errors?.required"><!--here the name firstname is from get method that is inside the ts file-->
+               <div *ngIf=" UserEmail?.errors?.required">
                  User Name is required
                </div>
                <div *ngIf=" UserEmail?.errors?.pattern"class="error text-danger" role="alert">
@@ -23,7 +23,7 @@
              <input  type="password" id="form1Example2"
              name="Userpassword" formControlName="Userpassword" class="form-control "></div>
              <div *ngIf="!Userpassword?.valid && (Userpassword?.dirty ||Userpassword?.touched)" class="error text-danger" role="alert">
-               <div *ngIf="Userpassword?.errors?.required"><!--here the name firstname is from get method that is inside the ts file-->
+               <div *ngIf="Userpassword?.errors?.required">
                  Password required
                </div>
                <div *ngIf="Userpassword?.errors?.pattern" class="error text-danger" role="alert">
@@ -36,7 +36,7 @@
                <input  type="checkbox" id="form1Example3"  class="form-check-input"><label  for="form1Example3"
                  class="form-check-label"> Remember me </label></div>
            </div>
-           <div  class="col"><a  href="#!">Forgot password?</a></div>
+           <div  class="col"><a routerLink="/forgotpassword">Forgot password?</a></div>
            <div *ngIf= "InUse === false">
             <p>Login UnSuccessfull</p>
           </div>

@@ -26,9 +26,9 @@ export class LoanService {
   login(loginuser: any): Observable<user> {
     return this.httpClient.post<user>(this.apiServer + '/Userdetails/login/', JSON.stringify(loginuser), this.httpOptions)
   }
- 
- 
-
+  forgotpassword(forgotpwd: any): Observable<user> {
+    return this.httpClient.post<user>(this.apiServer + '/Userdetails/forgotpassword/', JSON.stringify(forgotpwd), this.httpOptions)
+  }
 
   recievedStatus():Observable<boolean>
   {

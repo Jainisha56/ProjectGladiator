@@ -36,6 +36,8 @@ import { ApprovedLoansComponent } from './approved-loans/approved-loans.componen
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { LoanProfileComponent } from './loan-profile/loan-profile.component';
+import { ChangepwdComponent } from './changepwd/changepwd.component';
+import { ForgotpwdComponent } from './forgotpwd/forgotpwd.component';
 
 
 
@@ -64,7 +66,9 @@ import { LoanProfileComponent } from './loan-profile/loan-profile.component';
     ApprovedLoansComponent,
     UserSettingsComponent,
     UserDashboardComponent,
-    LoanProfileComponent
+    LoanProfileComponent,
+    ChangepwdComponent,
+    ForgotpwdComponent
   ],
   imports: [
     BrowserModule,

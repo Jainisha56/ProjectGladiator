@@ -8,6 +8,7 @@ import { ApplyLoanComponent } from './apply-loan/apply-loan.component';
 import { ApprovedLoansComponent } from './approved-loans/approved-loans.component';
 import { EMICalculatorComponent } from './emicalculator/emicalculator.component';
 import { ErrorComponent } from './error/error.component';
+import { ForgotpwdComponent } from './forgotpwd/forgotpwd.component';
 import { HomeComponent } from './home/home.component';
 import { LoanApplicationsComponent } from './loan-applications/loan-applications.component';
 import { LoanOffersComponent } from './loan-offers/loan-offers.component';
@@ -45,6 +46,8 @@ const routes: Routes = [
   {path:'loan-history',component:LoanProfileComponent},
   {path:'user-nav',component:UserNavComponent},
   {path:'admin-nav',component:AdminNavComponent},
+
+  {path:'forgotpassword',component:ForgotpwdComponent},
   {path:'**',component:ErrorComponent}
 
 ];
