@@ -17,7 +17,9 @@ export class LoanService {
   }
   constructor(private httpClient: HttpClient) { }
 
-  public subject=new Subject<boolean>();
+  public subjectu=new Subject<boolean>();
+  public subjecta=new Subject<boolean>();
+  
   
   register(registeruser: any): Observable<user> {
     return this.httpClient.post<user>(this.apiServer + '/Userdetails/register/', JSON.stringify(registeruser), this.httpOptions)
@@ -26,12 +28,21 @@ export class LoanService {
   login(loginuser: any): Observable<user> {
     return this.httpClient.post<user>(this.apiServer + '/Userdetails/login/', JSON.stringify(loginuser), this.httpOptions)
   }
+
+  alogin(loginadmin: any): Observable<user> {
+    return this.httpClient.post<user>(this.apiServer + '/Userdetails/adminlogin/', JSON.stringify(loginadmin), this.httpOptions)
+  }
+
   forgotpassword(forgotpwd: any): Observable<user> {
     return this.httpClient.post<user>(this.apiServer + '/Userdetails/forgotpassword/', JSON.stringify(forgotpwd), this.httpOptions)
   }
 
-  recievedStatus():Observable<boolean>
+  receiveduserStatus():Observable<boolean>
   {
-    return this.subject.asObservable();
+    return this.subjectu.asObservable();
+  }
+  receivedadminStatus():Observable<boolean>
+  {
+    return this.subjecta.asObservable();
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoanService } from '../loan.service';
 
 
 @Component({
@@ -13,29 +14,52 @@ export class AloginComponent implements OnInit {
 
   adminlogin:FormGroup = new FormGroup(
     {
-      Email:new FormControl('',[Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"),Validators.required]),
-      Password:new FormControl('',[Validators.pattern("(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"),Validators.required])
+      AdminEmail:new FormControl(),
+      Adminpassword:new FormControl()
     }
   )
+  InUse!:boolean 
 
   Admincredentials()
   {
      console.log(this.adminlogin.value)
+     console.log(this.adminlogin.value)
+     this.adminloginloan.alogin(this.adminlogin.value).subscribe( (res:any) => {
+     
+     // console.log("Success")
+      console.log(res["Success"]);
+      console.log(res)
+
+      if(res["Success"]==true)
+      {
+
+        sessionStorage.setItem('AdminEmail',this.adminlogin.controls.AdminEmail.value)
+        console.log(this.adminlogin.controls.AdminEmail.value)
+      this.adminloginloan.subjecta.next(true)
+      console.log('login successful!')
+      this.router.navigateByUrl('/admin-dash')
+      
+    }
+    else if (res["Success"]==false){
+      console.log('login failed!')
+      this.InUse= false;
+    }
+    });
      
   }
 
-  constructor(private router:Router) { }
+  constructor(private adminloginloan:LoanService,private router:Router) { }
 
   ngOnInit(): void {
   }
 
-  get Email()
+  get AdminEmail()
   {
-    return this.adminlogin.get("Email")
+    return this.adminlogin.get("AdminEmail")
   }
-  get Password()
+  get Adminpassword()
   {
-    return this.adminlogin.get("Password")
+    return this.adminlogin.get("Adminpassword")
   }
 
 

@@ -26,8 +26,6 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AdminNavComponent } from './admin-nav/admin-nav.component';
-import { UserNavComponent } from './user-nav/user-nav.component';
 import { LoanApplicationsComponent } from './loan-applications/loan-applications.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { RejectedListComponent } from './rejected-list/rejected-list.component';
@@ -57,8 +55,6 @@ import { ForgotpwdComponent } from './forgotpwd/forgotpwd.component';
     LoginComponent,
     AloginComponent,
 //dashboards
-    AdminNavComponent,
-    UserNavComponent,
     LoanApplicationsComponent,
     AdminDashboardComponent,
     RejectedListComponent,

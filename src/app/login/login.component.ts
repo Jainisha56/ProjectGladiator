@@ -18,23 +18,27 @@ export class LoginComponent implements OnInit {
       Userpassword:new FormControl('',[Validators.pattern("(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"),Validators.required])
     }
   )
+  AdminLogin= ['/', { outlets: {
+    'outlet-main': ['Alogin']
+  }}];
 
   Usercredentials()
   {
      
      console.log(this.userlogin.value)
      this.loginloan.login(this.userlogin.value).subscribe( (res:any) => {
-      
+     
      // console.log("Success")
-      //sessionStorage.setItem('Email',this.userlogin.controls.Email.value)
-     // console.log(this.userlogin.controls.Email.value)
       console.log(res["Success"]);
       console.log(res)
 
       if(res["Success"]==true)
       {
+        sessionStorage.setItem('Email',this.userlogin.controls.UserEmail.value)
+        console.log(this.userlogin.controls.UserEmail.value)
+      this.loginloan.subjectu.next(true)
       console.log('login successful!')
-      this.router.navigateByUrl('user-nav')
+      this.router.navigateByUrl('/user-dash')
       
     }
     else if (res["Success"]==false){
