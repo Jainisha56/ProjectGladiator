@@ -33,6 +33,14 @@ export class MenuComponent implements OnInit {
     'outlet-main': ['Login']
   }}];
 
+  // Forgotpass= ['/', { outlets: {
+  //   'outlet-main': ['forgotpassword']
+  // }}];
+
+  // Changepass= ['/', { outlets: {
+  //   'outlet-main': ['changepassword']
+  // }}];
+
 
   Userdashboard= ['/', { outlets: {
     'outlet-udash': ['user-dash']

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl, PatternValidator, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoanService } from '../loan.service';
 
 
 @Component({
@@ -18,7 +20,7 @@ change:FormGroup = new FormGroup(
     //{validators:this.passwordMatchValidator}
   )
 
-  constructor() { }
+  constructor(private changepassservice:LoanService,private router:Router) { }
 
   ngOnInit(): void {
   }

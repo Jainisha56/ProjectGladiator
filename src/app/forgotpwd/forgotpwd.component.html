@@ -23,16 +23,22 @@
             <p>Email does not exist</p>
           </div>
 
-          <button  type="submit" class="btn btn-danger btn-block text-center signin"> Send OTP </button>
+          <button  type="submit" class="btn btn-danger btn-block text-center signin"[disabled]="!forgot.valid"> Send OTP </button>
         </form>
 
         <form [formGroup]="otp" (ngSubmit)="otpsubmit()">
           <div class="form-group mb-4"><label for="form2ex1"
             class="form-label">OTP</label>
             <!-- Email input -->
-            <input type="text" id="form2ex1" name="OTP" class="form-control "></div>
-            <button  type="submit" class="btn btn-danger btn-block text-center signin"   > Verify </button>
-         
+            <input type="number" id="form2ex1" name="OTP" formControlName="OTP" class="form-control "></div>
+            <div *ngIf="!OTP?.valid && (OTP?.dirty ||OTP?.touched)" class="error text-danger" role="alert">
+              <div *ngIf="OTP?.errors?.required"><!--here the name firstname is from get method that is inside the ts file-->
+                OTP is required
+              </div></div>
+            <button  type="submit" class="btn btn-danger btn-block text-center signin" [disabled]="!otp.valid"> Verify </button>
+            <div *ngIf= "alertmsg === false">
+              alert("OTP Invalid")
+            </div>
 
 </form>
 </div></div>

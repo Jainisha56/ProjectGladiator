@@ -12,4 +12,7 @@ export class ApplyLoanComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  Loanoffers= ['/', { outlets: {
+    'outlet-main': ['Loan Offers']
+  }}];  
 }

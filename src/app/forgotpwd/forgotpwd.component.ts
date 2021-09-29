@@ -11,7 +11,13 @@ import { LoanService } from '../loan.service';
 })
 export class ForgotpwdComponent implements OnInit {
 
-  
+  alertmsg!:boolean
+  code!:number
+
+  Changepass= ['/', { outlets: {
+    'outlet-main': ['changepassword']
+  }}];
+
 forgot:FormGroup = new FormGroup(
     {
       UserEmail:new FormControl('',[Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"),Validators.required]),
@@ -21,12 +27,12 @@ forgot:FormGroup = new FormGroup(
 
  otp:FormGroup=new FormGroup(
    {
-    OTP:new FormControl()
+    OTP:new FormControl('',[Validators.required])
    }
  ) 
   InUse!: boolean;
 
-
+  constructor(private forgotpass:LoanService,private router:Router) { }
  emailsubmit()
   {
      console.log(this.forgot.value)
@@ -35,30 +41,52 @@ forgot:FormGroup = new FormGroup(
      // console.log("Success")
       //sessionStorage.setItem('Email',this.userlogin.controls.Email.value)
      // console.log(this.userlogin.controls.Email.value)
-      console.log(res["Success"]);
+      console.log(res.status);
       console.log(res)
+      this.code = res.rnum
 
-      if(res["Success"]==true)
+      if(res.status==true)
       {
       console.log('Email sent')
-      
+      //console.log(this.otp.value)
+      this.InUse=true
       
     }
-    else if (res["Success"]==false)
+    else if (res.status==false)
     {
       console.log('Email unavailable')
-      this.InUse= false;
+      this.InUse= false
     }
     });
 
-
+   
   }
   otpsubmit()
   {
-     console.log(this.otp.value)
+    console.log(this.otp.value)
+    // this.forgotpass.forgotpassword(this.otp.value).subscribe( (res:any) => {
+      
+     // console.log("Success")
+      //sessionStorage.setItem('Email',this.userlogin.controls.Email.value)
+     // console.log(this.userlogin.controls.Email.value)
+      console.log(this.code)
+      //console.log(res.rnum)
+
+     
+      if(this.code==this.otp.controls['OTP'].value)
+      {
+        console.log("hi")
+        this.router.navigateByUrl('/Changepassword')
+        //this.alertmsg=true
+      }
+      else
+      {
+        this.alertmsg=false
+      }
+    //});
   }
 
-  constructor(private forgotpass:LoanService,private router:Router) { }
+ 
 
   ngOnInit(): void {
   }
@@ -68,7 +96,7 @@ forgot:FormGroup = new FormGroup(
     return this.forgot.get("UserEmail")
   }
   get OTP(){
-    return this.forgot.get("otp")
+    return this.forgot.get("OTP")
   }
 
 }

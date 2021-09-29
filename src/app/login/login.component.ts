@@ -22,6 +22,14 @@ export class LoginComponent implements OnInit {
     'outlet-main': ['Alogin']
   }}];
 
+  Forgotpass= ['/', { outlets: {
+    'outlet-main': ['forgotpassword']
+  }}];
+
+  link1= ['/', { outlets: {
+    'outlet-udash': ['user-dash']
+  }}];
+
   Usercredentials()
   {
      
@@ -38,7 +46,7 @@ export class LoginComponent implements OnInit {
         console.log(this.userlogin.controls.UserEmail.value)
       this.loginloan.subjectu.next(true)
       console.log('login successful!')
-      this.router.navigateByUrl('/user-dash')
+      this.router.navigate(['link1'])
       
     }
     else if (res["Success"]==false){
