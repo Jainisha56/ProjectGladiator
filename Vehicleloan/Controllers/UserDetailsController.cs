@@ -46,6 +46,18 @@ namespace Vehicleloan.Controllers
 
             return userDetails;
         }
+        [HttpGet("email/{Email}")]
+        public async Task<ActionResult<UserDetails>> GetUserEmail(string Email)
+        {
+            var userDetails = await _context.UserDetails.FindAsync(Email);
+
+            if (userDetails == null)
+            {
+                return NotFound();
+            }
+
+            return userDetails;
+        }
 
         // PUT: api/UserDetails/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -178,6 +190,32 @@ namespace Vehicleloan.Controllers
 
             return code;
         }
+        [HttpPut("changepwd")]
+        public IActionResult PutChangepwd(UserDetails userDetails)
+        {
+            var data = _context.UserDetails.Where(x => x.UserId == userDetails.UserId).FirstOrDefault();
+            if (data != null)
+            {
+                data.UserPassword = userDetails.UserPassword;
+                _context.SaveChanges();
+                status.Add("Success", true);
+                return Ok(status);
+            }
+            else
+            {
+                status.Add("Success", true);
+                return Ok(status);
+            }
+        }
+        //[HttpPut("AcceptApp/{id}")]
+
+        //public IActionResult UpdateAcceptStatus(int id, LoanApplications loanApplications)
+        //{
+        //    var res = _context.LoanApplications.Where(x => x.ApplicationId == id).FirstOrDefault();
+        //    res.ApplicationStatus = "true";
+        //    _context.SaveChanges();
+        //    return Ok();
+        //}
         // DELETE: api/UserDetails/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<UserDetails>> DeleteUserDetails(int id)
