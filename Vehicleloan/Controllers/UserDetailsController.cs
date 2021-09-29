@@ -22,6 +22,9 @@ namespace Vehicleloan.Controllers
         }
         
         Dictionary<string, bool> status = new Dictionary<string, bool>();
+        Dictionary<int, bool> otpstatus = new Dictionary<int, bool>();
+        int codeget;
+       
 
         // GET: api/UserDetails
         [HttpGet]
@@ -121,6 +124,25 @@ namespace Vehicleloan.Controllers
             }
             // return CreatedAtAction("GetUserDetails", new { id = userDetails.UserId }, userDetails);
         }
+        [HttpPost("adminlogin")]
+        public IActionResult PostAdminlogin(AdminDetails adminDetails)
+        {
+            //_context.UserDetails.Add(userDetails);
+
+            var admin = _context.AdminDetails.Where(u => u.AdminEmail == adminDetails.AdminEmail && u.AdminPassword == adminDetails.AdminPassword).FirstOrDefault();
+            if (admin != null)
+            {
+                status.Add("Success", true);
+                return Ok(status);
+            }
+            else
+            {
+                status.Add("Success", false);
+                return Ok(status);
+            }
+            // return CreatedAtAction("GetUserDetails", new { id = userDetails.UserId }, userDetails);
+        }
+
 
         [HttpPost("forgotpassword")]
         public IActionResult ForgotUserlogin(UserDetails userDetails)
@@ -133,19 +155,29 @@ namespace Vehicleloan.Controllers
                 var random = new Random();
                 int code = random.Next(1000, 9999);
                 string Body = "hi heres your OTP as per your request for re-setting password " + code;
-                SendMail("jainishakhowal1998@gmail.com", userDetails.UserEmail, "JPAG Vehicle Loans", Body);
-                status.Add("Success", true);
-                return Ok(status);
-
+                //codeget = code;
+                SendMail("vehicleloanlti@gmail.com", userDetails.UserEmail, "JPAG Vehicle Loans", Body);
+                //status.Add("Success", true);
+                // return Ok(status);
+                return Ok(new { status=true, rnum = code });
             }
             else
             {
-                status.Add("Success", false);
-                return Ok(status);
+                //status.Add("Success", false);
+                // codeget = -1;
+                //return Ok(status);
+                return Ok(new { status = false, rnum = -1 });
             }
             // return CreatedAtAction("GetUserDetails", new { id = userDetails.UserId }, userDetails);
         }
+        [NonAction]
+        public int retcode()
+        {
+            var random = new Random();
+            int code = random.Next(1000, 9999);
 
+            return code;
+        }
         // DELETE: api/UserDetails/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<UserDetails>> DeleteUserDetails(int id)
@@ -180,8 +212,8 @@ namespace Vehicleloan.Controllers
 
             client.Credentials = new System.Net.NetworkCredential()
             {
-                UserName = "jainishakhowal1998@gmail.com",
-                Password = "jainishakhowal"
+                UserName = "vehicleloanlti@gmail.com",
+                Password = "Vehicleloan4@lti"
 
             };
             client.EnableSsl = true;
