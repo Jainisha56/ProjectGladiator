@@ -37,6 +37,15 @@ export class LoanService {
     return this.httpClient.post<user>(this.apiServer + '/Userdetails/forgotpassword/', JSON.stringify(forgotpwd), this.httpOptions)
   }
 
+  changepwd(Email:string,Password:string): Observable<user> {
+    console.log("hi")
+    return this.httpClient.put<user>(this.apiServer + '/Userdetails/changepwd/'+Email,JSON.stringify(Password), this.httpOptions)
+  }
+  getByEmail(email:string): Observable<user> {
+    return this.httpClient.get<user>(this.apiServer + '/Userdetails/email/' + email)
+   
+  }
+
   receiveduserStatus():Observable<boolean>
   {
     return this.subjectu.asObservable();

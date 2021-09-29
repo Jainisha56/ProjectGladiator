@@ -76,7 +76,8 @@ forgot:FormGroup = new FormGroup(
       if(this.code==this.otp.controls['OTP'].value)
       {
         console.log("hi")
-        this.router.navigateByUrl('/Changepassword')
+        console.log(this.forgot.controls['UserEmail'].value)
+        this.router.navigateByUrl('/Changepassword',this.forgot.controls['UserEmail'].value)
         //this.alertmsg=true
       }
       else

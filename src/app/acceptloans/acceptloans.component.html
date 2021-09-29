@@ -1,0 +1,49 @@
+<div class="container">
+
+    <h1 class="mb-4 header text-danger" align="center">Loan Profile </h1>
+     <hr><br>
+     <div  class="col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+        <form [formGroup]="accept" (ngSubmit)="submit()">
+            <div class="form-group mb-4"><label for="Username" class="form-label">User Name</label>
+                <!-- Firstname input -->
+                <input type="text" id="Username" name="Username" formControlName="Username" class="form-control "></div>
+               
+                <div class="form-group mb-4"><label for="salary" class="form-label">Salary</label>
+                    <!-- Firstname input -->
+                    <input type="number" id="salary" name="salary" formControlName="salary" class="form-control "></div>
+
+                    <div class="form-group mb-4"><label for="vehiclename" class="form-label">Vehicle Name</label>
+                        <!-- Firstname input -->
+                        <input type="text" id="vehiclename" name="vehiclename" formControlName="vehiclename" class="form-control "></div>
+
+                        <div class="form-group mb-4"><label for="amount" class="form-label">Amount</label>
+                            <!-- Firstname input -->
+                            <input type="number" id="amount" name="amount" formControlName="amount" class="form-control "></div>         
+
+
+                            <div class="form-group mb-4"><label for="intrest" class="form-label">Intrest(%)</label>
+                                <!-- Firstname input -->
+                                <input type="number" id="intrest" name="intrest" formControlName="intrest" class="form-control "></div>   
+                                
+                                <div class="form-group mb-4"><label for="duration" class="form-label">Duration</label>
+                                    <!-- Firstname input -->
+                                    <input type="number" id="duration" name="duration" formControlName="duration" class="form-control "></div> 
+                                    
+                                    <div class="form-group mb-4"><label for="emi" class="form-label">EMI</label>
+                                        <!-- Firstname input -->
+                                        <input type="number" id="emi" name="emi" formControlName="emi" class="form-control "></div>  
+
+                                        <div class="form-group mb-4"><label for="loanstart_date" class="form-label">Loan Start_Date</label>
+                                            <!-- Firstname input -->
+                                            <input type="date" id="loanstart_date" name="loanstart_date" formControlName="loanstart_date" class="form-control "></div>   
+
+                                            <div class="form-group mb-4"><label for="loanend_date" class="form-label">Loan End_Date</label>
+                                                <!-- Firstname input -->
+                                                <input type="date" id="loanend_date" name="loanend_date" formControlName="loanend_date" class="form-control "></div>   
+    
+                                                <button  type="submit" class="btn btn-danger btn-block text-center register" >Submit</button>
+    
+</form>
+</div>
+
+</div>>

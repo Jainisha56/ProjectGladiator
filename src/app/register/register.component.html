@@ -82,7 +82,25 @@
                     Password required
                   </div>
                   <div *ngIf="Userpassword?.errors?.pattern"class="error text-danger" role="alert">
-                      Type a secured password
+                    <p> Type a secured password consisting of </p>
+                    <li>
+                     lowercase character
+                    </li>
+                    <li>
+                     uppercase character
+                    </li>
+                    <li>
+                     special character
+                    </li>
+                    <li>
+                     number
+                    </li>
+                    <li>
+                     minimum = 8
+                    </li>
+                    <li>
+                     maximum = 20
+                    </li> 
                     </div>
               </div>
               <button  type="submit" class="btn btn-danger btn-block text-center register" [disabled] = "!Personaldetails.valid" >Register</button>

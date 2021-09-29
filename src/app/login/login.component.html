@@ -27,7 +27,25 @@
                  Password required
                </div>
                <div *ngIf="Userpassword?.errors?.pattern" class="error text-danger" role="alert">
-                   Type a secured password
+                   <p> Type a secured password consisting of </p>
+                     <li>
+                      lowercase character
+                     </li>
+                     <li>
+                      uppercase character
+                     </li>
+                     <li>
+                      special character
+                     </li>
+                     <li>
+                      number
+                     </li>
+                     <li>
+                      minimum = 8
+                     </li>
+                     <li>
+                      maximum = 20
+                     </li> 
                  </div>
                </div>
          <div  class="row mb-4">
@@ -36,12 +54,12 @@
                <input  type="checkbox" id="form1Example3"  class="form-check-input"><label  for="form1Example3"
                  class="form-check-label"> Remember me </label></div>
            </div>
-           <div  class="col"><a [routerLink]="Forgotpass">Forgot password?</a></div>
+           <div  class="col"><a routerLink="/forgotpassword">Forgot password?</a></div>
            <div *ngIf= "InUse === false">
             <p>Login UnSuccessfull</p>
           </div>
          </div><button  type="submit" class="btn btn-danger btn-block text-center signin" >Sign in</button>
-         <br><br><div  class="col"><p>Are you an Admin? &nbsp;<a  [routerLink]="AdminLogin">Login here</a></p></div>
+         <br><br><div  class="col"><p>Are you an Admin? &nbsp;<a routerLink="/Alogin">Login here</a></p></div>
        </form>
      </div>
    </div>

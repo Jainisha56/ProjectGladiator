@@ -12,26 +12,26 @@ export class MenuComponent implements OnInit {
   messageuser:boolean=false;
   messageadmin:boolean=false;
   checkuser!:any
-  Home = ['/', { outlets: {
-    'outlet-main': ['Home']
+  //Home = ['/', { outlets: {
+   // 'outlet-main': ['Home']
     // 'outlet-b': ['page-green'],
     // 'outlet-c': ['page-blue']
-  }}];
-  AboutUs = ['/', { outlets: {
-    'outlet-main': ['About Us']
-  }}];
-  EMICalculator= ['/', { outlets: {
-    'outlet-main': ['EMI Calculator']
-  }}];
-  Applyloan= ['/', { outlets: {
-    'outlet-main': ['Apply Loan']
-  }}];
-  Register= ['/', { outlets: {
-    'outlet-main': ['Register']
-  }}];
-  Login= ['/', { outlets: {
-    'outlet-main': ['Login']
-  }}];
+  //}}];
+  // AboutUs = ['/', { outlets: {
+  //   'outlet-main': ['About Us']
+  // }}];
+  // EMICalculator= ['/', { outlets: {
+  //   'outlet-main': ['EMI Calculator']
+  // }}];
+  // Applyloan= ['/', { outlets: {
+  //   'outlet-main': ['Apply Loan']
+  // }}];
+  // Register= ['/', { outlets: {
+  //   'outlet-main': ['Register']
+  // }}];
+  // Login= ['/', { outlets: {
+  //   'outlet-main': ['Login']
+  // }}];
 
   // Forgotpass= ['/', { outlets: {
   //   'outlet-main': ['forgotpassword']
@@ -42,37 +42,32 @@ export class MenuComponent implements OnInit {
   // }}];
 
 
-  Userdashboard= ['/', { outlets: {
-    'outlet-udash': ['user-dash']
-  }}];
-  Userloanhistory= ['/', { outlets: {
-    'outlet-udash': ['loan-history']
-  }}];
-  Userloansettings= ['/', { outlets: {
-    'outlet-udash': ['user-settings']
-  }}];
+  // Userdashboard= ['/', { outlets: {
+  //   'outlet-main': ['user-dash']
+  // }}];
+  // Userloanhistory= ['/', { outlets: {
+  //   'outlet-main': ['loan-history']
+  // }}];
+  // Userloansettings= ['/', { outlets: {
+  //   'outlet-main': ['user-settings']
+  // }}];
 
   
-  Admindashboard= ['/', { outlets: {
-    'outlet-adash': ['admin-dash']
-  }}];
-  Adminvehicle= ['/', { outlets: {
-    'outlet-adash': ['vehicles']
-  }}];
-  Adminloanapplication= ['/', { outlets: {
-    'outlet-adash': ['loan-Applications']
-  }}];
-  Adminapprovedloan= ['/', { outlets: {
-    'outlet-adash': ['approved-loans']
-  }}];
-  Adminrejectedloan= ['/', { outlets: {
-    'outlet-adash': ['rejected-list']
-  }}];
-
-
-
-
-
+  // Admindashboard= ['/', { outlets: {
+  //   'outlet-main': ['admin-dash']
+  // }}];
+  // Adminvehicle= ['/', { outlets: {
+  //   'outlet-main': ['vehicles']
+  // }}];
+  // Adminloanapplication= ['/', { outlets: {
+  //   'outlet-main': ['loan-Applications']
+  // }}];
+  // Adminapprovedloan= ['/', { outlets: {
+  //   'outlet-main': ['approved-loans']
+  // }}];
+  // Adminrejectedloan= ['/', { outlets: {
+  //   'outlet-main': ['rejected-list']
+  // }}];
  
   constructor(private menuservice:LoanService,private router:Router) { }
 
@@ -98,7 +93,7 @@ export class MenuComponent implements OnInit {
     this.menuservice.subjectu.next(false);
     //this.message=false;
     //this.ngOnInit()
-    //this.router.navigateByUrl("") 
+    this.router.navigateByUrl("Home") 
   } 
   logoutadmin()
   {
@@ -109,7 +104,7 @@ export class MenuComponent implements OnInit {
     this.menuservice.subjecta.next(false);
     //this.message=false;
     //this.ngOnInit()
-    //this.router.navigateByUrl("") 
+    this.router.navigateByUrl("Home") 
   } 
 
 }

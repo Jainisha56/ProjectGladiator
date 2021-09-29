@@ -15,20 +15,9 @@ export class LoginComponent implements OnInit {
   userlogin:FormGroup = new FormGroup(
     {
       UserEmail:new FormControl('',[Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"),Validators.required]),
-      Userpassword:new FormControl('',[Validators.pattern("(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"),Validators.required])
+      Userpassword:new FormControl('',[Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$"),Validators.required])
     }
   )
-  AdminLogin= ['/', { outlets: {
-    'outlet-main': ['Alogin']
-  }}];
-
-  Forgotpass= ['/', { outlets: {
-    'outlet-main': ['forgotpassword']
-  }}];
-
-  link1= ['/', { outlets: {
-    'outlet-udash': ['user-dash']
-  }}];
 
   Usercredentials()
   {
@@ -46,7 +35,7 @@ export class LoginComponent implements OnInit {
         console.log(this.userlogin.controls.UserEmail.value)
       this.loginloan.subjectu.next(true)
       console.log('login successful!')
-      this.router.navigate(['link1'])
+      this.router.navigateByUrl('/user-dash')
       
     }
     else if (res["Success"]==false){

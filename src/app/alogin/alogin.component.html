@@ -15,6 +15,32 @@
               <!-- Password input -->
               <input  type="password" id="form1Example2"
               name="Adminpassword" formControlName="Adminpassword" class="form-control "></div>
+              <div *ngIf="!Adminpassword?.valid && (Adminpassword?.dirty ||Adminpassword?.touched)" class="error text-danger" role="alert">
+                <div *ngIf="Adminpassword?.errors?.required">
+                  Password required
+                </div>
+                <div *ngIf="Adminpassword?.errors?.pattern" class="error text-danger" role="alert">
+                    <p> Type a secured password consisting of </p>
+                      <li>
+                       lowercase character
+                      </li>
+                      <li>
+                       uppercase character
+                      </li>
+                      <li>
+                       special character
+                      </li>
+                      <li>
+                       number
+                      </li>
+                      <li>
+                       minimum = 8
+                      </li>
+                      <li>
+                       maximum = 20
+                      </li> 
+                  </div>
+                </div>             
               
           <div  class="row mb-4">
             <div  class="col d-flex">
@@ -23,7 +49,7 @@
                   class="form-check-label"> Remember me </label></div>
             </div>
             <div  class="col"><a  href="#!">Forgot password?</a></div>
-          </div><button  type="submit" class="btn btn-danger btn-block text-center signin" routerLink="/admin-nav" >Sign in</button>
+          </div><button  type="submit" class="btn btn-danger btn-block text-center signin" >Sign in</button>
           <br><br><div  class="col"><p>Not an Admin? &nbsp;<a routerLink="/Login">Login here</a></p></div>
         </form>
       </div>

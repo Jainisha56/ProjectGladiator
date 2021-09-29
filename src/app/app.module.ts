@@ -36,6 +36,9 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { LoanProfileComponent } from './loan-profile/loan-profile.component';
 import { ChangepwdComponent } from './changepwd/changepwd.component';
 import { ForgotpwdComponent } from './forgotpwd/forgotpwd.component';
+import { AcceptloansComponent } from './acceptloans/acceptloans.component';
+
+import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -64,7 +67,8 @@ import { ForgotpwdComponent } from './forgotpwd/forgotpwd.component';
     UserDashboardComponent,
     LoanProfileComponent,
     ChangepwdComponent,
-    ForgotpwdComponent
+    ForgotpwdComponent,
+    AcceptloansComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +82,9 @@ import { ForgotpwdComponent } from './forgotpwd/forgotpwd.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatButtonModule
+    MatButtonModule,
+
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

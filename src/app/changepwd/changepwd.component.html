@@ -10,16 +10,33 @@
                 class="form-label">New Password</label>
                 <!-- Password input -->
                 <input  type="password" id="formch"
-                name="Password" formControlName="newpwd" class="form-control "></div>
-                <div *ngIf="!newpwd?.valid && (newpwd?.dirty || newpwd?.touched)" class="error text-danger" role="alert">
-                  <div *ngIf="newpwd?.errors?.required"><!--here the name firstname is from get method that is inside the ts file-->
+                name="UserPassword" formControlName="UserPassword" class="form-control "></div>
+                <div *ngIf="!UserPassword?.valid && (UserPassword?.dirty ||UserPassword?.touched)" class="error text-danger" role="alert">
+                  <div *ngIf="UserPassword?.errors?.required">
                     Password required
                   </div>
-                  <div *ngIf="newpwd?.errors?.pattern" class="error text-danger" role="alert">
-                      Type a secured password
+                  <div *ngIf="UserPassword?.errors?.pattern" class="error text-danger" role="alert">
+                      <p> Type a secured password consisting of </p>
+                        <li>
+                         lowercase character
+                        </li>
+                        <li>
+                         uppercase character
+                        </li>
+                        <li>
+                         special character
+                        </li>
+                        <li>
+                         number
+                        </li>
+                        <li>
+                         minimum = 8
+                        </li>
+                        <li>
+                         maximum = 20
+                        </li> 
                     </div>
                   </div>
-
 
 
                   <div  class="form-group mb-4"><label  for="formch"
@@ -27,7 +44,32 @@
                     <!-- Password input -->
                     <input  type="password" id="formch"
                     name="Password" formControlName="cnfpwd" class="form-control "></div>
-                    
+                    <div *ngIf="!cnfpwd?.valid && (cnfpwd?.dirty ||cnfpwd?.touched)" class="error text-danger" role="alert">
+                      <div *ngIf="cnfpwd?.errors?.required">
+                        Password required
+                      </div>
+                      <div *ngIf="cnfpwd?.errors?.pattern" class="error text-danger" role="alert">
+                          <p> Type a secured password consisting of </p>
+                            <li>
+                             lowercase character
+                            </li>
+                            <li>
+                             uppercase character
+                            </li>
+                            <li>
+                             special character
+                            </li>
+                            <li>
+                             number
+                            </li>
+                            <li>
+                             minimum = 8
+                            </li>
+                            <li>
+                             maximum = 20
+                            </li> 
+                        </div>
+                      </div>    
 
                       <button  type="submit" class="btn btn-danger btn-block text-center signin"   > Reset </button>                  
 

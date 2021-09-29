@@ -15,7 +15,7 @@ export class AloginComponent implements OnInit {
   adminlogin:FormGroup = new FormGroup(
     {
       AdminEmail:new FormControl(),
-      Adminpassword:new FormControl()
+      Adminpassword:new FormControl('',[Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$"),Validators.required])
     }
   )
   InUse!:boolean 
