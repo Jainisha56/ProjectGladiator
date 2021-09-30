@@ -1,0 +1,28 @@
+VS Code for file upload form
+
+using System.IO;
+using System.Net.Http.Headers;
+
+ [HttpPost("file/{s}")]
+        public string post(string s)
+        {
+            var file = Request.Form.Files.Count > 0 ? Request.Form.Files[0] : null;
+            string foldername = s;
+            string webRootPath = Directory.GetCurrentDirectory();
+            string mypath = "F:\\gee\\LTI\\training\\Vehicle loan project\\Files";
+            string newPath = Path.Combine(mypath, foldername);
+            if (!Directory.Exists(newPath))
+            {
+                Directory.CreateDirectory(newPath);
+            }
+            if (file != null && file.Length > 0)
+            {
+                string filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                string fullPath = Path.Combine(newPath, filename);
+                using (var stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+            }
+            return "success";
+        }
