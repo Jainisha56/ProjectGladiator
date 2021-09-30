@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   userlogin:FormGroup = new FormGroup(
     {
       UserEmail:new FormControl('',[Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"),Validators.required]),
-      Userpassword:new FormControl('',[Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$"),Validators.required])
+      Userpassword:new FormControl('')
     }
   )
 

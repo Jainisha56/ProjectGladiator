@@ -1,5 +1,6 @@
-export class VehivleList {
+export class Vehicles {
     VehicleId !: number;
+    UserId !: number;
     VehicleType!: string;
     VehicleModel!: string;
     VehicleName!: string;

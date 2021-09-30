@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
 
       if(res["Success"]==true){
       console.log('User created!')
-      this.router.navigateByUrl('login')
+      this.router.navigateByUrl('/Login')
     }
     else if (res["Success"]==false){
       console.log('registration failed!')

@@ -30,17 +30,21 @@
         <th scope="col">EMI</th>
         <th scope="col">Interest (%)</th>
         <th scope="col">Duration (months)</th>
+        <th scope="col">Loan Start Date</th>
+        <th scope="col">Loan End Date</th>
     </tr>
     </thead>
     <tr *ngFor="let apr of ApprovedList; index as i">
         <th scope="row">{{i+1}}</th>
-        <td>{{apr.UserName}}</td>
-        <td>{{apr.AnnualSalary}}</td>
-        <td>{{apr.VehicleName}}</td>
-        <td>{{apr.Amount}}</td>
-        <td>{{apr.EMI}}</td>
+        <td>{{apr.userFirstName}}</td>
+        <td>{{apr.annualSal}}</td>
+        <td>{{apr.vehicleName}}</td>
+        <td>{{apr.amount}}</td>
+        <td>{{apr.emi}}</td>
         <td>{{apr.interest}}</td>
         <td>{{apr.duration}}</td>
+        <td>{{apr.loanStartDate | date: 'dd/MM/yyyy'}}</td>
+        <td>{{apr.loanEndDate | date: 'dd/MM/yyyy'}}</td>
     </tr>
 </table>
 

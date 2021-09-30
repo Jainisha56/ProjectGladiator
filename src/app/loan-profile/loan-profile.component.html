@@ -17,8 +17,9 @@
     tr:hover {background-color :azure;}
 </style>
 <br>
+<div *ngIf= "historyLength != 0">
 <div class="container box border border-primary">
-    <h1 class="text-primary" align="center">Loan Profile</h1>
+    <h1 class="text-primary" align="center">List Of Approved Loans</h1>
 <table class="table table-hover">
     <thead class="thead-light">
     <tr>
@@ -26,8 +27,6 @@
         <th scope="col">Vehicle Name</th>
         <th scope="col">Total Amount</th>
         <th scope="col">Total Installments</th>
-        <th scope="col">Completed Installments</th>
-        <th scope="col">Remaining Amount</th>
         <th scope="col">EMI</th>
         <th scope="col">Start Date</th>
         <th scope="col">End Date</th>
@@ -35,15 +34,87 @@
     </thead>
     <tr *ngFor="let lh of loanHistory; index as i">
         <th scope="row">{{i+1}}</th>
-        <td>{{lh.VehicleName}}</td>
-        <td>{{lh.TotalAmount}}</td>
-        <td>{{lh.TotalInstallments}}</td>
-        <td>{{lh.CompletedInstallments}}</td>
-        <td>{{lh.RemainingAmount}}</td>
-        <td>{{lh.EMI}}</td>
-        <td>{{lh.LoanStartDate}}</td>
-        <td>{{lh.LoanEndDate}}</td>
+        <td>{{lh.vehicleName}}</td>
+        <td>{{lh.totalAmount}}</td>
+        <td>{{lh.totalInstallments}}</td>
+        <td>{{lh.emi}}</td>
+        <td>{{lh.loanStartDate | date: 'dd/MM/yyyy'}}</td>
+        <td>{{lh.loanEndDate | date: 'dd/MM/yyyy'}}</td>
     </tr>
 </table>
+</div>
+</div>
 
+<div *ngIf= "historyLength == 0">
+    <div class="container box border border-primary">
+        <h1 class="text-primary" align="center">There are no Approved Loans</h1>
+    </div>
+</div>
+
+<div *ngIf= "pendingLength != 0">
+<div class="container box border border-primary">
+    <h1 class="text-primary" align="center">List Of Pending Applications</h1>
+<table class="table table-hover">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">SL NO</th>
+        <th scope="col">Vehicle Name</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Duration</th>
+        <th scope="col">Interest</th>
+        <th scope="col">Application Date</th>
+        <th scope="col">Application Status</th>
+    </tr>
+    </thead>
+    <tr *ngFor="let ph of pendinglist; index as i">
+        <th scope="row">{{i+1}}</th>
+        <td>{{ph.vehicleName}}</td>
+        <td>{{ph.amount}}</td>
+        <td>{{ph.duration}}</td>
+        <td>{{ph.interest}}</td>
+        <td>{{ph.applicationDate | date: 'dd/MM/yyyy'}}</td>
+        <td>{{appstatus}}</td>
+    </tr>
+</table>
+</div>
+</div>
+
+<div *ngIf= "pendingLength == 0">
+    <div class="container box border border-primary">
+        <h1 class="text-primary" align="center">There are no Pending Applications</h1>
+    </div>
+</div>
+
+
+<div *ngIf= "rejectedLength != 0">
+<div class="container box border border-primary">
+    <h1 class="text-primary" align="center">List Of Rejected Applications</h1>
+<table class="table table-hover">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">SL NO</th>
+        <th scope="col">Vehicle Name</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Duration</th>
+        <th scope="col">Interest</th>
+        <th scope="col">Application Date</th>
+        <th scope="col">Application Status</th>
+    </tr>
+    </thead>
+    <tr *ngFor="let rh of rejectedlist; index as i">
+        <th scope="row">{{i+1}}</th>
+        <td>{{rh.vehicleName}}</td>
+        <td>{{rh.amount}}</td>
+        <td>{{rh.duration}}</td>
+        <td>{{rh.interest}}</td>
+        <td>{{rh.applicationDate | date: 'dd/MM/yyyy'}}</td>
+        <td>{{apprejstatus}}</td>
+    </tr>
+</table>
+</div>
+</div>
+<div *ngIf= "rejectedLength == 0">
+    <div class="container box border border-primary">
+        <h1 class="text-primary" align="center">There are no Rejected Applications</h1>
+    </div>
 </div>

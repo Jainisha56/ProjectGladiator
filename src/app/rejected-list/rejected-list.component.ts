@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Rejected } from '../rejected';
+import { LoanService } from '../loan.service';
 
 @Component({
   selector: 'app-rejected-list',
@@ -8,15 +8,15 @@ import { Rejected } from '../rejected';
 })
 export class RejectedListComponent implements OnInit {
 
-  RejectedList : Rejected[] =[
-    {UserName:"Aasim" , AnnualSalary:150000 , VehicleName:"Maruthi baleno" ,Amount:300000 ,interest:13,duration:24},
-    {UserName:"BP" , AnnualSalary:50000 ,VehicleName:"TVS Jupiter",Amount:45000 ,interest:14,duration:36},
-    {UserName:"Harsha" , AnnualSalary:200000 ,VehicleName:"Toyoto Glanza" ,Amount:400000 ,interest:12,duration:24},
-    {UserName:"Kunal" , AnnualSalary:150000 ,VehicleName:"Maruthi baleno" ,Amount:350000 ,interest:13,duration:48}
-  ]
-  constructor() { }
+  RejectedList :  Array<any> = []
+  constructor( public Service : LoanService) { }
 
   ngOnInit(): void {
+    console.log("Rejected List");
+    this.Service.getRejectedList().subscribe((data) =>{
+      this.RejectedList =data;
+    console.log(data)
+    })  
   }
 
 }

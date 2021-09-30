@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { LoanApplications } from '../classes/LoanApplications';
+import { LoanService } from '../loan.service';
 
 @Component({
   selector: 'app-loan-quotes',
@@ -7,9 +10,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoanQuotesComponent implements OnInit {
 
-  constructor() { }
+  loanApplication !: LoanApplications
+
+  applyLoan:FormGroup = new FormGroup(
+    {
+Amount:new FormControl(''),
+Interest:new FormControl(''),
+Duration:new FormControl(''),
+emi:new FormControl('')
+   }
+  )
+  constructor(public applyservice : LoanService) { }
 
   ngOnInit(): void {
   }
 
+  ApplicationDetails()
+  {
+    this.loanApplication =this.applyLoan.value
+    console.log(this.loanApplication)
+    this.applyservice.addLoanApplication( sessionStorage.getItem('Email') ,this.applyLoan.value).subscribe(res => {
+      console.log(res)
+      console.log('Vehicle details added!')
+      // this.route.navigateByUrl('/Loan Offers')
+    });
+  }
+  
 }

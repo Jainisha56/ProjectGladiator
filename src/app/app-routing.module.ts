@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { AcceptloansComponent } from './acceptloans/acceptloans.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AloginComponent } from './alogin/alogin.component';
 import { ApplyLoanComponent } from './apply-loan/apply-loan.component';
@@ -16,7 +17,6 @@ import { LoanProfileComponent } from './loan-profile/loan-profile.component';
 import { LoanQuotesComponent } from './loan-quotes/loan-quotes.component';
 
 import { LoginComponent } from './login/login.component';
-import { MenuComponent } from './menu/menu.component';
 import { RegisterComponent } from './register/register.component';
 import { RejectedListComponent } from './rejected-list/rejected-list.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
@@ -49,6 +49,7 @@ const routes: Routes = [
   {path:'loan-Applications',component:LoanApplicationsComponent},
   {path:'approved-loans',component:ApprovedLoansComponent},
   {path:'rejected-list',component:RejectedListComponent},
+  {path:'accept-loan/:applicationid',component:AcceptloansComponent},
   
 
   
