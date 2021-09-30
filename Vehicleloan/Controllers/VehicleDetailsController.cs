@@ -85,6 +85,17 @@ namespace Vehicleloan.Controllers
             return CreatedAtAction("GetVehicleDetails", new { id = vehicleDetails.VehicleId }, vehicleDetails);
         }
 
+        [HttpPost("email/{email}")]
+        public async Task<ActionResult<VehicleDetails>> AddVehicleDetails(string email, VehicleDetails vehicleDetails)
+        {
+            var res = _context.UserDetails.Where(x => x.UserEmail == email).FirstOrDefault();
+            vehicleDetails.UserId = res.UserId;
+            _context.VehicleDetails.Add(vehicleDetails);
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+
         // DELETE: api/VehicleDetails/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<VehicleDetails>> DeleteVehicleDetails(int id)

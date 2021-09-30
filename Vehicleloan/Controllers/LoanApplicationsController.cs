@@ -40,6 +40,29 @@ namespace Vehicleloan.Controllers
 
             return loanApplications;
         }
+        [HttpGet("accept/{id}")]
+        public IActionResult AcceptLoanApplications(int id)
+        {
+            var q = (from loan in _context.LoanApplications where loan.ApplicationId == id
+                     join vehicle in _context.VehicleDetails on loan.VehicleId equals vehicle.VehicleId
+                     join user in _context.UserDetails on loan.UserRefId equals user.UserId
+                     join emp in _context.EmploymentDetails on user.UserId equals emp.UserId
+                     select new
+                     {
+                         user.UserFirstName,
+                         vehicle.VehicleName,
+                         emp.AnnualSal,
+                         loan.Amount,
+                         loan.Interest,
+                         loan.Duration,
+                         vehicle.VehicleId,
+                         user.UserId,
+                         loan.ApplicationId
+                     }
+
+                );
+            return Ok(q);
+        }
 
         [HttpGet("rejected")]
         public IActionResult RejectedLoanApplications( )
@@ -91,12 +114,56 @@ namespace Vehicleloan.Controllers
                 ).ToList();
             return Ok(q);
         }
-            //public async Task<ActionResult<IEnumerable<LoanApplications>>> RejectedLoanApplications(int id)
+
+        [HttpGet("Pendingemail/{email}")]
+        public IActionResult LoanPendingApplications(string email)
+        {
+            var q = (from loan in _context.LoanApplications where loan.ApplicationStatus == null
+                     join user in _context.UserDetails on loan.UserRefId equals user.UserId
+                     where user.UserEmail == email
+                     join vehicle in _context.VehicleDetails on loan.VehicleId equals vehicle.VehicleId
+
+                     select new
+                     {
+                         vehicle.VehicleName,
+                         loan.Amount,
+                         loan.Duration,
+                         loan.Interest,
+                         loan.ApplicationStatus, 
+                         loan.ApplicationDate
+                     }
+
+                ).ToList();
+            return Ok(q);
+        }
+        [HttpGet("Rejectedemail/{email}")]
+        public IActionResult LoanRejectedApplications(string email)
+        {
+            var q = (from loan in _context.LoanApplications
+                     where loan.ApplicationStatus == "false"
+                     join user in _context.UserDetails on loan.UserRefId equals user.UserId
+                     where user.UserEmail == email
+                     join vehicle in _context.VehicleDetails on loan.VehicleId equals vehicle.VehicleId
+
+                     select new
+                     {
+                         vehicle.VehicleName,
+                         loan.Amount,
+                         loan.Duration,
+                         loan.Interest,
+                         loan.ApplicationStatus,
+                         loan.ApplicationDate
+                     }
+
+                ).ToList();
+            return Ok(q);
+        }
+        //public async Task<ActionResult<IEnumerable<LoanApplications>>> RejectedLoanApplications(int id)
 
 
-            // PUT: api/LoanApplications/5
-            // To protect from overposting attacks, enable the specific properties you want to bind to, for
-            // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        // PUT: api/LoanApplications/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         //[HttpPut("{id}")]
         //public async Task<IActionResult> PutLoanApplications(int id, LoanApplications loanApplications)
         //{
@@ -154,6 +221,26 @@ namespace Vehicleloan.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetLoanApplications", new { id = loanApplications.ApplicationId }, loanApplications);
+        }
+        [HttpPost("email/{email}")]
+        public async Task<ActionResult<LoanApplications>> AddLoanApplications( string email ,LoanApplications loanApplications)
+        {
+            var res = _context.UserDetails.Where(x => x.UserEmail == email).FirstOrDefault();
+            var r = ( from user in _context.UserDetails where user.UserEmail == email 
+                      join vehicle in _context.VehicleDetails on user.UserId equals vehicle.UserId
+
+                      select new
+                      {
+                          vehicle.VehicleId,
+                          user.UserId
+                      }
+                ).ToList();
+           // int vid = r.Select(y => y.VehicleId);
+            //loanApplications.VehicleId = r.Select(y => y.VehicleId).Where(z => z.)
+            _context.LoanApplications.Add(loanApplications);
+            await _context.SaveChangesAsync();
+            return Ok();
+
         }
 
         // DELETE: api/LoanApplications/5

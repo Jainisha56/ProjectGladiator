@@ -27,8 +27,7 @@ namespace Vehicleloan.Controllers
             return await _context.LoanProfile.ToListAsync();
         }
         [HttpGet("approved")]
-
-        public IActionResult pendingLoanApplications()
+        public IActionResult approvedLoanApplications()
         {
             var q = (
                      from loan in _context.LoanApplications where loan.ApplicationStatus == "true"
@@ -45,15 +44,38 @@ namespace Vehicleloan.Controllers
                          loan.Amount,
                          loanp.Emi,
                          loan.Interest,
-                         loan.Duration
+                         loan.Duration,
+                         loanp.LoanStartDate,
+                         loanp.LoanEndDate
                      }
 
                 ).ToList();
             return Ok(q);
         }
 
-        // GET: api/LoanProfiles/5
-        [HttpGet("{id}")]
+        [HttpGet("email/{email}")]
+        public IActionResult LoanApprovedHistory(string email  )
+        {
+            var q = ( from loanp in _context.LoanProfile
+                      join user in _context.UserDetails on loanp.UserRefId equals user.UserId
+                      where user.UserEmail == email
+                      join vehicle in _context.VehicleDetails on loanp.VehicleId equals vehicle.VehicleId
+
+                      select new
+                      {
+                          vehicle.VehicleName,
+                          loanp.TotalAmount,
+                          loanp.TotalInstallments,
+                          loanp.LoanStartDate,
+                          loanp.LoanEndDate,
+                          loanp.Emi                      
+                      }
+                
+                ).ToList();
+            return Ok(q);
+        }
+            // GET: api/LoanProfiles/5
+            [HttpGet("{id}")]
         public async Task<ActionResult<LoanProfile>> GetLoanProfile(int id)
         {
             var loanProfile = await _context.LoanProfile.FindAsync(id);
@@ -104,10 +126,18 @@ namespace Vehicleloan.Controllers
         [HttpPost]
         public async Task<ActionResult<LoanProfile>> PostLoanProfile(LoanProfile loanProfile)
         {
+            var res = _context.LoanApplications.Where(x => x.ApplicationId == loanProfile.LoanApplicationId).FirstOrDefault();
+
+            DateTime currentdate = DateTime.Now;
+            int months = loanProfile.TotalInstallments?? default(int);
+            DateTime lastdate = currentdate.AddMonths(months);
+            loanProfile.LoanStartDate = currentdate;
+            loanProfile.LoanEndDate = lastdate;
+
             _context.LoanProfile.Add(loanProfile);
             await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetLoanProfile", new { id = loanProfile.LoanId }, loanProfile);
+            return Ok();
+           // return CreatedAtAction("GetLoanProfile", new { id = loanProfile.LoanId }, loanProfile);
         }
 
         // DELETE: api/LoanProfiles/5
