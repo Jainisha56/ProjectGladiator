@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\B Prashanth\\OneDrive\\Desktop\\Vehicle Loan\\vs new\\Vehicleloan\\Vehicleloan.csproj": {}
+    "E:\\LTI projects\\GET_953_-_DOTNET_-_Final_Project_Details\\Vehicle Loan Final\\Prashanth's work\\studio\\Vehicleloan\\Vehicleloan.csproj": {}
   },
   "projects": {
-    "C:\\Users\\B Prashanth\\OneDrive\\Desktop\\Vehicle Loan\\vs new\\Vehicleloan\\Vehicleloan.csproj": {
+    "E:\\LTI projects\\GET_953_-_DOTNET_-_Final_Project_Details\\Vehicle Loan Final\\Prashanth's work\\studio\\Vehicleloan\\Vehicleloan.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\B Prashanth\\OneDrive\\Desktop\\Vehicle Loan\\vs new\\Vehicleloan\\Vehicleloan.csproj",
+        "projectUniqueName": "E:\\LTI projects\\GET_953_-_DOTNET_-_Final_Project_Details\\Vehicle Loan Final\\Prashanth's work\\studio\\Vehicleloan\\Vehicleloan.csproj",
         "projectName": "Vehicleloan",
-        "projectPath": "C:\\Users\\B Prashanth\\OneDrive\\Desktop\\Vehicle Loan\\vs new\\Vehicleloan\\Vehicleloan.csproj",
-        "packagesPath": "C:\\Users\\B Prashanth\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\B Prashanth\\OneDrive\\Desktop\\Vehicle Loan\\vs new\\Vehicleloan\\obj\\",
+        "projectPath": "E:\\LTI projects\\GET_953_-_DOTNET_-_Final_Project_Details\\Vehicle Loan Final\\Prashanth's work\\studio\\Vehicleloan\\Vehicleloan.csproj",
+        "packagesPath": "C:\\Users\\Adityaa\\.nuget\\packages\\",
+        "outputPath": "E:\\LTI projects\\GET_953_-_DOTNET_-_Final_Project_Details\\Vehicle Loan Final\\Prashanth's work\\studio\\Vehicleloan\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\B Prashanth\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Adityaa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -87,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

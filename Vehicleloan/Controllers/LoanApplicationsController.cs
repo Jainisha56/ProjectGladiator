@@ -242,7 +242,15 @@ namespace Vehicleloan.Controllers
             return Ok();
 
         }
-
+        [HttpPost("Addloan")]
+        public IActionResult PostApplication(LoanApplications app)
+        {
+            DateTime Appdate = DateTime.Now;
+            app.ApplicationDate = Appdate;
+            _context.LoanApplications.Add(app);
+            _context.SaveChanges();
+            return Ok();
+        }
         // DELETE: api/LoanApplications/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<LoanApplications>> DeleteLoanApplications(int id)

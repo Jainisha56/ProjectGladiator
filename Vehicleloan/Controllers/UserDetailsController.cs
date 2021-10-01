@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Vehicleloan.Models;
+using System.IO;
+using System.Net.Http.Headers;
+
 
 namespace Vehicleloan.Controllers
 {
@@ -47,16 +50,47 @@ namespace Vehicleloan.Controllers
             return userDetails;
         }
         [HttpGet("email/{Email}")]
-        public async Task<ActionResult<UserDetails>> GetUserEmail(string Email)
+        public IActionResult GetUserdetail(string Email)
         {
-            var userDetails = await _context.UserDetails.FindAsync(Email);
+            var userDetails = _context.UserDetails.Where(x => x.UserEmail == Email).FirstOrDefault();
 
             if (userDetails == null)
             {
                 return NotFound();
             }
+            else
+            {
+                return Ok(userDetails);
+            }
 
-            return userDetails;
+        }
+
+        [HttpPut("updateUser/{id}")]
+        public IActionResult UpdateUserdetails(int id, UserDetails userDetails)
+        {
+            var res = _context.UserDetails.Where(x => x.UserId == id).FirstOrDefault();
+            if (res != null)
+            {
+                res.UserFirstName = userDetails.UserFirstName;
+                res.UserLastName = userDetails.UserLastName;
+                res.UserGender = userDetails.UserGender;
+                res.UserPhoneNum = userDetails.UserPhoneNum;
+                res.UserAddress = userDetails.UserAddress;
+                res.UserState = userDetails.UserState;
+                res.UserCity = userDetails.UserCity;
+                res.UserPincode = userDetails.UserPincode;
+                res.UserEmail = userDetails.UserEmail;
+
+                _context.SaveChanges();
+                status.Add("Success", true);
+                return Ok(status);
+            }
+            else
+            {
+                status.Add("Success", false);
+                return Ok(status);
+            }
+
         }
 
         // PUT: api/UserDetails/5
@@ -102,6 +136,15 @@ namespace Vehicleloan.Controllers
             var res = _context.UserDetails.Where(x => x.UserEmail == userDetails.UserEmail).FirstOrDefault();
             if (res == null)
             {
+                DateTime currentdate = DateTime.Today;
+                DateTime birthdate = userDetails.UserDoB;
+                // TimeSpan age = currentdate - birthdate;
+                //int age = int.Parse(currentdate - birthdate);
+                int age = currentdate.Year - birthdate.Year;
+                if (birthdate > currentdate.AddYears(-age))
+                    age--;
+                userDetails.UserAge = age;
+
                 _context.UserDetails.Add(userDetails);
                 await _context.SaveChangesAsync();
                 status.Add("Success", true);
@@ -113,10 +156,11 @@ namespace Vehicleloan.Controllers
                 status.Add("Success", false);
                 return Ok(status);
             }
-           
 
-           // return CreatedAtAction("GetUserDetails", new { id = userDetails.UserId }, userDetails);
+
+            // return CreatedAtAction("GetUserDetails", new { id = userDetails.UserId }, userDetails);
         }
+
 
         [HttpPost("login")]
         public IActionResult PostUserlogin(UserDetails userDetails)
@@ -190,10 +234,10 @@ namespace Vehicleloan.Controllers
 
             return code;
         }
-        [HttpPut("changepwd")]
-        public IActionResult PutChangepwd(UserDetails userDetails)
+        [HttpPut("changepwd/{Email}")]
+        public IActionResult PutChangepwd(string Email, UserDetails userDetails)
         {
-            var data = _context.UserDetails.Where(x => x.UserId == userDetails.UserId).FirstOrDefault();
+            var data = _context.UserDetails.Where(x => x.UserEmail == Email).FirstOrDefault();
             if (data != null)
             {
                 data.UserPassword = userDetails.UserPassword;
@@ -206,6 +250,30 @@ namespace Vehicleloan.Controllers
                 status.Add("Success", true);
                 return Ok(status);
             }
+        }
+
+        [HttpPost("file/{s}")]
+        public string post(string s)
+        {
+            var file = Request.Form.Files.Count > 0 ? Request.Form.Files[0] : null;
+            string foldername = s;
+            string webRootPath = Directory.GetCurrentDirectory();
+            string mypath = "E:\\LTI projects\\GET_953_-_DOTNET_-_Final_Project_Details\\Vehicle Loan Final\\storedfiles";
+            string newPath = Path.Combine(mypath, foldername);
+            if (!Directory.Exists(newPath))
+            {
+                Directory.CreateDirectory(newPath);
+            }
+            if (file != null && file.Length > 0)
+            {
+                string filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                string fullPath = Path.Combine(newPath, filename);
+                using (var stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+            }
+            return "success";
         }
         //[HttpPut("AcceptApp/{id}")]
 

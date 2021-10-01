@@ -40,6 +40,30 @@ namespace Vehicleloan.Controllers
 
             return vehicleDetails;
         }
+        [HttpGet("vehicle/{Email}")]
+        public IActionResult GetVehicleId(string Email)
+        {
+            var res = from user in _context.UserDetails
+                      where user.UserEmail == Email
+                      join vehicle in _context.VehicleDetails on user.UserId equals vehicle.UserId
+                      //int intIdt = db.Users.Max(u => u.UserId);
+                        select new
+                      {
+                          user.UserId,
+                          vehicle.VehicleId,
+                          vehicle.VehicleName
+                      };
+            int newid = res.Max(u => u.VehicleId);
+            var res2 = from vehicle in _context.VehicleDetails
+                       where vehicle.VehicleId == newid
+                       select new
+                       {
+                           vehicle.VehicleId,
+                           vehicle.VehicleName,
+                           vehicle.UserId
+                       };
+            return Ok(res2);
+        }
 
         // PUT: api/VehicleDetails/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
