@@ -46,7 +46,7 @@ export class LoanOffersComponent implements OnInit {
 
   selectLoan(loanone: any)
   {
-    this.router.navigate(['/Loan Quotes/', {loan:this.vhid}]);
+    this.router.navigate(['/user-tabs/', {loan:this.vhid}]);
   }
  
 }

@@ -156,7 +156,7 @@
           <form [formGroup]="EmploymentDetailsForm" (ngSubmit)="EmploymentDetails()">
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Type of employment</label>
-              <select class="form-select" aria-label="Default select example" formControlName="TypeOfEmp">
+              <select class="form-select" aria-label="Default select example" name="TypeOfEmp" formControlName="TypeOfEmp">
                 <option selected>Your employment type</option>
                 <option value="Business">Business</option>
                 <option value="Service">Service</option>
@@ -164,26 +164,26 @@
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Work Experience</label>
-              <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              <input type="number" class="form-control" id="exampleInputEmail1"  name="WorkExperience" aria-describedby="emailHelp"
                 formControlName="WorkExperience">
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Annual salary</label>
-              <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              <input type="number" class="form-control" id="exampleInputEmail1" name="AnnualSal" aria-describedby="emailHelp"
                 formControlName="AnnualSal">
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Existing EMI</label>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="yes"
+                <input class="form-check-input" type="radio" name="ExistingEmi" id="exampleRadios1" value="yes"
                   formControlName="ExistingEmi">
                 <label class="form-check-label" for="exampleRadios1">
                   Yes
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="no" checked
-                  formControlName="UserExistingEmi">
+                <input class="form-check-input" type="radio" name="ExistingEmi" id="exampleRadios1" value="no" checked
+                  formControlName="ExistingEmi">
                 <label class="form-check-label" for="exampleRadios1">
                   No
                 </label>

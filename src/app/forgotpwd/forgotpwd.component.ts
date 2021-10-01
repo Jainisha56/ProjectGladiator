@@ -14,10 +14,6 @@ export class ForgotpwdComponent implements OnInit {
   alertmsg!:boolean
   code!:number
 
-  Changepass= ['/', { outlets: {
-    'outlet-main': ['changepassword']
-  }}];
-
 forgot:FormGroup = new FormGroup(
     {
       UserEmail:new FormControl('',[Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"),Validators.required]),
@@ -31,7 +27,7 @@ forgot:FormGroup = new FormGroup(
    }
  ) 
   InUse!: boolean;
-
+   newemail!:string
   constructor(private forgotpass:LoanService,private router:Router) { }
  emailsubmit()
   {
@@ -75,9 +71,10 @@ forgot:FormGroup = new FormGroup(
      
       if(this.code==this.otp.controls['OTP'].value)
       {
-        console.log("hi")
         console.log(this.forgot.controls['UserEmail'].value)
-        this.router.navigateByUrl('/Changepassword',this.forgot.controls['UserEmail'].value)
+        this.newemail=this.forgot.controls['UserEmail'].value
+        this.router.navigate(['/Changepassword/',{mail:this.newemail}])
+        //Router.navigate(['/myRoute',{someProperty:"SomeValue"}]
         //this.alertmsg=true
       }
       else
@@ -99,5 +96,6 @@ forgot:FormGroup = new FormGroup(
   get OTP(){
     return this.forgot.get("OTP")
   }
+
 
 }

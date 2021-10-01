@@ -35,16 +35,16 @@
     </thead>
     <tr *ngFor="let app of loanApp; index as i">
         <th scope="row">{{i+1}}</th>
-        <td>{{app.UserName}}</td>
-        <td>{{app.AnnualSalary}}</td>
-        <td>{{app.VehicleName}}</td>
-        <td>{{app.Amount}}</td>
+        <td>{{app.userFirstName}}</td>
+        <td>{{app.annualSal}}</td>
+        <td>{{app.vehicleName}}</td>
+        <td>{{app.amount}}</td>
         <td>{{app.interest}}</td>
         <td>{{app.duration}}</td>
-        <td>{{app.ExistingEMI}}</td>
+        <td>{{app.existingEmi}}</td>
         <td>
-            <button type="button" class="btn btn-outline-success">Accept</button> 
-            <button type="button" class="btn btn-outline-danger">Reject</button>
+            <button type="button" class="btn btn-outline-success" [routerLink]="['/accept-loan/',app.applicationId]" >Accept</button> 
+            <button type="button" class="btn btn-outline-danger" (click)="RejectApp(app.applicationId)" >Reject</button>
         </td>
     </tr>
 </table>

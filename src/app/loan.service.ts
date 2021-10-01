@@ -5,7 +5,9 @@ import { from, Observable } from 'rxjs';
 import { ApplyLoanComponent } from './apply-loan/apply-loan.component';
 import { Bankdetails } from './classes/bankdetails';
 import { Employmentdetails } from './classes/employmentdetails';
+import { LoanApplications } from './classes/LoanApplications';
 import { Loanoffers } from './classes/loanoffers';
+import { LoanProfile } from './classes/LoanProfile';
 import { user } from './classes/user';
 import { Vehicles } from './classes/vehicles';
 
@@ -24,6 +26,7 @@ export class LoanService {
 
   public subjectu=new Subject<boolean>();
   public subjecta=new Subject<boolean>();
+  
   public UserVehicleType : any
   
   register(registeruser: any): Observable<user> {
@@ -47,24 +50,30 @@ export class LoanService {
     return this.httpClient.put<user>(this.apiServer + '/Userdetails/changepwd/'+Email,JSON.stringify(Password), this.httpOptions)
   }
   
-  getByEmail(email:string): Observable<user> {
-    return this.httpClient.get<user>(this.apiServer + '/Userdetails/email/' + email)
+  getByEmail(email:string): Observable<any> {
+    return this.httpClient.get<any>(this.apiServer + '/Userdetails/email/' + email)
+   }
+
+  updateDetails(id:number,userprofile:any): Observable<user> {
+    return this.httpClient.put<user>(this.apiServer + '/Userdetails/updateUser/' + id, JSON.stringify(userprofile), this.httpOptions)
   }
 
-  receiveduserStatus():Observable<boolean>
-  {
-    return this.subjectu.asObservable();
+  getVehicles(): Observable<Vehicles[]> {
+    return this.httpClient.get<Vehicles[]>(this.apiServer + '/VehicleDetails/')
   }
-  receivedadminStatus():Observable<boolean>
-  {
-    return this.subjecta.asObservable();
-  }
+
+  getVehicleByEmail(email:string): Observable<any> {
+    return this.httpClient.get<any>(this.apiServer + '/VehicleDetails/vehicle/' + email)
+   }
 
   addVehicles(email:any ,vehicle: any): Observable<Vehicles> {
     email = sessionStorage.getItem('Email')
     return this.httpClient.post<Vehicles>(this.apiServer + '/VehicleDetails/email/'+ email, JSON.stringify(vehicle), this.httpOptions)
   }
 
+  addLoanApplication(loanapp:any): Observable<LoanApplications> {
+    return this.httpClient.post<LoanApplications>(this.apiServer + '/LoanApplications/Addloan/', JSON.stringify(loanapp), this.httpOptions)
+  }
 
   bankdetails(details : any, Email : any): Observable<Bankdetails> {
     Email = sessionStorage.getItem('Email');
@@ -78,6 +87,66 @@ export class LoanService {
     console.log("hi")
     return this.httpClient.post<Employmentdetails>(this.apiServer + '/EmploymentDetails/employmentdetails/'+Email, JSON.stringify(details), this.httpOptions)
   }
+
+   /*  addLoanApplication(email:any ,application: any): Observable<LoanApplications> {
+    email = sessionStorage.getItem('Email')
+    return this.httpClient.post<LoanApplications>(this.apiServer + '/LoanApplications/email/'+ email, JSON.stringify(application), this.httpOptions)
+  } */
+  getRejectedList(): Observable<LoanApplications[]> {
+    return this.httpClient.get<LoanApplications[]>(this.apiServer + '/LoanApplications/rejected')
+  }
+
+  getPendingAppList(): Observable<LoanApplications[]> {
+    return this.httpClient.get<LoanApplications[]>(this.apiServer + '/LoanApplications/pending')
+  }
+
+  getApprovedList(): Observable<LoanProfile[]> {
+    return this.httpClient.get<LoanProfile[]>(this.apiServer + '/LoanProfiles/approved')
+  }
+
+  getApprovedHistory(email:any): Observable<LoanProfile[]> {
+    email = sessionStorage.getItem('Email')
+    return this.httpClient.get<LoanProfile[]>(this.apiServer + '/LoanProfiles/email/'+ email)
+  }
+
+  getPendingHistory(email:any): Observable<LoanApplications[]> {
+    email = sessionStorage.getItem('Email')
+    return this.httpClient.get<LoanApplications[]>(this.apiServer + '/LoanApplications/Pendingemail/'+ email)
+  }
+
+  getRejectedHistory(email:any): Observable<LoanApplications[]> {
+    email = sessionStorage.getItem('Email')
+    return this.httpClient.get<LoanApplications[]>(this.apiServer + '/LoanApplications/Rejectedemail/'+ email)
+  }
+
+  getApplicationDetails(id:number): Observable<any[]> {
+    return this.httpClient.get<any[]>(this.apiServer + '/LoanApplications/accept/' + id)
+  }
+  AcceptedLoan(loan: any): Observable<LoanProfile> {
+    return this.httpClient.post<LoanProfile>(this.apiServer + '/LoanProfiles', JSON.stringify(loan), this.httpOptions)
+  }
+  AcceptApplication(id: number ): Observable<LoanApplications> {
+    console.log("hi")
+    return this.httpClient.put<LoanApplications>(this.apiServer + '/LoanApplications/AcceptApp/' + id , this.httpOptions)
+  }
+  RejectApplication(id: number ): Observable<LoanApplications> {
+    console.log("hi")
+    return this.httpClient.put<LoanApplications>(this.apiServer + '/LoanApplications/RejectApp/' + id , this.httpOptions)
+  }
+
+
+  receiveduserStatus():Observable<boolean>
+  {
+    return this.subjectu.asObservable();
+  }
+  receivedadminStatus():Observable<boolean>
+  {
+    return this.subjecta.asObservable();
+  }
+
+
+
+
 
 
   loan1 : Loanoffers = {
