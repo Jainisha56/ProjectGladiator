@@ -31,7 +31,7 @@ forgot:FormGroup = new FormGroup(
    }
  ) 
   InUse!: boolean;
-
+   newemail!:string
   constructor(private forgotpass:LoanService,private router:Router) { }
  emailsubmit()
   {
@@ -75,9 +75,10 @@ forgot:FormGroup = new FormGroup(
      
       if(this.code==this.otp.controls['OTP'].value)
       {
-        console.log("hi")
         console.log(this.forgot.controls['UserEmail'].value)
-        this.router.navigateByUrl('/Changepassword',this.forgot.controls['UserEmail'].value)
+        this.newemail=this.forgot.controls['UserEmail'].value
+        this.router.navigate(['/Changepassword/',{mail:this.newemail}])
+        //Router.navigate(['/myRoute',{someProperty:"SomeValue"}]
         //this.alertmsg=true
       }
       else

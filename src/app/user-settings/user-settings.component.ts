@@ -1,4 +1,7 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoanService } from '../loan.service';
 
 @Component({
   selector: 'app-user-settings',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserSettingsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private settingservice:LoanService,private router:Router) { }
 
+  sendemailsession!:any
   ngOnInit(): void {
   }
 
+  filldetails()
+  {
+    this.sendemailsession = sessionStorage.getItem('Email') 
+    this.router.navigate(['/Personaldetails/',{sendmail:this.sendemailsession}])
+
+  }
 }

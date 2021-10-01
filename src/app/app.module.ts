@@ -39,6 +39,7 @@ import { ForgotpwdComponent } from './forgotpwd/forgotpwd.component';
 import { AcceptloansComponent } from './acceptloans/acceptloans.component';
 
 import { ChartsModule } from 'ng2-charts';
+import { PersonaldetailsComponent } from './personaldetails/personaldetails.component';
 
 
 
@@ -68,7 +69,8 @@ import { ChartsModule } from 'ng2-charts';
     LoanProfileComponent,
     ChangepwdComponent,
     ForgotpwdComponent,
-    AcceptloansComponent
+    AcceptloansComponent,
+    PersonaldetailsComponent
   ],
   imports: [
     BrowserModule,

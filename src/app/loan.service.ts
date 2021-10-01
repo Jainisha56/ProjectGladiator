@@ -41,10 +41,14 @@ export class LoanService {
     console.log("hi")
     return this.httpClient.put<user>(this.apiServer + '/Userdetails/changepwd/'+Email,JSON.stringify(Password), this.httpOptions)
   }
-  getByEmail(email:string): Observable<user> {
-    return this.httpClient.get<user>(this.apiServer + '/Userdetails/email/' + email)
-   
+  getByEmail(email:string): Observable<any> {
+    return this.httpClient.get<any>(this.apiServer + '/Userdetails/email/' + email)
+   }
+  updateDetails(id:number,userprofile:any): Observable<user> {
+    return this.httpClient.put<user>(this.apiServer + '/Userdetails/updateUser/' + id, JSON.stringify(userprofile), this.httpOptions)
+  
   }
+
 
   receiveduserStatus():Observable<boolean>
   {

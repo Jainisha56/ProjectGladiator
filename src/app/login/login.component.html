@@ -26,27 +26,6 @@
                <div *ngIf="Userpassword?.errors?.required">
                  Password required
                </div>
-               <div *ngIf="Userpassword?.errors?.pattern" class="error text-danger" role="alert">
-                   <p> Type a secured password consisting of </p>
-                     <li>
-                      lowercase character
-                     </li>
-                     <li>
-                      uppercase character
-                     </li>
-                     <li>
-                      special character
-                     </li>
-                     <li>
-                      number
-                     </li>
-                     <li>
-                      minimum = 8
-                     </li>
-                     <li>
-                      maximum = 20
-                     </li> 
-                 </div>
                </div>
          <div  class="row mb-4">
            <div  class="col d-flex">

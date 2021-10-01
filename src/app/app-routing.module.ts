@@ -17,6 +17,7 @@ import { LoanQuotesComponent } from './loan-quotes/loan-quotes.component';
 
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
+import { PersonaldetailsComponent } from './personaldetails/personaldetails.component';
 import { RegisterComponent } from './register/register.component';
 import { RejectedListComponent } from './rejected-list/rejected-list.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
@@ -37,7 +38,10 @@ const routes: Routes = [
   {path:'Login',component:LoginComponent},
   {path:'forgotpassword',component:ForgotpwdComponent},
   {path:'Changepassword',component:ChangepwdComponent},
-  
+ 
+ 
+  {path:'Personaldetails',component:PersonaldetailsComponent},
+
   //{path:'',component:UserDashboardComponent,outlet: 'outlet-udash'},
   {path:'user-dash',component:UserDashboardComponent},
   {path:'user-settings',component:UserSettingsComponent},
