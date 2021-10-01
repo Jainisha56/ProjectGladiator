@@ -1,0 +1,55 @@
+<!-- <div class="container">
+    <div class="ods-box" ng-init="tabselector = 'firsttab'">
+  
+      <div class="tabs">
+        <a class="tab"
+           ng-click="tabselector = 'firsttab'"
+           ng-class="{'activetab' : tabselector == 'firsttab'}">1st tab title</a>
+        <a class="tab"
+           ng-click="tabselector = 'secondtab'"
+           ng-class="{'activetab' : tabselector == 'secondtab'}">2nd tab title</a>
+        <a class="tab"
+           ng-click="tabselector = 'thirdtab'"
+           ng-class="{'activetab' : tabselector == 'thirdtab'}">3rd tab title</a>
+      </div>
+  
+      <div class="ods-box">
+        <div ng-if="tabselector == 'firsttab'">
+          Content of first tab
+        </div>
+        <div ng-if="tabselector == 'secondtab'">
+          Content of second tab
+        </div>
+        <div ng-if="tabselector == 'thirdtab'">
+          Content of third tab
+        </div>
+      </div>
+  
+    </div>
+  </div> -->
+
+
+ 
+<div class="container mt-sm-3">
+  <div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'London')">London</button>
+    <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
+    <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+  </div>
+  
+  <div id="London" class="tabcontent">
+    <h3>London</h3>
+    <p>London is the capital city of England.</p>
+  </div>
+  
+  <div id="Paris" class="tabcontent">
+    <h3>Paris</h3>
+    <p>Paris is the capital of France.</p> 
+  </div>
+  
+  <div id="Tokyo" class="tabcontent">
+    <h3>Tokyo</h3>
+    <p>Tokyo is the capital of Japan.</p>
+  </div>
+
+</div>
