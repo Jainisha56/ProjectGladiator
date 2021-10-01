@@ -1,0 +1,197 @@
+<!-- CSS -->
+<style>
+  .box {
+    padding: 10px;
+    height: max-content;
+    width: 600px;
+    margin: 40px auto;
+  }
+</style>
+
+
+<div class="container box">
+  <br>
+  <h2 class="text-danger" align="center">Apply for a Loan</h2>
+  <br>
+  <div class="accordion" id="accordionPanelsStayOpenExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+          data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+          Vehicle Details
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+        aria-labelledby="panelsStayOpen-headingOne">
+        <div class="accordion-body">
+          <form [formGroup]="VehicleDetailsForm" (ngSubmit)="VehicleDetails()">
+            <div class="mb-3">
+              <label class="form-label">Type</label>
+              <select class="form-select" aria-label="Default select example" name="VehicleType" formControlName="VehicleType">
+                <option selected>Select type of vehicle</option>
+                <option value="Two Wheeler">Two wheeler</option>
+                <option value="Four Wheeler">Four wheeler</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Manufacturer Name</label>
+              <input type="text" class="form-control" id="exampleInputPassword1" name="VehicleModel" formControlName="VehicleModel">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Vehicle Name</label>
+              <input type="text" class="form-control" id="exampleInputPassword1" name="VehicleName" formControlName="VehicleName">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Manufacture Year</label>
+              <select class="form-select" id="year" name="ManufactureYear" formControlName="ManufactureYear">
+                <option selected>year</option>
+                <option value="2001">2001</option>
+                <option value="2002">2002</option>
+                <option value="2003">2003</option>
+                <option value="2004">2004</option>
+                <option value="2005">2005</option>
+                <option value="2006">2006</option>
+                <option value="2007">2007</option>
+                <option value="2008">2008</option>
+                <option value="2009">2009</option>
+                <option value="2010">2010</option>
+                <option value="2011">2011</option>
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Showroom Price</label>
+              <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="ShowroomPrice" formControlName="ShowroomPrice">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">On Road Price</label>
+              <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="OnRoadPrice" formControlName="OnRoadPrice">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-danger">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bank details -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+          Bank Details &nbsp;&#x2714;
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+        aria-labelledby="panelsStayOpen-headingTwo">
+        <div class="accordion-body">
+
+          <form [formGroup]="BankDetailsForm" (ngSubmit)="BankDetails()">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Bank Name</label>
+              <input type="text" class="form-control" name="BankName" aria-describedby="emailHelp"
+                formControlName="BankName">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Branch Name</label>
+              <input type="text" class="form-control" name="BranchName" aria-describedby="emailHelp"
+                formControlName="BranchName">
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">IFSC</label>
+              <input type="text" class="form-control" name="IfscCode" aria-describedby="emailHelp"
+                formControlName="IfscCode">
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Account Type</label>
+              <select class="form-select" aria-label="Default select example" name="AccountType" formControlName="AccountType">
+
+                <option value="savings">Savings</option>
+                <option value="current">Current</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Account number</label>
+              <input type="number" class="form-control" name="AccountNum" formControlName="AccountNum">
+            </div>
+
+            <button type="submit" class="btn btn-danger">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Employment details -->
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+          aria-controls="panelsStayOpen-collapseThree">
+          Employment Details
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+        aria-labelledby="panelsStayOpen-headingThree">
+        <div class="accordion-body">
+
+          <form [formGroup]="EmploymentDetailsForm" (ngSubmit)="EmploymentDetails()">
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Type of employment</label>
+              <select class="form-select" aria-label="Default select example" name="TypeOfEmp" formControlName="TypeOfEmp">
+                <option selected>Your employment type</option>
+                <option value="Business">Business</option>
+                <option value="Service">Service</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Work Experience</label>
+              <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="WorkExperience"
+                formControlName="WorkExperience">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Annual salary</label>
+              <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="AnnualSal"
+                formControlName="AnnualSal">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Existing EMI</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="ExistingEmi" id="exampleRadios1" value="yes"
+                  formControlName="ExistingEmi">
+                <label class="form-check-label" for="exampleRadios1">
+                  Yes
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="ExistingEmi" id="exampleRadios1" value="no" checked
+                  formControlName="ExistingEmi">
+                <label class="form-check-label" for="exampleRadios1">
+                  No
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-danger">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="eligibilityBtn" align="center">
+  <button class="btn btn-lg btn-danger" routerLink="/Loan Offers">Check Your eligibility</button>
+</div>
+<br><br>

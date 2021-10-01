@@ -1,0 +1,68 @@
+<br>    
+    <br><br>
+    <div class="container">
+       <h1 class="text-danger">EMI Calculator</h1>
+     <hr>
+       <br>
+       <div class="col-md-4 one border border-dark animate__animated animate__fadeInLeft" id="box1">
+            <form class="form" [formGroup]="emiData" (ngSubmit)="getCalculation()">
+                <div class="mb-3">
+                    <label for="" class="form-label"  style="text-align: right;">Amount (₹)</label>
+                    <input type="number" class="form-control border border-dark" id=""  formControlName="amount">
+                  
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label"  style="text-align: right;">Rate of interest (%)</label>
+                    <input type="number" class="form-control border border-dark" id=""  formControlName="rate">
+                   
+                </div> 
+                <div class="mb-3">
+                    <label for="" class="form-label"  style="text-align: right;">Tenure (yrs)</label>
+                    <input type="number" class="form-control border border-dark" id=""  formControlName="year">
+                </div>
+        
+                <button type="submit" class="btn btn-danger border border-dark" [disabled]="!emiData.valid">Submit</button>
+            </form>
+        </div>
+
+       <div class="col-md-4 three border border-dark animate__animated animate__fadeInUp" *ngIf="show" >
+        <form class="form" [formGroup]="emiData" (ngSubmit)="getCalculation()">
+            <div class="mb-3">
+                <label for="" class="form-label"  style="text-align: right;">Base Amount (₹)</label>
+                <input type="text" class="form-control border border-dark" value="{{amount}}" disabled>
+             
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label"  style="text-align: right;">Monthly payment (₹)</label>
+                <input type="text" class="form-control border border-dark" value="{{monthlyPayment}}" disabled>
+               
+            </div> 
+            <div class="mb-3">
+                <label for="" class="form-label"  style="text-align: right;">total interest payable (₹)</label>
+                <input type="text" class="form-control border border-dark" value="{{totalInterest}}" disabled>
+               
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label"  style="text-align: right;">total payment (₹)</label>
+                <input type="text" class="form-control border border-dark" value="{{TotalPayment}}" disabled>
+               
+            </div>
+        </form>
+    </div>
+
+    <div class="two animate__animated animate__fadeInLeft" id="chartContainer">
+        <div style="display: block;">
+            <canvas baseChart
+            [datasets]="pieChartData"
+            [labels]="pieChartLabels"
+            [options]="pieChartOptions"
+            [legend]="pieChartLegend"
+            [chartType]=pieChartType></canvas>
+        </div>
+    </div>
+   
+
+</div>
+
+    
+
