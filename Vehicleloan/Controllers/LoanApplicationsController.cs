@@ -109,7 +109,8 @@ namespace Vehicleloan.Controllers
                          loan.Duration,
                          emp.ExistingEmi,
                          loan.ApplicationId,
-                         loan.ApplicationStatus
+                         loan.ApplicationStatus,
+                         emp.WorkExperience
                      }
 
                 ).ToList();
@@ -254,29 +255,33 @@ namespace Vehicleloan.Controllers
         }
 
 
-        [HttpPost("loanconfirmation/{email}")]
-        public IActionResult LoanConfirmation(string email,LoanApplications loanapp)
+        [HttpPost("loanconfirmation/{vname}")]
+        public IActionResult LoanConfirmation(string vname,LoanApplications loanapp)
         {
             //_context.UserDetails.Add(userDetails);
-            //var res = _context.UserDetails.Where(x => x.UserEmail == email).FirstOrDefault();
-            var getinfo = from user in _context.UserDetails
-                          where user.UserEmail == email
-                          join appl in _context.LoanApplications on user.UserId equals appl.UserRefId
-                          join vehicle in _context.VehicleDetails on appl.VehicleId equals vehicle.VehicleId
-                          
-                          select new
-                          {
-                              vehicle.VehicleName,
-                              appl.ApplicationId
-                          };
-            
-            if (getinfo != null)
+            var res = _context.UserDetails.Where(x => x.UserId == loanapp.UserRefId).FirstOrDefault();
+            var res2 = _context.LoanApplications.Where(y => y.UserRefId == loanapp.UserRefId).FirstOrDefault();
+            //var getinfo = (from user in _context.UserDetails
+            //              where user.UserEmail == email
+            //              join appl in _context.LoanApplications on user.UserId equals appl.UserRefId
+            //              join vehicle in _context.VehicleDetails on appl.VehicleId equals vehicle.VehicleId
+            //              where vehicle.VehicleId==loanapp.VehicleId
+            //              select new
+            //              {
+            //                  vehicle.VehicleName,
+            //                  appl.ApplicationId
+            //              }).ToList()
+            //              ;
+
+            //string vname = getinfo.Select(x => x.VehicleName).ToString();
+            //int appid = int.Parse(getinfo.Select(x => x.ApplicationId).ToString());
+            if (res != null)
             {
 
-                string Body = "Hello "+email+", We received your Loan application for the vehicle "+ getinfo.Select(x => x.VehicleName).ToString() + " with a total Loan Amount of "
-                    +loanapp.Amount+". \nYour Application Id is "+getinfo.Select(x=>x.ApplicationId).ToString()+". \n\n Do not reply to this Email, It is system generated.  ";
+                string Body = "Hello " + res.UserFirstName + " " + res.UserLastName + ", We received your Loan application for the vehicle " + vname + " with a total Loan Amount of "
+                    +loanapp.Amount+". \nYour Application Id is "+ res2.ApplicationId + ". \n\n Do not reply to this Email, It is system generated.  ";
                 //codeget = code;
-                SendMail("vehicleloanlti@gmail.com", email, "JPAG Vehicle Loans", Body);
+                SendMail("vehicleloanlti@gmail.com", res.UserEmail , "JPAG Vehicle Loans", Body);
                 //status.Add("Success", true);
                 // return Ok(status);
                 return Ok(new { status = true });
@@ -291,7 +296,60 @@ namespace Vehicleloan.Controllers
             // return CreatedAtAction("GetUserDetails", new { id = userDetails.UserId }, userDetails);
         }
 
+        [HttpPost("Rejectmail/{id}")]
+        public IActionResult RejectConfirmation(int id)
+        {
+            //_context.UserDetails.Add(userDetails);
+            var res = _context.LoanApplications.Where(x => x.ApplicationId == id).FirstOrDefault();
+            //var res2 = _context.VehicleDetails.Where(y => y.VehicleId == res.VehicleId).FirstOrDefault();
+            var res3 = _context.UserDetails.Where(y => y.UserId == res.UserRefId).FirstOrDefault();
+            if (res != null)
+            {
 
+                string Body = "Hello, "+res3.UserFirstName+" "+res3.UserLastName +" we are sorry to inform you that your loan application with ID : " + res.ApplicationId + " has been rejected.  \n\n Do not reply to this Email, It is system generated.";
+                //codeget = code;
+                SendMail("vehicleloanlti@gmail.com", res3.UserEmail, "JPAG Vehicle Loans", Body);
+                //status.Add("Success", true);
+                // return Ok(status);
+                return Ok(new { status = true });
+            }
+            else
+            {
+                //status.Add("Success", false);
+                // codeget = -1;
+                //return Ok(status);
+                return Ok(new { status = false });
+            }
+            // return CreatedAtAction("GetUserDetails", new { id = userDetails.UserId }, userDetails);
+        }
+        [HttpPost("Acceptmail/{id}")]
+        public IActionResult AcceptConfirmation(int id)
+        {
+            //_context.UserDetails.Add(userDetails);
+            var res = _context.LoanApplications.Where(x => x.ApplicationId == id).FirstOrDefault();
+            var res2 = _context.LoanProfile.Where(y => y.LoanApplicationId == id).FirstOrDefault();
+            var res3 = _context.UserDetails.Where(z => z.UserId == res.UserRefId).FirstOrDefault();
+
+            if (res != null)
+            {
+
+                string Body = "Congrats, " + res3.UserFirstName + " " + res3.UserLastName + " we are glad to inform you that your loan application with ID : " + res.ApplicationId + " has been accepted." +
+                    " Your Loan ID:"+res2.LoanApplicationId +"\n The EMI to be paid every month for the accepted loan is "+res2.Emi +"\n\n Do not reply to this Email, It is system generated.";
+                //codeget = code;
+                SendMail("vehicleloanlti@gmail.com", res3.UserEmail, "JPAG Vehicle Loans", Body);
+                //status.Add("Success", true);
+                // return Ok(status);
+                return Ok(new { status = true });
+            }
+            else
+            {
+                //status.Add("Success", false);
+                // codeget = -1;
+                //return Ok(status);
+                return Ok(new { status = false });
+            }
+            // return CreatedAtAction("GetUserDetails", new { id = userDetails.UserId }, userDetails);
+        }
 
 
         [NonAction]

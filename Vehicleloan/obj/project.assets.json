@@ -8823,19 +8823,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\cantf\\.nuget\\packages\\": {}
+    "C:\\Users\\Adityaa\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\gee\\LTI\\training\\Vehicle loan project\\vs\\skeletonVS\\Vehicleloan\\Vehicleloan.csproj",
+      "projectUniqueName": "E:\\LTI projects\\GET_953_-_DOTNET_-_Final_Project_Details\\Vehicle Loan Final\\2nd commit\\studio\\Vehicleloan\\Vehicleloan.csproj",
       "projectName": "Vehicleloan",
-      "projectPath": "F:\\gee\\LTI\\training\\Vehicle loan project\\vs\\skeletonVS\\Vehicleloan\\Vehicleloan.csproj",
-      "packagesPath": "C:\\Users\\cantf\\.nuget\\packages\\",
-      "outputPath": "F:\\gee\\LTI\\training\\Vehicle loan project\\vs\\skeletonVS\\Vehicleloan\\obj\\",
+      "projectPath": "E:\\LTI projects\\GET_953_-_DOTNET_-_Final_Project_Details\\Vehicle Loan Final\\2nd commit\\studio\\Vehicleloan\\Vehicleloan.csproj",
+      "packagesPath": "C:\\Users\\Adityaa\\.nuget\\packages\\",
+      "outputPath": "E:\\LTI projects\\GET_953_-_DOTNET_-_Final_Project_Details\\Vehicle Loan Final\\2nd commit\\studio\\Vehicleloan\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\cantf\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Adityaa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8900,12 +8900,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[3.1.18, 3.1.18]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -8914,7 +8908,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.303\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

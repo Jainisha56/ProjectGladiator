@@ -167,7 +167,8 @@ namespace Vehicleloan.Controllers
         {
             //_context.UserDetails.Add(userDetails);
 
-            var user = _context.UserDetails.Where(u => u.UserEmail == userDetails.UserEmail && u.UserPassword == userDetails.UserPassword).FirstOrDefault();
+            var user = _context.UserDetails.Where(u => u.UserEmail == userDetails.UserEmail && u.UserPassword==userDetails.UserPassword).FirstOrDefault();
+            //String.Equals(x.Username, (string)drUser["Username"], 
             if (user != null)
             {
                 status.Add("Success", true);

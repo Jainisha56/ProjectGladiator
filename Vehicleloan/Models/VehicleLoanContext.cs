@@ -32,7 +32,7 @@ namespace Vehicleloan.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-4G06BOQ;Database=VehicleLoan;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-V24LP5J;Database=VehicleLoan;Trusted_Connection=True;");
             }
         }
 
@@ -41,7 +41,7 @@ namespace Vehicleloan.Models
             modelBuilder.Entity<AdminDetails>(entity =>
             {
                 entity.HasKey(e => e.AdminId)
-                    .HasName("PK__Admin_De__4A311D2F1D75C073");
+                    .HasName("PK__Admin_De__4A311D2FD258DDFD");
 
                 entity.ToTable("Admin_Details");
 
@@ -61,7 +61,7 @@ namespace Vehicleloan.Models
             modelBuilder.Entity<BankDetails>(entity =>
             {
                 entity.HasKey(e => e.AccountNum)
-                    .HasName("PK__bank_det__EFC6E16929B4E54D");
+                    .HasName("PK__bank_det__EFC6E169A2249072");
 
                 entity.ToTable("bank_details");
 
@@ -96,7 +96,7 @@ namespace Vehicleloan.Models
             modelBuilder.Entity<EmploymentDetails>(entity =>
             {
                 entity.HasKey(e => e.EmpId)
-                    .HasName("PK__Employme__1299A8611329CFF6");
+                    .HasName("PK__Employme__1299A8610E39FD9F");
 
                 entity.ToTable("Employment_Details");
 
@@ -130,7 +130,7 @@ namespace Vehicleloan.Models
             modelBuilder.Entity<LoanApplications>(entity =>
             {
                 entity.HasKey(e => e.ApplicationId)
-                    .HasName("PK__Loan_App__E064DD934BE62263");
+                    .HasName("PK__Loan_App__E064DD9306C93C43");
 
                 entity.ToTable("Loan_Applications");
 
@@ -168,7 +168,7 @@ namespace Vehicleloan.Models
             modelBuilder.Entity<LoanProfile>(entity =>
             {
                 entity.HasKey(e => e.LoanId)
-                    .HasName("PK__loan_pro__A1F79554E5C15266");
+                    .HasName("PK__loan_pro__A1F7955412EAE8FB");
 
                 entity.ToTable("loan_profile");
 
@@ -224,7 +224,7 @@ namespace Vehicleloan.Models
             modelBuilder.Entity<UserDetails>(entity =>
             {
                 entity.HasKey(e => e.UserId)
-                    .HasName("PK__User_Det__206A9DF8C28293E6");
+                    .HasName("PK__User_Det__206A9DF8C7276CFA");
 
                 entity.ToTable("User_Details");
 
@@ -286,7 +286,7 @@ namespace Vehicleloan.Models
             modelBuilder.Entity<VehicleDetails>(entity =>
             {
                 entity.HasKey(e => e.VehicleId)
-                    .HasName("PK__Vehicle___CE64613D702D4058");
+                    .HasName("PK__Vehicle___CE64613D765B1561");
 
                 entity.ToTable("Vehicle_Details");
 
