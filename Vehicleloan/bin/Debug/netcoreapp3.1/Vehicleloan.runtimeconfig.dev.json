@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\cantf\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\cantf\\.nuget\\packages"
+    ]
+  }
+}
