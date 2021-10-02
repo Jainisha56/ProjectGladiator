@@ -41,6 +41,7 @@ import { AcceptloansComponent } from './acceptloans/acceptloans.component';
 import { ChartsModule } from 'ng2-charts';
 import { TabsComponent } from './tabs/tabs.component';
 import { PersonaldetailsComponent } from './personaldetails/personaldetails.component';
+import { AllLoanOffersComponent } from './all-loan-offers/all-loan-offers.component';
 
 
 
@@ -57,6 +58,7 @@ import { PersonaldetailsComponent } from './personaldetails/personaldetails.comp
     LoanQuotesComponent,
     TabsComponent,
     PersonaldetailsComponent,
+    AllLoanOffersComponent,
 
     RegisterComponent,
     LoginComponent,

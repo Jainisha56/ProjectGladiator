@@ -31,7 +31,10 @@ export class LoanApplicationsComponent implements OnInit {
     this.PendingService.RejectApplication(appid).subscribe((data)=>
       console.log(data,"Application Rejected Successfully")
     )
+    this.PendingService.sendrejectedmail(appid).subscribe((data)=>
+    console.log(data,"Email sent"))
     this.rou.navigateByUrl('rejected-list')
+
   }
 
 }

@@ -80,13 +80,22 @@ UserRefId : new FormControl()
      this.service.AcceptedLoan(this.accept.value).subscribe(res => {
       console.log(res)
       console.log('Loan created!')
-      this.route.navigateByUrl('approved-loans') 
+      this.Sendmail()
+     this.route.navigateByUrl('approved-loans') 
 
     }); 
 
      this.service.AcceptApplication(this.router.snapshot.params['applicationid']).subscribe((data)=>
       console.log(data,"Application Accepted Successfully")
     )
+    this.route.navigateByUrl('approved-loans') 
+   
+  }
+
+  Sendmail()
+  {
+    this.service.sendacceptancemail(this.router.snapshot.params['applicationid']).subscribe((data)=>
+    console.log(data,"Email sent"))
     this.route.navigateByUrl('approved-loans') 
   }
 }

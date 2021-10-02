@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { AcceptloansComponent } from './acceptloans/acceptloans.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AllLoanOffersComponent } from './all-loan-offers/all-loan-offers.component';
 import { AloginComponent } from './alogin/alogin.component';
 import { ApplyLoanComponent } from './apply-loan/apply-loan.component';
 import { ApprovedLoansComponent } from './approved-loans/approved-loans.component';
@@ -41,6 +42,7 @@ const routes: Routes = [
   {path:'forgotpassword',component:ForgotpwdComponent},
   {path:'Changepassword',component:ChangepwdComponent},
   
+  {path:'view-offers',component:AllLoanOffersComponent},
   //{path:'',component:UserDashboardComponent,outlet: 'outlet-udash'},
   {path:'user-dash',component:UserDashboardComponent},
   {path:'user-settings',component:UserSettingsComponent},
@@ -56,6 +58,7 @@ const routes: Routes = [
   {path:'approved-loans',component:ApprovedLoansComponent},
   {path:'rejected-list',component:RejectedListComponent},
   {path:'accept-loan/:applicationid',component:AcceptloansComponent},
+
 
 
   

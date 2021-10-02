@@ -101,7 +101,7 @@ export class TabsComponent implements OnInit {
      }
      )
 
-     this.service.loanconfirmmail(sessionStorage.getItem('Email'),this.LoanQuotesForm.value).subscribe((res:any)=>{
+     this.service.loanconfirmmail(this.vname,this.LoanQuotesForm.value).subscribe((res:any)=>{
       console.log("Email Sent")
       console.log(res)
       })

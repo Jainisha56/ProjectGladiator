@@ -71,8 +71,8 @@ export class LoanService {
     return this.httpClient.post<Vehicles>(this.apiServer + '/VehicleDetails/email/'+ email, JSON.stringify(vehicle), this.httpOptions)
   }
 
-  addLoanApplication(loanapp:any): Observable<LoanApplications> {
-    return this.httpClient.post<LoanApplications>(this.apiServer + '/LoanApplications/Addloan/', JSON.stringify(loanapp), this.httpOptions)
+  addLoanApplication(loanapp:any): Observable<any> {
+    return this.httpClient.post<any>(this.apiServer + '/LoanApplications/Addloan/', JSON.stringify(loanapp), this.httpOptions)
   }
 
   bankdetails(details : any, Email : any): Observable<Bankdetails> {
@@ -81,10 +81,10 @@ export class LoanService {
     return this.httpClient.post<Bankdetails>(this.apiServer + '/BankDetails/bankdetails/'+Email, JSON.stringify(details), this.httpOptions)
   } 
 
-  loanconfirmmail(Email : any,details : any): Observable<any> {
-    Email = sessionStorage.getItem('Email');
+  loanconfirmmail(vname:any,details : any): Observable<any> {
+    
     console.log("hi")
-    return this.httpClient.post<any>(this.apiServer + '/LoanApplications/loanconfirmation/'+Email, JSON.stringify(details), this.httpOptions)
+    return this.httpClient.post<any>(this.apiServer + '/LoanApplications/loanconfirmation/'+vname, JSON.stringify(details), this.httpOptions)
   }
 
   employmentdetails(details : any, Email : any) : Observable<Employmentdetails>
@@ -98,6 +98,15 @@ export class LoanService {
     email = sessionStorage.getItem('Email')
     return this.httpClient.post<LoanApplications>(this.apiServer + '/LoanApplications/email/'+ email, JSON.stringify(application), this.httpOptions)
   } */
+
+  sendacceptancemail(id: number ): Observable<LoanApplications> {
+    return this.httpClient.post<LoanApplications>(this.apiServer + '/LoanApplications/Acceptmail/' + id , this.httpOptions)
+  }
+
+  sendrejectedmail(id: number ): Observable<LoanApplications> {
+    return this.httpClient.post<LoanApplications>(this.apiServer + '/LoanApplications/Rejectmail/' + id , this.httpOptions)
+  }
+
   getRejectedList(): Observable<LoanApplications[]> {
     return this.httpClient.get<LoanApplications[]>(this.apiServer + '/LoanApplications/rejected')
   }
