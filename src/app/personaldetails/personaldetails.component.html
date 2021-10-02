@@ -1,0 +1,355 @@
+
+  
+  <div class="container registercontainer" >
+    <div  class="col-md-6 offset-md-3 col-lg-4 offset-lg-4 registerbox">
+      <h1 class="mb-4 header">Personal Details</h1>
+      <form [formGroup]="Personaldetails" (ngSubmit)="Registrationdetails()">
+        <div class="form-group mb-4"><label for="form1Example1" class="form-label">Firstname</label>
+            <!-- Firstname input -->
+            <input type="text" id="form1Example1" name="userFirstName" formControlName="userFirstName" class="form-control "></div>
+
+        <div class="form-group mb-4"><label for="form1Example2" class="form-label">Lastname</label>
+            <!-- Lastname input -->
+            <input type="text" id="form1Example2" name="userLastName" formControlName="userLastName" class="form-control "></div>
+  
+       <!--  <div  class="form-group mb-4"><label  for="form1Example3" class="form-label">DOB</label>
+          
+            <input  type="datetime-local" id="form1Example3" name="userDoB" formControlName="userDoB" class="form-control "></div> -->
+
+        <div class="form-group mb-4"><label for="form1Example4" class="form-label">Gender</label><br>
+            <!-- Gender input -->
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="userGender" id="inlineRadio1" value="Male" formControlName="userGender">
+                <label class="form-check-label" for="inlineRadio1">Male</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="userGender" id="inlineRadio2" value="Female" formControlName="userGender">
+                <label class="form-check-label" for="inlineRadio2">Female</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="userGender" id="inlineRadio3" value="Others" formControlName="userGender">
+                <label class="form-check-label" for="inlineRadio3">Preferred not to say</label>
+              </div></div>
+
+        <div class="form-group mb-4"><label for="form1Example5" class="form-label">Mobile No</label>
+            <!-- Mobile number input -->
+            <input type="number" id="form1Example5" name="userPhoneNum" formControlName="userPhoneNum" class="form-control "></div>
+            <div *ngIf="!userPhoneNum?.valid && (userPhoneNum?.dirty || userPhoneNum?.touched)" class="error text-danger" role="alert">
+                <div *ngIf="userPhoneNum?.errors?.required">
+                  Phone number required
+                </div>
+                <div *ngIf="userPhoneNum?.errors?.maxlength"class="error text-danger" role="alert">
+                    Phone number should have 10 digits
+                  </div>
+            </div>
+
+        <div class="form-group mb-4"><label for="form1Example6" class="form-label">Email Address</label>
+            <!-- Email input -->
+            <input type="text" id="form1Example6" name="userEmail" formControlName="userEmail" class="form-control "></div>
+                
+        <!-- <div class="form-group mb-4"><label for="form1Example7" class="form-label">Password</label>
+            <input type="password" id="form1Example7" name="userPassword" formControlName="userPassword" class="form-control "></div>
+        
+            <div *ngIf="!userPassword?.valid && (userPassword?.dirty || userPassword?.touched)" class="error text-danger" role="alert">
+                <div *ngIf="!userPassword?.valid && (userPassword?.dirty ||userPassword?.touched)" class="error text-danger" role="alert">
+                    <div *ngIf="userPassword?.errors?.required">
+                      Password required
+                    </div>
+                    <div *ngIf="userPassword?.errors?.pattern" class="error text-danger" role="alert">
+                        <p> Type a secured password consisting of </p>
+                          <li>
+                           lowercase character
+                          </li>
+                          <li>
+                           uppercase character
+                          </li>
+                          <li>
+                           special character
+                          </li>
+                          <li>
+                           number
+                          </li>
+                          <li>
+                           minimum = 8
+                          </li>
+                          <li>
+                           maximum = 20
+                          </li> 
+                      </div>
+                    </div>
+            </div>
+ -->
+        <div class="form-group mb-4"><label for="form1Example8" class="form-label">State</label>
+            <!-- State input -->
+            <select class="form-select" aria-label="Default select example" id="form1Example8" name="userState" formControlName="userState">
+                <option [ngValue]="s" *ngFor="let s of states">{{s}}</option>
+              </select>
+        </div>       
+            <!-- City input -->
+<!--             <input type="text" id="form1Example9" name="userCity" formControlName="userCity" class="form-control ">
+ -->        <div *ngIf="userState?.value == states[0]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of AndamanNicobar">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[1]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of AndhraPradesh">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[2]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of ArunachalPradesh">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[3]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Assam">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[4]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Bihar">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[5]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Chandigarh">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[6]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of DadraNagarHaveli">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[7]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of DamanandDiu">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[8]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Delhi">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[9]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Goa">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[10]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Gujarat">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[11]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Haryana">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[12]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of HimachalPradesh">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[13]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of JammuKashmir">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[14]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Jharkhand">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[15]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Karnataka">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[16]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Kerala">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[17]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Lakshadweep">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[18]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of MadhyaPradesh">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[19]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Maharashtra">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[20]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Manipur">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[21]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Meghalaya">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[22]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Mizoram">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[23]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Nagaland">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[24]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Orissa">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[25]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Pondicherry">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[26]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Punjab">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[27]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Rajasthan">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[28]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Sikkim">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[29]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of TamilNadu">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[30]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Telangana">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[31]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Tripura">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[32]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of UttarPradesh">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[33]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Uttarkhand">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[34]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of WestBengal">{{c}}</option>
+                </select>
+                </div>
+            </div>
+            <div *ngIf="userState?.value == states[35]">
+                <div class="form-group mb-4"><label for="form1Example9" class="form-label">City</label>
+                <select class="form-select" aria-label="Default select example" id="form1Example8" name="userCity" formControlName="userCity">
+                    <option [ngValue]="c" *ngFor="let c of Chhattisgarh">{{c}}</option>
+                </select>
+                </div>
+            </div>
+       
+
+        <div class="form-group mb-4"><label for="form1Example10" class="form-label">Address</label>
+            <!-- Address input -->
+            <input type="text" id="form1Example10" name="userAddress" formControlName="userAddress" class="form-control "></div>
+        
+        <div class="form-group mb-4"><label for="form1Example11" class="form-label">Pincode</label>
+            <!-- Pincode input -->
+            <input type="number" id="form1Example11" name="userPincode" formControlName="userPincode" class="form-control "></div>
+
+            <button  type="submit" class="btn btn-danger btn-block text-center register"  [disabled] = "!Personaldetails.valid">Save Changes</button>
+      </form>
+    </div>
+  </div>

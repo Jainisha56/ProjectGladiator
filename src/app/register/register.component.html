@@ -1,0 +1,109 @@
+<div class="container registercontainer" >
+    <h1 class="mb-4 header text-danger" align="center">Registration</h1>
+  <hr><br>
+      <div  class="col-md-6 offset-md-3 col-lg-4 offset-lg-4 registerbox">
+      
+        <form [formGroup]="Personaldetails" (ngSubmit)="Userregistrationdetails()">
+          <div class="form-group mb-4"><label for="form1Example1" class="form-label">Firstname</label>
+              <!-- Firstname input -->
+              <input type="text" id="form1Example1" name="UserFirstName" formControlName="UserFirstName" class="form-control "></div>
+              <div *ngIf="!UserFirstName?.valid && (UserFirstName?.dirty || UserFirstName?.touched)" class="error text-danger" role="alert">
+                  <div *ngIf="UserFirstName?.errors?.required">
+                    Firstname required
+                  </div>
+          </div>
+          <div class="form-group mb-4"><label for="form1Example2" class="form-label">Lastname</label>
+              <!-- Lastname input -->
+              <input type="text" id="form1Example2" name="UserLastName" formControlName="UserLastName" class="form-control "></div>
+    
+          <div  class="form-group mb-4"><label  for="form1Example3" class="form-label">Date of Birth</label> 
+               Date of Birth input
+              <input  type="date" id="form1Example3" name="UserDoB" formControlName="UserDoB" class="form-control "></div>
+              <div *ngIf="!UserDoB?.valid && (UserDoB?.dirty || UserDoB?.touched)" class="error text-danger" role="alert">
+                <div *ngIf="UserDoB?.errors?.required">
+                  Date of Birth required
+                </div>
+            </div>              
+  
+          <div class="form-group mb-4"><label for="form1Example4" class="form-label">Gender</label><br>
+              <!-- Gender input -->
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="Usergender" id="inlineRadio1" value="Male" formControlName="Usergender">
+                  <label class="form-check-label" for="inlineRadio1">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="Usergender" id="inlineRadio2" value="Female" formControlName="Usergender">
+                  <label class="form-check-label" for="inlineRadio2">Female</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="Usergender" id="inlineRadio3" value="Others" formControlName="Usergender">
+                  <label class="form-check-label" for="inlineRadio3">Preferred not to say</label>
+                </div></div>
+                <div *ngIf="!Usergender?.valid && (Usergender?.dirty || Usergender?.touched)" class="error text-danger" role="alert">
+                  <div *ngIf="Usergender?.errors?.required">
+                    Gender required
+                  </div>
+              </div>
+  
+          <div class="form-group mb-4"><label for="form1Example5" class="form-label">Mobile No</label>
+              <!-- Mobile number input -->
+              <input type="number" id="form1Example5" name="UserPhoneNum" formControlName="UserPhoneNum" class="form-control "></div>
+              <div *ngIf="!UserPhoneNum?.valid && (UserPhoneNum?.dirty || UserPhoneNum?.touched)" class="error text-danger" role="alert">
+                <div *ngIf="UserPhoneNum?.errors?.required">
+                  Password required
+                </div>
+                <div *ngIf="UserPhoneNum?.errors?.maxlength"class="error text-danger" role="alert">
+                    Phone number should have 10 digits
+                  </div>
+            </div>
+  
+          <div class="form-group mb-4"><label for="form1Example6" class="form-label">Email Address</label>
+              <!-- Email input -->
+              <input type="text" id="form1Example6" name="UserEmail" formControlName="UserEmail" class="form-control "></div>
+              <div *ngIf="!UserEmail?.valid && (UserEmail?.dirty || UserEmail?.touched)" class="error text-danger" role="alert">
+                <div *ngIf="UserEmail?.errors?.required">
+                 Email required
+                </div>
+                <div *ngIf="UserEmail?.errors?.pattern"class="error text-danger" role="alert">
+                    Type a proper Email
+                  </div>
+            </div>             
+              <div *ngIf= "InUse === true">
+                <p>Email Already Exists</p>
+    
+            </div>
+                  
+          <div class="form-group mb-4"><label for="form1Example7" class="form-label">Password</label>
+              <!-- Password input -->
+              <input type="password" id="form1Example7" name="Userpassword" formControlName="Userpassword" class="form-control "></div>
+          
+              <div *ngIf="!Userpassword?.valid && (Userpassword?.dirty || Userpassword?.touched)" class="error text-danger" role="alert">
+                  <div *ngIf="Userpassword?.errors?.required">
+                    Password required
+                  </div>
+                  <div *ngIf="Userpassword?.errors?.pattern"class="error text-danger" role="alert">
+                    <p> Type a secured password consisting of </p>
+                    <li>
+                     lowercase character
+                    </li>
+                    <li>
+                     uppercase character
+                    </li>
+                    <li>
+                     special character
+                    </li>
+                    <li>
+                     number
+                    </li>
+                    <li>
+                     minimum = 8
+                    </li>
+                    <li>
+                     maximum = 20
+                    </li> 
+                    </div>
+              </div>
+              <button  type="submit" class="btn btn-danger btn-block text-center register" [disabled] = "!Personaldetails.valid" >Register</button>
+        </form>
+      </div>
+    </div>

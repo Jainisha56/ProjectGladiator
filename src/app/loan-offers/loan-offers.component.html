@@ -1,0 +1,55 @@
+<style>
+    .box {
+        padding: 10px;
+        height: max-content;
+        margin: 50px auto;
+        border-radius: 10px;
+
+    }
+
+    .right {
+        margin-left: 500px;
+        padding-right: 10px;
+    }
+
+    .left {
+        margin-right: 500px;
+        padding-left: 10px;
+    }
+</style>
+
+<br><br>
+
+<div style="padding: 10px; width: fit-content; border-radius: 10px; font-size: large;">
+    Dreaming of owning a car? The Axis Bank Car Loan aims to ensures that you drive around the city in your own vehicle!
+    Avail a car loan, or opt for a pre-approved car loan, and get the best interest rates. Axis Bank’s New Car Loan
+    offers
+    car loans from Rs. 1 Lakh upto 100% on-road price along with benefits. Before applying for a car loan online,
+    make sure to use the car loan calculator to find out your EMI. Apply for an Axis Bank New Car Loan and make your
+    dream
+    of owning a car come true.
+</div>
+
+<div class="container box border border-dark">
+
+    <br>
+    <h2 class="text-danger" align="center">Below are the Loan Offers for Your Vehicle</h2><br>
+    <hr>
+    <br>
+    <br>
+    <div class="loan" style="border-radius: 10px;" *ngFor="let offer of useroffers">
+        <h2>{{offer.loansname}}</h2>
+        <hr>
+        <h3>Loan Amount : {{offer.loanamount}}</h3>
+        <h3>Monthly EMI : {{offer.loanemiamount}}</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium enim nihil sint dolores est dolor
+            quisquam ab aperiam explicabo quos. Ipsam recusandae deleniti quis tenetur repellat minus laborum
+            repellendus voluptatum.</p>
+        <button type="button" class="btn btn-outline-danger" [routerLink]="['/user-tabs/',offer.loanid]"
+            (click)="setvehid(offer.loanid);selectLoan(offer)">Apply Now</button>
+        <br>
+        <br>
+    </div>
+    <br>
+    <br><br>
+</div>

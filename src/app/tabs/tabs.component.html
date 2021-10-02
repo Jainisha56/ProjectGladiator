@@ -1,0 +1,162 @@
+<!-- <div class="container">
+    <div class="ods-box" ng-init="tabselector = 'firsttab'">
+  
+      <div class="tabs">
+        <a class="tab"
+           ng-click="tabselector = 'firsttab'"
+           ng-class="{'activetab' : tabselector == 'firsttab'}">1st tab title</a>
+        <a class="tab"
+           ng-click="tabselector = 'secondtab'"
+           ng-class="{'activetab' : tabselector == 'secondtab'}">2nd tab title</a>
+        <a class="tab"
+           ng-click="tabselector = 'thirdtab'"
+           ng-class="{'activetab' : tabselector == 'thirdtab'}">3rd tab title</a>
+      </div>
+  
+      <div class="ods-box">
+        <div ng-if="tabselector == 'firsttab'">
+          Content of first tab
+        </div>
+        <div ng-if="tabselector == 'secondtab'">
+          Content of second tab
+        </div>
+        <div ng-if="tabselector == 'thirdtab'">
+          Content of third tab
+        </div>
+      </div>
+  
+    </div>
+  </div> -->
+
+
+ 
+<div class="container mt-sm-3">
+  <div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'Paris')">Documents Upload</button>
+    <button class="tablinks" onclick="openCity(event, 'Tokyo')">Loan Quotes</button>
+  </div>
+    
+  <div id="Tokyo" class="tabcontent">
+    
+
+<div class="container box border border-danger col-md-4">
+
+
+  <br>
+  <h1 class="text-danger" align="center"><b>{{lname}}</b></h1><br>
+  <hr>
+
+
+  <form class="form" [formGroup]="LoanQuotesForm" (ngSubmit)="ApplyLoan()">
+      <div class="mb-3">
+          <label for="" class="form-label" style="text-align: right;">Base Amount (₹)</label>
+          <input type="text" class="form-control border border-dark" value="{{lamount}}" name="Amount" formControlName="Amount">
+
+      </div>
+      <div class="mb-3">
+          <label for="" class="form-label" style="text-align: right;">Best Rate(%)</label>
+          <input type="text" class="form-control border border-dark" value="{{lrate}}" name="Interest" formControlName="Interest">
+
+      </div>
+      <div class="mb-3">
+          <label for="" class="form-label" style="text-align: right;">Duration (months)</label>
+          <input type="text" class="form-control border border-dark" name="Duration" value="{{lduration}}"
+              formControlName="Duration">
+      </div>
+      <div class="mb-3">
+          <label for="" class="form-label" style="text-align: right;">Monthly EMI (₹)</label>
+          <input type="text" class="form-control border border-dark" name="loanemi" value="{{lmonthlyemi}}"
+              formControlName="loanemi">
+      </div>
+      <div class="mb-3">
+          <label for="" class="form-label" style="text-align: right;">Processing Fee(₹)</label>
+          <input type="text" class="form-control border border-dark" name="loanfee" value="{{lfee}}" formControlName="loanfee">
+      </div>
+
+      <div class="mb-3">
+          <label for="" class="form-label" style="text-align: right;">Vehicle Name</label>
+          <input type="text" class="form-control border border-dark" readonly name="vehicleName" value="{{vname}}"
+              formControlName="vehicleName">
+      </div>
+      <br>
+        <div class="row" style="margin: auto;">
+     <button type="submit" class="btn btn-danger"  >Apply Now</button> 
+        </div>
+      <br>
+  <!--[disabled]="!files.valid"-->
+    </form>
+
+  
+
+</div>
+  </div>
+  
+  <div id="Paris"  class="tabcontent">
+
+    <div class="container-fluid files box border border-danger" >
+<br>
+      <h1 class="mb-4 header text-danger font-weight-bold" align="center">Documents Upload</h1>
+       <hr><br>
+  
+       <div  class="col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+  <form [formGroup]="files" >
+  
+      <div class="form-group mb-4 row">
+          
+          <label for="Aadhaar" class="form-label h6">Aadhaar Card</label>
+          <!-- Email input -->
+          <div class="col-sm-8">
+          <input type="file" id="Aadhaar" name="Aadhaar" formControlName="Aadhaar" class="form-control input-sm" (change)="onFileChange($event)" style="display:inline-block;margin-right:3px;">
+      </div><!-- <span class="input-group-btn" 
+              style="width:0px;"></span> -->
+              <div class="float-right col-sm-4 mt-sm-1">
+          <input type="button" value="Upload" class="input-sm bg-danger text-white p-sm-1 ml-sm-2" (click)="onUpload()" style="display:inline-block;">
+      </div></div>
+  
+    
+          
+  
+  
+          <div class="form-group mb-4 row">
+              <label for="PanCard" class="form-label h6">Pan Card</label>
+              <!-- Email input -->
+              <div class="col-sm-8">
+              <input type="file" id="PanCard" name="PanCard" formControlName="PanCard" class="form-control input-sm" (change)="onFileChange($event)"></div>
+              <div class="float-right col-sm-4 mt-sm-1">
+              <input type="button" value="Upload" (click)="onUpload()" class="input-sm bg-danger text-white p-sm-1 ml-sm-2"></div>
+          </div>
+            
+          
+  
+              <div class="form-group mb-4 row">
+                  <label for="Photo" class="form-label h6">Passport Size Photo</label>
+                  <!-- Email input --><div class="col-sm-8">
+                  <input type="file" id="Photo" name="Photo" formControlName="Photo" class="form-control input-sm" (change)="onFileChange($event)"></div>
+                  <div class="float-right col-sm-4 mt-sm-1">
+                  <input type="button" value="Upload" (click)="onUpload()" class="input-sm bg-danger text-white p-sm-1 ml-sm-2"></div></div>
+  
+                 
+                 
+                  <div class="form-group mb-4 row">
+                      <label for="SalarySlip" class="form-label h6">Six Months Salary Slip</label>
+                      <!-- Email input --><div class="col-sm-8">
+                      <input type="file" id="SalarySlip" name="SalarySlip" formControlName="SalarySlip" class="form-control input-sm" (change)="onFileChange($event)"></div>
+                      <div class="float-right col-sm-4 mt-sm-1">
+                      <input type="button" value="Upload" (click)="onUpload()" class="input-sm bg-danger text-white p-sm-1 ml-sm-2"></div></div>
+  
+  
+                        <div>
+                          <marquee behavior="scroll" direction="left">Upload appropriate documents, upload and submit</marquee>
+                        </div>
+  
+                      <div class="form-group mb-4 d-flex justify-content-center">
+                          <button  type="submit" class="btn btn-danger btn-block text-center p-sm-1" style="width: 100px;" [disabled]="!files.valid"> Submit </button>
+  
+                          </div>
+  
+      </form>
+      </div>
+      </div>
+  </div>
+
+</div>

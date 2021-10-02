@@ -1,0 +1,36 @@
+
+/*.navbar .nav-item:hover .nav-link{ color: black;  }*/
+nav a:hover {
+    /*border-top: 4px solid white;
+    border-bottom: 4px solid white;*/
+    background-color:black;
+   
+
+  }
+  .spacer{
+    flex: 1 1 auto;
+  }
+  mat-toolbar a {
+    display: inline-block;
+    margin: 0 10px;
+    color: whitesmoke;
+    text-decoration: none;
+    size: small;
+  }
+  a:hover {
+    /*border-top: 4px solid white;
+    border-bottom: 4px solid white;*/
+    background-color:black;
+  
+  }
+  .spacer{
+    flex: 1 1 auto;
+  }
+  mat-toolbar a {
+    display: inline-block;
+    margin: 0 10px;
+    color: whitesmoke;
+    text-decoration: none;
+    size: small;
+    
+  }
