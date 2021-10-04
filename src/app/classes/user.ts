@@ -13,4 +13,5 @@ export class user
     User_state!:string
     User_pincode!:number
     User_password !:string
+    // cnfpwd !: string
 }

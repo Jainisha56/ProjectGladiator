@@ -20,11 +20,14 @@ export class RegisterComponent implements OnInit {
       UserLastName:new FormControl(),
       UserDoB:new FormControl('',Validators.required),
       Usergender:new FormControl('',Validators.required),
-      UserPhoneNum:new FormControl('',[Validators.required,Validators.maxLength(10)]),
+      UserPhoneNum:new FormControl('',[Validators.pattern("[0-9]{10}"), Validators.required]),
       UserEmail:new FormControl('',[Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"),Validators.required]),
-      Userpassword:new FormControl('',[Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$"),Validators.required])
+      Userpassword:new FormControl('',[Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$"),Validators.required]),
+      cnfpwd:new FormControl('',[Validators.required])
+      
     }
   )
+  // cnfpwd: any;
 
   constructor(private registerloan:LoanService,private router:Router) { }
 
@@ -34,21 +37,31 @@ export class RegisterComponent implements OnInit {
 
   Userregistrationdetails()
   {
+    console.log(this.Personaldetails.value)
+   
+    if(this.Userpassword?.value === this.cnfpwd?.value)
+    {
+      console.log(this.Personaldetails.value)
+      this.registerloan.register(this.Personaldetails.value).subscribe( (res:any) => {
+        console.log(res["Success"]);
+        console.log(res)
+  
+        if(res["Success"]==true){
+        console.log('User created!')
+        this.router.navigateByUrl('Login')
+      }
+      else if (res["Success"]==false){
+        console.log('registration failed!')
+        this.InUse= true;
+      }
+      });
+    }
+    else{
+      alert("New Password and confirm password does not match. Try again.")
+      
+    }
      
-     console.log(this.Personaldetails.value)
-    this.registerloan.register(this.Personaldetails.value).subscribe( (res:any) => {
-      console.log(res["Success"]);
-      console.log(res)
-
-      if(res["Success"]==true){
-      console.log('User created!')
-      this.router.navigateByUrl('login')
-    }
-    else if (res["Success"]==false){
-      console.log('registration failed!')
-      this.InUse= true;
-    }
-    });
+     
   }
 
   get UserFirstName()
@@ -79,6 +92,9 @@ export class RegisterComponent implements OnInit {
   {
     return this.Personaldetails.get("Userpassword")
   }
-
+  get cnfpwd()
+  {
+    return this.Personaldetails.get("cnfpwd");
+  }
 
 }

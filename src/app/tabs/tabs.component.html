@@ -80,10 +80,10 @@
       </div>
       <br>
         <div class="row" style="margin: auto;">
-     <button type="submit" class="btn btn-danger"  >Apply Now</button> 
+     <button type="submit" class="btn btn-danger" [disabled]="!files.valid" >Apply Now</button> 
         </div>
       <br>
-  <!--[disabled]="!files.valid"-->
+  <!---->
     </form>
 
   
@@ -110,8 +110,10 @@
       </div><!-- <span class="input-group-btn" 
               style="width:0px;"></span> -->
               <div class="float-right col-sm-4 mt-sm-1">
-          <input type="button" value="Upload" class="input-sm bg-danger text-white p-sm-1 ml-sm-2"  (click)="onUpload(); "  style="display:inline-block;">
-      </div></div>
+          <input type="button" value="Upload" class="input-sm bg-danger text-white p-sm-1 ml-sm-2" id="abtn" (click)="onUpload(); docsuploaded('abtn', 'aicon');"  style="display:inline-block;">
+              <span style="display: none;" id="aicon"><img id="bicon" src="../../assets/icons8-checked-40.png" height="20px" width="20px"></span>
+                
+        </div></div>
   
     
           
@@ -123,7 +125,9 @@
               <div class="col-sm-8">
               <input type="file" id="PanCard" name="PanCard" formControlName="PanCard" class="form-control input-sm" (change)="onFileChange($event)"></div>
               <div class="float-right col-sm-4 mt-sm-1">
-              <input type="button" value="Upload" (click)="onUpload(); "  class="input-sm bg-danger text-white p-sm-1 ml-sm-2"></div>
+              <input type="button" value="Upload" (click)="onUpload(); docsuploaded('pbtn', 'picon');" id="pbtn"  class="input-sm bg-danger text-white p-sm-1 ml-sm-2">
+              <span style="display: none;" id="picon"><img id="bicon" src="../../assets/icons8-checked-40.png" height="20px" width="20px"></span>
+            </div>
           </div>
             
           
@@ -133,7 +137,10 @@
                   <!-- Email input --><div class="col-sm-8">
                   <input type="file" id="Photo" name="Photo" formControlName="Photo" class="form-control input-sm" (change)="onFileChange($event)"></div>
                   <div class="float-right col-sm-4 mt-sm-1">
-                  <input type="button" value="Upload"  (click)="onUpload(); "  class="input-sm bg-danger text-white p-sm-1 ml-sm-2"></div></div>
+                  <input type="button" value="Upload"  (click)="onUpload(); docsuploaded('psbtn', 'psicon');" id="psbtn" class="input-sm bg-danger text-white p-sm-1 ml-sm-2">
+              <span style="display: none;" id="psicon"><img id="bicon" src="../../assets/icons8-checked-40.png" height="20px" width="20px"></span>
+                
+                </div></div>
   
                  
                  
@@ -142,7 +149,9 @@
                       <!-- Email input --><div class="col-sm-8">
                       <input type="file" id="SalarySlip" name="SalarySlip" formControlName="SalarySlip" class="form-control input-sm" (change)="onFileChange($event)"></div>
                       <div class="float-right col-sm-4 mt-sm-1">
-                      <input type="button" value="Upload"  (click)="onUpload(); "  class="input-sm bg-danger text-white p-sm-1 ml-sm-2"></div></div>
+                      <input type="button" value="Upload"  (click)="onUpload(); docsuploaded('sbtn', 'sicon'); " id="sbtn" class="input-sm bg-danger text-white p-sm-1 ml-sm-2">
+              <span style="display: none;" id="sicon"><img id="bicon" src="../../assets/icons8-checked-40.png" height="20px" width="20px"></span>
+            </div></div>
   
   
                         <div>
@@ -150,8 +159,8 @@
                         </div>
   
                       <div class="form-group mb-4 d-flex justify-content-center">
-                          <button  type="submit" class="btn btn-danger btn-block text-center p-sm-1" style="width: 100px;" [disabled]="!files.valid " > Submit </button>
-  
+                          <button  type="submit" class="btn btn-danger btn-block text-center p-sm-1" id="docsubmit" (click)="disappear()" style="width: 100px;" [disabled]="!files.valid " > Submit </button>
+                          <h2 class="text-danger" id="loanquotestext" style="display: none;">Go To Loan Quotes</h2>
                           </div>
   
       </form>

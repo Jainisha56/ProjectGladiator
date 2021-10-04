@@ -79,7 +79,11 @@ export class TabsComponent implements OnInit {
       .subscribe(res => {
         console.log(res);
       })
-   
+    // this.docsuploaded("abtn", "aicon")
+    // this.docsuploaded("pbtn", "picon")
+    // this.docsuploaded("psbtn", "psicon")
+    // this.docsuploaded("sbtn", "sicon")
+
   }
   ApplyLoan()
   {
@@ -97,15 +101,56 @@ export class TabsComponent implements OnInit {
     )
     console.log(this.LoanQuotesForm.value)
      this.service.addLoanApplication(this.LoanQuotesForm.value).subscribe((res:any)=>{
-     console.log("Successfull")
+     
      console.log(res)
+     console.log(res["Success"]);
+    //  console.log(res)
+
+     if(res["Success"]==true){
+       
+      console.log("application added in table")
+      this.sendapplicationmail()
+     }
+     else{
+       console.log("application not addded")
+       alert("Application not submitted due to network issues")
+
+     }
      }
      )
+    //  
+  }
 
-     this.service.loanconfirmmail(this.vname,this.LoanQuotesForm.value).subscribe((res:any)=>{
+  docsuploaded(btnid : any, spanid : any)
+  {
+    // var x = <HTMLInputElement> document.getElementById(btnid)
+    var submitbtn = <HTMLInputElement> document.getElementById(btnid);
+      submitbtn.style.display = "none"
+      
+      var element = <HTMLInputElement> document.getElementById(spanid);
+      element.style.display = "block"
+      // element.src="../../assets/icons8-checked-40.png";
+  }
+  
+  disappear()
+  {
+    var submitbtn = <HTMLInputElement> document.getElementById("docsubmit");
+      submitbtn.style.display = "none"
+      var element = <HTMLInputElement> document.getElementById("loanquotestext");
+      element.style.display = "block"
+      
+  }
+
+  sendapplicationmail()
+  {
+    this.service.loanconfirmmail(this.vname,this.LoanQuotesForm.value).subscribe((res:any)=>{
       console.log("Email Sent")
       console.log(res)
-      })
+    })
+    alert("Application submitted !")
+
+    this.router.navigateByUrl('/loan-history');
+    
   }
 
   constructor(public service: LoanService, public route: ActivatedRoute,private http: HttpClient, private router:Router) { }

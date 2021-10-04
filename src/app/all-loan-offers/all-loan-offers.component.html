@@ -20,9 +20,9 @@
 
 <br><br>
 
-<div style="padding: 10px; width: fit-content; border-radius: 10px; font-size: large;" class="container">
-    Dreaming of owning a car? The Axis Bank Car Loan aims to ensures that you drive around the city in your own vehicle!
-    Avail a car loan, or opt for a pre-approved car loan, and get the best interest rates. Axis Bank’s New Car Loan
+<div style="padding: 10px; width: fit-content; border-radius: 10px; font-size: large; font-family:Verdana, Geneva, Tahoma, sans-serif;" class="container">
+    Dreaming of owning a Vehicle? The JPAG Vehicle Loan aims to ensures that you drive around the city in your own vehicle!
+    Avail a car loan, or opt for a pre-approved car loan, and get the best interest rates. JPAG New Vehicle Loan
     offers
     car loans from Rs. 1 Lakh upto 100% on-road price along with benefits. Before applying for a car loan online,
     make sure to use the car loan calculator to find out your EMI. Apply for an Axis Bank New Car Loan and make your
@@ -35,10 +35,10 @@
     <br>
     <h1 class="text-danger fw-bold" align="center">Loans that we offer</h1><br>
     <hr>
-    <br>
+    
    
 
-    <table class="table table-hover">
+    <table class="table table-hover text-danger">
         <thead class="thead-light">
             <tr>
                 <th scope="col" class="fs-5">S. No.</th>
@@ -47,10 +47,10 @@
             </tr>
         </thead>
         <tr *ngFor="let offer of alloffers; index as i">
-            <th scope="row">{{i+1}}</th>
+            <th scope="row" class="text-dark">{{i+1}}</th>
             <!-- <td>{{offer.offerId}}</td> -->
-            <td class="fs-4">{{offer.loansname }}</td>
-            <td>
+            <td class="fs-4 text-decoration-underline">{{offer.loansname }}</td>
+            <td class="text-dark">
                 <br>
                 <h3 class="fs-4">Loan Amount (₹): {{offer.loanamount}}</h3>
                 <h3 class="fs-4">Rate (%): {{offer.loanrate}}</h3>

@@ -17,8 +17,9 @@ export class ChangepwdComponent implements OnInit {
   change:FormGroup = new FormGroup(
       {
         UserPassword:new FormControl('',[Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$"),Validators.required]),
-        cnfpwd:new FormControl('',[Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$"),Validators.required]),
+        cnfpwd:new FormControl('',[Validators.required]),
         //UserEmail:new FormControl()
+        //[Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$"),
        }
       //{validators:this.passwordMatchValidator}
     )
@@ -54,15 +55,24 @@ export class ChangepwdComponent implements OnInit {
     reset(){
       console.log(this.change.value)
       console.log(this.getemail)
-      
+      if(this.UserPassword?.value === this.cnfpwd?.value)
+      {
         this.changepassservice.changepwd(this.getemail,this.change.value).subscribe((data)=>
           console.log(data,"Password changed Successfully")
         )
+        alert("Password changed successfully !")
         this.router.navigateByUrl('/Home') 
+      }
+      else{
+        alert("New Password and confirm password does not match. Try again.")
+      }
+        
     }
   
-    passwordMatchValidator(frm: FormGroup){
-      return frm.controls['UserPassword'].value === frm.controls['cnfpwd'].value ? null: {'mismatch':true};
-    }
+    // passwordMatchValidator(frm: FormGroup){
+    //   return frm.controls['UserPassword'].value === frm.controls['cnfpwd'].value ? null: {'mismatch':true};
+    // }
+
+
   
 }

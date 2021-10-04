@@ -1,6 +1,6 @@
 <br>
 <br><br>
-<div class="container">
+<div class="container-fluid">
     <h1 class="text-danger">EMI Calculator</h1>
     <hr>
     <br>
@@ -50,8 +50,9 @@
         </form>
     </div>
 
-    <div class="two animate__animated animate__fadeInLeft" id="chartContainer">
-        <div style="display: block;">
+    <div class="col-md-4 two border border-dark animate__animated animate__fadeInLeft" id="chartContainer">
+        <p class="fs-3 text-decoration-underline" align="center">Statistics</p><br>
+        <div style="display: block; height:500px; width: 450px;">
             <canvas baseChart [datasets]="pieChartData" [labels]="pieChartLabels" [options]="pieChartOptions"
                 [legend]="pieChartLegend" [chartType]=pieChartType></canvas>
         </div>

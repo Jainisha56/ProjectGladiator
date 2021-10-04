@@ -81,14 +81,14 @@ UserRefId : new FormControl()
       console.log(res)
       console.log('Loan created!')
       this.Sendmail()
-     this.route.navigateByUrl('approved-loans') 
+    //  this.route.navigateByUrl('approved-loans') 
 
     }); 
 
      this.service.AcceptApplication(this.router.snapshot.params['applicationid']).subscribe((data)=>
       console.log(data,"Application Accepted Successfully")
     )
-    this.route.navigateByUrl('approved-loans') 
+    // this.route.navigateByUrl('approved-loans') 
    
   }
 

@@ -169,9 +169,9 @@ export class LoanService {
     loansname: 'New Car Loan',
     loanvehicle : 'four wheeler',
     loanamount: 1500000,
-    loanrate: 3.5,
+    loanrate: 13,
     loantenuremonths: 48,
-    loanemiamount: Math.floor(this.calculateEmi(1500000, 3.5, 48)),
+    loanemiamount: Math.floor(this.calculateEmi(1500000, 13, 48)),
     processingfee: 2599,
   }
   
@@ -179,10 +179,10 @@ export class LoanService {
     loanid : 2,
     loansname: 'New Bike Loan',
     loanvehicle : 'two wheeler',
-    loanamount: 300000,
-    loanrate: 6,
-    loantenuremonths: 24,
-    loanemiamount: Math.floor(this.calculateEmi(300000, 6 , 24)) ,
+    loanamount: 150000,
+    loanrate: 14,
+    loantenuremonths: 36,
+    loanemiamount: Math.floor(this.calculateEmi(300000, 14 , 36)) ,
     processingfee: 999,
     
   }
@@ -192,9 +192,9 @@ export class LoanService {
     loansname: 'Smart Buy Back Car Loan',
     loanvehicle : 'four wheeler',
     loanamount: 2500000,
-    loanrate: 8.5,
+    loanrate: 11,
     loantenuremonths: 60,
-    loanemiamount: Math.floor(this.calculateEmi(2500000, 8.5 , 5)) ,
+    loanemiamount: Math.floor(this.calculateEmi(2500000, 11 , 60)) ,
     processingfee: 3999,
   }
 
@@ -202,10 +202,10 @@ export class LoanService {
     loanid : 4,
     loansname: 'Smart Buy Back Scooter Loan',
     loanvehicle : 'two wheeler',
-    loanamount: 150000,
-    loanrate: 6.5,
+    loanamount: 100000,
+    loanrate: 12,
     loantenuremonths: 24,
-    loanemiamount: Math.floor(this.calculateEmi(150000, 6.5 , 24)) ,
+    loanemiamount: Math.floor(this.calculateEmi(100000, 12 , 24)) ,
     processingfee: 899,
   }
 
@@ -214,9 +214,9 @@ export class LoanService {
     loansname: 'Business Vehicle Four Wheeler Loan',
     loanvehicle : 'four wheeler',
     loanamount: 1000000,
-    loanrate: 5,
+    loanrate: 15,
     loantenuremonths: 48,
-    loanemiamount: Math.floor(this.calculateEmi(1000000, 5 , 48)) ,
+    loanemiamount: Math.floor(this.calculateEmi(1000000, 15 , 48)) ,
     processingfee: 1199, 
   }
   
@@ -224,10 +224,10 @@ export class LoanService {
     loanid : 6,
     loansname: 'Business Vehicle Two Wheeler Loan',
     loanvehicle : 'two wheeler',
-    loanamount: 200000,
-    loanrate: 3,
-    loantenuremonths: 48,
-    loanemiamount: Math.floor(this.calculateEmi(200000, 5 , 48)) ,
+    loanamount: 50000,
+    loanrate: 13,
+    loantenuremonths: 12,
+    loanemiamount: Math.floor(this.calculateEmi(50000, 13 , 12)) ,
     processingfee: 999,
     
   }

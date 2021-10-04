@@ -36,15 +36,15 @@
         <div class="form-group mb-4"><label for="form1Example5" class="form-label">Mobile No</label>
             <!-- Mobile number input -->
             <input type="number" id="form1Example5" name="userPhoneNum" placeholder="Enter Mobile Number" formControlName="userPhoneNum" class="form-control "></div>
-            <div *ngIf="!userPhoneNum?.valid && (userPhoneNum?.dirty || userPhoneNum?.touched)" class="error text-danger" role="alert">
-                <div *ngIf="userPhoneNum?.errors?.required">
-                  Phone number required
-                </div>
-                <div *ngIf="userPhoneNum?.errors?.maxlength"class="error text-danger" role="alert">
-                    Phone number should have 10 digits
-                  </div>
-            </div>
-
+            <div *ngIf="!userPhoneNum?.valid && (userPhoneNum?.dirty || userPhoneNum?.touched)" class="error text-danger"
+        role="alert">
+        <div *ngIf="userPhoneNum?.errors?.required">
+          Phone no. required
+        </div>
+        <div *ngIf="userPhoneNum?.errors?.pattern" class="error text-danger" role="alert">
+          Phone number should have 10 digits
+        </div>
+      </div>
         <div class="form-group mb-4"><label for="form1Example6" class="form-label">Email Address</label>
             <!-- Email input -->
             <input type="text" id="form1Example6" name="userEmail" placeholder="Enter Email Id" formControlName="userEmail" class="form-control "></div>
@@ -350,6 +350,15 @@
         <div class="form-group mb-4"><label for="form1Example11" class="form-label">Pincode</label>
             <!-- Pincode input -->
             <input type="number" id="form1Example11" name="userPincode" placeholder="Enter Pincode" formControlName="userPincode" class="form-control "></div>
+            <div *ngIf="!userPincode?.valid && (userPincode?.dirty || userPincode?.touched)" class="error text-danger"
+        role="alert">
+        <!-- <div *ngIf="userPincode?.errors?.required">
+          Pincode required
+        </div> -->
+        <div *ngIf="userPincode?.errors?.pattern" class="error text-danger" role="alert">
+          Pincode should have 6 digits
+        </div>
+      </div>
 
             <button  type="submit" class="btn btn-danger btn-block text-center register"  [disabled] = "!Personaldetails.valid">Save Changes</button>
       </form>

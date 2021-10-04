@@ -77,6 +77,8 @@ export class ApplyLoanComponent implements OnInit {
     console.log(this.service.UserVehicleType);
       // this.route.navigateByUrl('/Loan Offers')
     });
+    this.FormSubmittionSuccess(this.VehicleDetailsForm, "vhsubmit", "vicon")
+
   }
 
   BankDetails()
@@ -88,6 +90,8 @@ export class ApplyLoanComponent implements OnInit {
       console.log('Bank details added!')
       // this.route.navigateByUrl('/Loan Offers')
     });
+    this.FormSubmittionSuccess(this.BankDetailsForm, "bnksubmit", "bicon")
+
   }
 
   EmploymentDetails()
@@ -100,12 +104,25 @@ export class ApplyLoanComponent implements OnInit {
       // this.route.navigateByUrl('/Loan Offers')
     });
     this.eligible = true
+    this.FormSubmittionSuccess(this.EmploymentDetailsForm, "empsubmit", "eicon")
+
   }
 
   vhtype :any
   CheckEligibility()
   {
     this.route.navigate(['/Loan Offers/', {vhtype:this.service.UserVehicleType}]); 
+  }
+
+  FormSubmittionSuccess(form : any, sbtn : any, icon : any)
+  {
+    if(form.valid){
+      var submitbtn = <HTMLInputElement> document.getElementById(sbtn);
+      submitbtn.disabled = true;
+      
+      var element = <HTMLInputElement> document.getElementById(icon);
+      element.src="../../assets/icons8-checked-40.png";
+    }
   }
 
 }

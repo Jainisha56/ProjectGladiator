@@ -26,12 +26,12 @@ export class PersonaldetailsComponent implements OnInit {
         userLastName: new FormControl(data['userLastName']),  
       //  userDoB: new FormControl(data['userDoB']),
         userGender: new FormControl(data['userGender']),
-        userPhoneNum: new FormControl(data['userPhoneNum']), 
+        userPhoneNum: new FormControl(data['userPhoneNum'],[Validators.pattern("[0-9]{10}"), Validators.required]), 
         userEmail : new FormControl(data['userEmail']),
         userAddress: new FormControl(data['userAddress']),
         userCity : new FormControl(data['userCity']),
         userState: new FormControl(data['userState']),
-        userPincode: new FormControl(data['userPincode']),
+        userPincode: new FormControl(data['userPincode'],[Validators.pattern("[0-9]{6}")]),
         userId: new FormControl(data.userId)
        // userPassword: new FormControl(data['userPassword'])
       }  
@@ -48,12 +48,12 @@ export class PersonaldetailsComponent implements OnInit {
       userLastName: new FormControl(),  
      // userDoB: new FormControl(),
       userGender: new FormControl(),
-      userPhoneNum: new FormControl('',[Validators.required,Validators.maxLength(10)]), 
+      userPhoneNum: new FormControl('',[Validators.pattern("[0-9]{10}"), Validators.required]), 
       userEmail : new FormControl(),
       userAddress: new FormControl(),
       userCity : new FormControl(),
       userState: new FormControl(),
-      userPincode: new FormControl(),
+      userPincode: new FormControl('',[Validators.pattern("[0-9]{6}")]),
       userId:new FormControl()
      // userPassword: new FormControl('',[Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$"),Validators.required]),
     }
@@ -141,6 +141,7 @@ export class PersonaldetailsComponent implements OnInit {
       console.log(data,"User details Updated Successfully") 
       console.log(data)
   })
+  alert("Details updated successfully !")
     this.route.navigateByUrl('/user-dash')
 
   }
