@@ -15,8 +15,6 @@ namespace Vehicleloan.Models
         public int? LoanApplicationId { get; set; }
         public decimal? TotalAmount { get; set; }
         public int? TotalInstallments { get; set; }
-        public int? CompletedInstallments { get; set; }
-        public decimal? RemainingAmount { get; set; }
         public decimal? Emi { get; set; }
         public DateTime? LoanStartDate { get; set; }
         public DateTime? LoanEndDate { get; set; }

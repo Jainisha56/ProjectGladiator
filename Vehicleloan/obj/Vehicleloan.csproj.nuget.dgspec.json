@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\LTI projects\\GET_953_-_DOTNET_-_Final_Project_Details\\Vehicle Loan Final\\2nd commit\\studio\\Vehicleloan\\Vehicleloan.csproj": {}
+    "C:\\Users\\prash\\Downloads\\JPnadda\\LoanVs04\\Vehicleloan\\Vehicleloan.csproj": {}
   },
   "projects": {
-    "E:\\LTI projects\\GET_953_-_DOTNET_-_Final_Project_Details\\Vehicle Loan Final\\2nd commit\\studio\\Vehicleloan\\Vehicleloan.csproj": {
+    "C:\\Users\\prash\\Downloads\\JPnadda\\LoanVs04\\Vehicleloan\\Vehicleloan.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\LTI projects\\GET_953_-_DOTNET_-_Final_Project_Details\\Vehicle Loan Final\\2nd commit\\studio\\Vehicleloan\\Vehicleloan.csproj",
+        "projectUniqueName": "C:\\Users\\prash\\Downloads\\JPnadda\\LoanVs04\\Vehicleloan\\Vehicleloan.csproj",
         "projectName": "Vehicleloan",
-        "projectPath": "E:\\LTI projects\\GET_953_-_DOTNET_-_Final_Project_Details\\Vehicle Loan Final\\2nd commit\\studio\\Vehicleloan\\Vehicleloan.csproj",
-        "packagesPath": "C:\\Users\\Adityaa\\.nuget\\packages\\",
-        "outputPath": "E:\\LTI projects\\GET_953_-_DOTNET_-_Final_Project_Details\\Vehicle Loan Final\\2nd commit\\studio\\Vehicleloan\\obj\\",
+        "projectPath": "C:\\Users\\prash\\Downloads\\JPnadda\\LoanVs04\\Vehicleloan\\Vehicleloan.csproj",
+        "packagesPath": "C:\\Users\\prash\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\prash\\Downloads\\JPnadda\\LoanVs04\\Vehicleloan\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Adityaa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\prash\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

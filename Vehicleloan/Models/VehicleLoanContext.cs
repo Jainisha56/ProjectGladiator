@@ -32,7 +32,7 @@ namespace Vehicleloan.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-V24LP5J;Database=VehicleLoan;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=LAPTOP-GPLMOKEP;Database=VehicleLoan;Trusted_Connection=True;");
             }
         }
 
@@ -41,7 +41,7 @@ namespace Vehicleloan.Models
             modelBuilder.Entity<AdminDetails>(entity =>
             {
                 entity.HasKey(e => e.AdminId)
-                    .HasName("PK__Admin_De__4A311D2FD258DDFD");
+                    .HasName("PK__Admin_De__4A311D2F4635BAC0");
 
                 entity.ToTable("Admin_Details");
 
@@ -61,7 +61,7 @@ namespace Vehicleloan.Models
             modelBuilder.Entity<BankDetails>(entity =>
             {
                 entity.HasKey(e => e.AccountNum)
-                    .HasName("PK__bank_det__EFC6E169A2249072");
+                    .HasName("PK__bank_det__EFC6E169C47DF1F6");
 
                 entity.ToTable("bank_details");
 
@@ -90,13 +90,13 @@ namespace Vehicleloan.Models
                 entity.HasOne(d => d.UserRef)
                     .WithMany(p => p.BankDetails)
                     .HasForeignKey(d => d.UserRefId)
-                    .HasConstraintName("FK__bank_deta__user___4AB81AF0");
+                    .HasConstraintName("FK__bank_deta__user___6754599E");
             });
 
             modelBuilder.Entity<EmploymentDetails>(entity =>
             {
                 entity.HasKey(e => e.EmpId)
-                    .HasName("PK__Employme__1299A8610E39FD9F");
+                    .HasName("PK__Employme__1299A8611E338366");
 
                 entity.ToTable("Employment_Details");
 
@@ -124,13 +124,13 @@ namespace Vehicleloan.Models
                     .WithMany(p => p.EmploymentDetails)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.Cascade)
-                    .HasConstraintName("FK__Employmen__user___3A81B327");
+                    .HasConstraintName("FK__Employmen__user___59063A47");
             });
 
             modelBuilder.Entity<LoanApplications>(entity =>
             {
                 entity.HasKey(e => e.ApplicationId)
-                    .HasName("PK__Loan_App__E064DD9306C93C43");
+                    .HasName("PK__Loan_App__E064DD93B3255A15");
 
                 entity.ToTable("Loan_Applications");
 
@@ -156,25 +156,23 @@ namespace Vehicleloan.Models
                 entity.HasOne(d => d.UserRef)
                     .WithMany(p => p.LoanApplications)
                     .HasForeignKey(d => d.UserRefId)
-                    .HasConstraintName("FK__Loan_Appl__user___4222D4EF");
+                    .HasConstraintName("FK__Loan_Appl__user___5EBF139D");
 
                 entity.HasOne(d => d.Vehicle)
                     .WithMany(p => p.LoanApplications)
                     .HasForeignKey(d => d.VehicleId)
                     .OnDelete(DeleteBehavior.Cascade)
-                    .HasConstraintName("FK__Loan_Appl__Vehic__4316F928");
+                    .HasConstraintName("FK__Loan_Appl__Vehic__5FB337D6");
             });
 
             modelBuilder.Entity<LoanProfile>(entity =>
             {
                 entity.HasKey(e => e.LoanId)
-                    .HasName("PK__loan_pro__A1F7955412EAE8FB");
+                    .HasName("PK__loan_pro__A1F79554352B1D90");
 
                 entity.ToTable("loan_profile");
 
                 entity.Property(e => e.LoanId).HasColumnName("loan_id");
-
-                entity.Property(e => e.CompletedInstallments).HasColumnName("completed_installments");
 
                 entity.Property(e => e.Emi)
                     .HasColumnName("emi")
@@ -190,10 +188,6 @@ namespace Vehicleloan.Models
                     .HasColumnName("loan_start_date")
                     .HasColumnType("date");
 
-                entity.Property(e => e.RemainingAmount)
-                    .HasColumnName("remaining_amount")
-                    .HasColumnType("money");
-
                 entity.Property(e => e.TotalAmount)
                     .HasColumnName("total_amount")
                     .HasColumnType("money");
@@ -207,24 +201,24 @@ namespace Vehicleloan.Models
                 entity.HasOne(d => d.LoanApplication)
                     .WithMany(p => p.LoanProfile)
                     .HasForeignKey(d => d.LoanApplicationId)
-                    .HasConstraintName("FK__loan_prof__loan___47DBAE45");
+                    .HasConstraintName("FK__loan_prof__loan___6477ECF3");
 
                 entity.HasOne(d => d.UserRef)
                     .WithMany(p => p.LoanProfile)
                     .HasForeignKey(d => d.UserRefId)
-                    .HasConstraintName("FK__loan_prof__user___45F365D3");
+                    .HasConstraintName("FK__loan_prof__user___628FA481");
 
                 entity.HasOne(d => d.Vehicle)
                     .WithMany(p => p.LoanProfile)
                     .HasForeignKey(d => d.VehicleId)
                     .OnDelete(DeleteBehavior.Cascade)
-                    .HasConstraintName("FK__loan_prof__Vehic__46E78A0C");
+                    .HasConstraintName("FK__loan_prof__Vehic__6383C8BA");
             });
 
             modelBuilder.Entity<UserDetails>(entity =>
             {
                 entity.HasKey(e => e.UserId)
-                    .HasName("PK__User_Det__206A9DF8C7276CFA");
+                    .HasName("PK__User_Det__206A9DF80185E2B9");
 
                 entity.ToTable("User_Details");
 
@@ -286,7 +280,7 @@ namespace Vehicleloan.Models
             modelBuilder.Entity<VehicleDetails>(entity =>
             {
                 entity.HasKey(e => e.VehicleId)
-                    .HasName("PK__Vehicle___CE64613D765B1561");
+                    .HasName("PK__Vehicle___CE64613D28FCB4D9");
 
                 entity.ToTable("Vehicle_Details");
 
@@ -326,7 +320,7 @@ namespace Vehicleloan.Models
                     .WithMany(p => p.VehicleDetails)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.Cascade)
-                    .HasConstraintName("FK__Vehicle_D__user___3F466844");
+                    .HasConstraintName("FK__Vehicle_D__user___5BE2A6F2");
             });
 
             OnModelCreatingPartial(modelBuilder);

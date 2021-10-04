@@ -259,7 +259,7 @@ namespace Vehicleloan.Controllers
             var file = Request.Form.Files.Count > 0 ? Request.Form.Files[0] : null;
             string foldername = s;
             string webRootPath = Directory.GetCurrentDirectory();
-            string mypath = "E:\\LTI projects\\GET_953_-_DOTNET_-_Final_Project_Details\\Vehicle Loan Final\\storedfiles";
+            string mypath = "C:\\Users\\prash\\Downloads\\JPnadda\\Vehicle Loan Final";
             string newPath = Path.Combine(mypath, foldername);
             if (!Directory.Exists(newPath))
             {

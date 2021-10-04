@@ -20,6 +20,7 @@ namespace Vehicleloan.Controllers
         {
             _context = context;
         }
+        Dictionary<string, bool> status = new Dictionary<string, bool>();
 
         // GET: api/LoanApplications
         [HttpGet]
@@ -98,6 +99,7 @@ namespace Vehicleloan.Controllers
                      join vehicle in _context.VehicleDetails on loan.VehicleId equals vehicle.VehicleId
                      join user in _context.UserDetails on loan.UserRefId equals user.UserId
                      join emp in _context.EmploymentDetails on user.UserId equals emp.UserId
+                    
 
                      select new
                      {
@@ -110,11 +112,40 @@ namespace Vehicleloan.Controllers
                          emp.ExistingEmi,
                          loan.ApplicationId,
                          loan.ApplicationStatus,
-                         emp.WorkExperience
+                         emp.WorkExperience,
+                         emp.EmpId
                      }
 
                 ).ToList();
+
+            //int newid = q.Max(x => x.EmpId);
+
+            //var p = (from loan in _context.LoanApplications
+            //         where loan.ApplicationStatus == null
+            //         join vehicle in _context.VehicleDetails on loan.VehicleId equals vehicle.VehicleId
+            //         join user in _context.UserDetails on loan.UserRefId equals user.UserId
+            //         join emp in _context.EmploymentDetails on user.UserId equals emp.UserId
+            //         where emp.EmpId == newid
+
+            //         select new
+            //         {
+            //             user.UserFirstName,
+            //             vehicle.VehicleName,
+            //             emp.AnnualSal,
+            //             loan.Amount,
+            //             loan.Interest,
+            //             loan.Duration,
+            //             emp.ExistingEmi,
+            //             loan.ApplicationId,
+            //             loan.ApplicationStatus,
+            //             emp.WorkExperience,
+            //             emp.EmpId
+            //         }
+
+            //    ).ToList();
+
             return Ok(q);
+
         }
 
         [HttpGet("Pendingemail/{email}")]
@@ -251,7 +282,8 @@ namespace Vehicleloan.Controllers
             app.ApplicationDate = Appdate;
             _context.LoanApplications.Add(app);
             _context.SaveChanges();
-            return Ok();
+            status.Add("Success", true);
+            return Ok(status);
         }
 
 
