@@ -1,0 +1,45 @@
+<div class="container logincontainer" >
+    <h1 class="mb-4 header text-danger fw-bold" align="center">Admin Login</h1>
+            <hr>
+            <br>
+      <div  class="col-md-6 offset-md-3 col-lg-4 offset-lg-4 loginbox">
+        <form [formGroup]="adminlogin" (ngSubmit)="Admincredentials()">
+          <div class="form-group mb-4"><label for="form1Example1"
+              class="form-label">Email address</label>
+              <!-- Email input -->
+              <input type="text" id="form1Example1" name="AdminEmail" placeholder="Enter Email Id" formControlName="AdminEmail" class="form-control "></div>
+              <div *ngIf="!AdminEmail?.valid && (AdminEmail?.dirty ||AdminEmail?.touched)" class="error text-danger" role="alert">
+                <div *ngIf="AdminEmail?.errors?.required">
+                  Email required
+                </div>
+                
+                </div>  
+              
+    
+          <div  class="form-group mb-4"><label  for="form1Example2"
+              class="form-label">Password</label>
+              <!-- Password input -->
+              <input  type="password" id="form1Example2"
+              name="Adminpassword" formControlName="Adminpassword" placeholder="Enter Password" class="form-control "></div>
+              <div *ngIf="!Adminpassword?.valid && (Adminpassword?.dirty ||Adminpassword?.touched)" class="error text-danger" role="alert">
+                <div *ngIf="Adminpassword?.errors?.required">
+                  Password required
+                </div>
+                
+                </div>             
+                <div *ngIf= "InUse === false">
+                  <p class="error text-danger" role="alert">Login UnSuccessfull</p>
+                </div>
+              
+          <div  class="row mb-4">
+            <div  class="col d-flex">
+              <div  class="form-check">
+                <input  type="checkbox" id="form1Example3"  class="form-check-input"><label  for="form1Example3"
+                  class="form-check-label"> Remember me </label></div>
+            </div>
+            <div  class="col"><a  href="#!">Forgot password?</a></div>
+          </div><button  type="submit" class="btn btn-danger btn-block text-center signin" >Sign in</button>
+          <br><br><div  class="col"><p>Not an Admin? &nbsp;<a routerLink="/Login">Login here</a></p></div>
+        </form>
+      </div>
+    </div>

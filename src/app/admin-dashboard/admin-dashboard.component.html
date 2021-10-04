@@ -1,0 +1,77 @@
+<style>
+    .box
+    {
+        padding: 10px;
+        height: max-content;
+        margin: 10px auto;
+        border-radius: 10px; 
+    }
+    h4,p{
+        text-align: center;
+       
+    }
+    #cont{
+        display: flex;
+        align-items:center;
+        justify-content: center;
+    }
+</style>
+<br><br>
+<div class="container box border border-danger">
+    <h2 class="text-center text-danger">Welcome {{Adminname}}</h2>
+    <h1 class="text-danger shadow-sm text-center fw-bold">Admin Dashboard</h1>
+    <div class="row">
+        
+        <div class="col-sm-3">
+            <div #cont class=" bg-light text-dark border border-danger" style="border-radius: 10px;" align="center">
+                <br>
+                
+                <h4 class=" text-dark fs-5">Approved Loans</h4>
+              <button  type="button" class="btn btn-danger" routerLink="/approved-loans">View</button>
+              <br> <br>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div #cont class=" bg-light text-dark border border-danger" style="border-radius: 10px;" align="center">
+                <br>
+                
+            <h4 class="text-dark fs-5">Rejected Loans</h4>
+          <button  type="button" class="btn btn-danger" routerLink="/rejected-list">View</button>
+          <br> <br>
+            </div>
+        </div>
+        <div class="col-sm-3">
+        <div #cont class=" bg-light text-dark border border-danger" style="border-radius: 10px;" align="center" >
+            <br>
+            
+            <h4 class=" text-dark fs-5">Pending Application</h4>
+          <button  type="button" class="btn btn-danger" routerLink="/loan-Applications">Approve</button>
+          <br> <br>
+        </div>
+    </div>
+        
+    <div class="col-sm-3">
+        <div #cont class=" bg-light text-dark border border-danger" style="border-radius: 10px;" align="center" >
+           <br>
+           
+            <h4 class=" text-dark fs-5">Vehicles</h4>
+          <button  type="button" class="btn btn-danger" routerLink="/vehicles">View</button>
+          <br> <br>
+        </div>
+    </div></div>
+    <br>
+    <div class="row justify-content-center">
+    <div class="col-sm-3">
+        <div #cont class=" bg-light text-dark border border-danger" style="border-radius: 10px;" align="center">
+            <br>
+            
+            <h4 class=" text-dark fs-5">All Loan Offers</h4>
+            <button type="button" class="btn btn-danger" routerLink="/view-offers" >All Offers</button>
+            <br> <br>
+        </div>
+    </div>
+</div>
+<br>
+
+</div>

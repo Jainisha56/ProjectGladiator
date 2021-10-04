@@ -1,0 +1,44 @@
+<div class="container logincontainer" >
+    <h1 class="mb-4 header text-danger fw-bold" align="center">User Login</h1>
+     <hr><br>
+     <div  class="col-md-6 offset-md-3 col-lg-4 offset-lg-4 loginbox">
+     
+       <form [formGroup]="userlogin" (ngSubmit)="Usercredentials()">
+         <div class="form-group mb-4"><label for="form1Example1"
+             class="form-label">Email address</label>
+             <!-- Email input -->
+             <input type="text" id="form1Example1" name="UserEmail" placeholder="Enter Email Id" formControlName="UserEmail" class="form-control "></div>
+             <div *ngIf="! UserEmail?.valid && ( UserEmail?.dirty ||  UserEmail?.touched)" class="error text-danger" role="alert">
+               <div *ngIf=" UserEmail?.errors?.required">
+                 User Name is required
+               </div>
+               </div>
+   
+         <div  class="form-group mb-4"><label  for="form1Example2"
+             class="form-label">Password</label>
+             <!-- Password input -->
+             <input  type="password" id="form1Example2"
+             name="Userpassword" formControlName="Userpassword" placeholder="Enter Password" class="form-control "></div>
+             <div *ngIf="!Userpassword?.valid && (Userpassword?.dirty ||Userpassword?.touched)" class="error text-danger" role="alert">
+               <div *ngIf="Userpassword?.errors?.required">
+                 Password required
+               </div>
+               </div>
+         <div  class="row mb-4">
+           <div  class="col d-flex">
+           <!--  <div class="form-group">
+              <label><input type="checkbox" formControlName="rememberMe" class="form-control">Remember me</label>
+            </div> -->
+              <div  class="form-check">
+               <input  type="checkbox" id="form1Example3"  class="form-check-input"><label  for="form1Example3"
+                 class="form-check-label"> Remember me </label></div>
+           </div>
+           <div  class="col"><a routerLink="/forgotpassword">Forgot password?</a></div>
+           <div *ngIf= "InUse === false">
+            <p class="error text-danger" role="alert">Login UnSuccessfull</p>
+          </div>
+         </div><button  type="submit" class="btn btn-danger btn-block text-center signin"  >Sign in</button>
+         <br><br><div  class="col"><p>Are you an Admin? &nbsp;<a routerLink="/Alogin">Login here</a></p></div>
+       </form>
+     </div>
+   </div>

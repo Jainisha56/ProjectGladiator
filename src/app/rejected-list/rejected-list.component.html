@@ -1,0 +1,52 @@
+<style>
+    .box
+    {
+        padding: 10px;
+        height: max-content;
+        margin: 10px auto;
+        border-radius: 10px;
+        
+    }
+  
+    .table
+    {
+        text-align: center;
+    }
+    tr:hover {background-color :azure;}
+</style>
+<br>
+<div *ngIf= "rejlen != 0">
+<div class="container box border border-danger">
+    <h1 class="text-danger shadow-sm fw-bold" align="center">List Of Rejected Application</h1>
+    <br>
+<table class="table table-hover">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">SL NO</th>
+        <th scope="col">User Name</th>
+        <th scope="col">Annual Salary</th>
+        <th scope="col">Vehicle Name</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Interest (%)</th>
+        <th scope="col">Duration (months)</th>
+    </tr>
+    </thead>
+    <tr *ngFor="let rej of RejectedList; index as i">
+        <th scope="row">{{i+1}}</th>
+        <td>{{rej.userFirstName}}</td>
+        <td>{{rej.annualSal}}</td>
+        <td>{{rej.vehicleName}}</td>
+        <td>{{rej.amount}}</td>
+        <td>{{rej.interest}}</td>
+        <td>{{rej.duration}}</td>
+    </tr>
+</table>
+
+</div></div>
+<br><br>
+
+<div *ngIf= "rejlen == 0">
+    <div class="container box border border-danger">
+        <h1 class="text-danger" align="center">There are no Rejected Loans</h1>
+    </div>
+</div>

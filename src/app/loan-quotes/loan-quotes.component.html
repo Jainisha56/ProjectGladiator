@@ -1,0 +1,64 @@
+<!-- CSS -->
+<style>
+    .box {
+        padding: 10px;
+        height: max-content;
+        margin: 50px auto;
+        border-radius: 10px;
+    }
+
+    .tubes {
+        margin-left: 50px;
+        border-radius: 10px;
+    }
+</style>
+
+<br><br>
+<div class="container box border border-danger">
+
+
+    <br>
+    <h1 class="text-danger" align="center"><b>{{lname}}</b></h1><br>
+    <hr>
+
+
+    <form class="form" [formGroup]="LoanQuotesForm">
+        <div class="mb-3">
+            <label for="" class="form-label" style="text-align: right;">Base Amount (₹)</label>
+            <input type="text" class="form-control border border-dark" value="{{lamount}}" formControlName="loanamount">
+
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label" style="text-align: right;">Best Rate(%)</label>
+            <input type="text" class="form-control border border-dark" value="{{lrate}}" formControlName="loanrate">
+
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label" style="text-align: right;">Duration (months)</label>
+            <input type="text" class="form-control border border-dark" value="{{lduration}}"
+                formControlName="loanduration">
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label" style="text-align: right;">Monthly EMI (₹)</label>
+            <input type="text" class="form-control border border-dark" value="{{lmonthlyemi}}"
+                formControlName="loanemi">
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label" style="text-align: right;">Processing Fee(₹)</label>
+            <input type="text" class="form-control border border-dark" value="{{lfee}}" formControlName="loanfee">
+        </div>
+
+        <div class="mb-3">
+            <label for="" class="form-label" style="text-align: right;">Vehicle Name</label>
+            <input type="text" class="form-control border border-dark" value="Vehicle name here"
+                formControlName="vehiclename">
+        </div>
+    </form>
+
+    <br>
+    <div class="row" style="margin: auto;">
+        <button type="button" class="btn btn-danger">Apply Now</button>
+    </div>
+    <br>
+
+</div>

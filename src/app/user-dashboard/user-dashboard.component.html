@@ -1,0 +1,83 @@
+<style>
+    .box
+    {
+        padding: 10px;
+        height: max-content;
+        margin: 10px auto;
+        border-radius: 10px; 
+    }
+    h4,p{
+        text-align: center;
+       
+        
+    }
+    #cont{
+        display: flex;
+        align-items:center;
+        justify-content: center;
+    }
+</style>
+<br><br>
+<div class="container box border border-danger">
+    
+    
+    <h2 class="text-center text-danger">Welcome {{Aname}}</h2>
+    <h1 class="text-danger shadow-sm text-center fw-bold">User Dashboard</h1>
+    <br>
+    <div class="row">
+        <div class="col-sm-3">
+            <div #cont class=" bg-light text-dark border border-danger" style="border-radius: 10px;" align="center">
+                <br>
+                <p></p>
+                <h4 class=" text-dark fs-5">Vehicle Loan</h4>
+
+              <button  type="button" class="btn btn-danger" routerLink="/Apply Loan">Apply Now</button>
+              <br> <br>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div #cont class=" bg-light text-dark border border-danger" style="border-radius: 10px;" align="center">
+            <br>
+            <p></p>
+            <h4 class="text-dark fs-5">Loan Profile</h4>
+          <button  type="button" class="btn btn-danger" routerLink="/loan-history">View</button>
+          <br> <br>
+            </div>
+        </div>
+        <div class="col-sm-3">
+        <div #cont class=" bg-light text-dark border border-danger" style="border-radius: 10px;" align="center" >
+            <br>
+            <p ></p>
+            <h4 class=" text-dark fs-5">EMI Calculator</h4>
+          <button  type="button" class="btn btn-danger" routerLink="/EMI Calculator">Calculate EMI</button>
+          <br> <br>
+        </div>
+    </div>
+        
+    <div class="col-sm-3">
+        <div #cont class=" bg-light text-dark border border-danger" style="border-radius: 10px;" align="center">
+            <br>
+            <p></p>
+            <h4 class=" text-dark fs-5">Settings</h4>
+          <button  type="button" class="btn btn-danger" routerLink="/user-settings">Change Settings</button>
+          <br> <br>
+        </div>
+    </div>
+    
+</div>
+<br>
+<div class="row justify-content-center">
+    <div class="col-sm-3">
+    <div  #cont class=" bg-light text-dark border border-danger" style="border-radius: 10px;" align="center">
+        <br>
+        <p></p>
+        <h4 class=" text-dark fs-5">All Loan Offers</h4>
+        <button type="button" class="btn btn-danger" routerLink="/view-offers">All Offers</button>
+        <br> <br>
+    </div>
+</div>
+</div>
+
+<br>
+
+</div>

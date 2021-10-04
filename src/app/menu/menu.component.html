@@ -1,0 +1,205 @@
+<div *ngIf="!messageuser && !messageadmin" >
+  
+  <nav class="navbar navbar-expand-md bg-danger navbar-dark fixed-top">
+    <!-- Brand -->
+    
+    <!-- <router-outlet class="bg-light pt-sm-5" name="outlet-main"></router-outlet> -->
+  
+    <!-- Toggler/collapsibe Button -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse text-left" id="collapsibleNavbar">
+     
+        <ul class="navbar-nav">
+          <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/Home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/About Us">About Us</a>
+          </li>
+       
+          <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/EMI Calculator">EMI Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white " routerLink="/Register">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white " routerLink="/Login">Login</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-right ml-auto">
+        <li class="nav-item">
+          <img [src]="logo3" class="img-responsive w-2" style="max-height:5vh;"> 
+        </li></ul>
+      </div>
+  </nav>
+</div> 
+<div *ngIf="messageuser">
+<nav class="navbar navbar-expand-md bg-danger navbar-dark fixed-top">
+  <!-- Brand -->
+  
+  <!-- <router-outlet class="bg-light pt-sm-5" name="outlet-main"></router-outlet> -->
+
+  <!-- Toggler/collapsibe Button -->
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse text-left" id="collapsibleNavbar">
+   
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-white " routerLink="/Home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/About Us">About Us</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link text-white " routerLink="/user-dash">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " routerLink="/Apply Loan">Apply Loan</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white " routerLink="/EMI Calculator">EMI Calculator</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/loan-history">History</a>
+        </li>
+     
+        <li class="nav-item">
+        <a class="nav-link text-white " routerLink="/user-settings">Settings</a>
+        </li>
+      </ul>
+        <ul class="navbar-nav navbar-right ml-auto">
+        <li class="nav-item " >
+          <a class="nav-link text-white " (click)="logoutuser()">Log Out</a>
+        </li>
+      
+      </ul>
+    </div>
+</nav>
+</div>
+<div *ngIf="messageadmin">
+  <nav class="navbar navbar-expand-md bg-danger navbar-dark fixed-top">
+    <!-- Brand -->
+    
+    <!-- <router-outlet class="bg-light pt-sm-5" name="outlet-main"></router-outlet> -->
+  
+    <!-- Toggler/collapsibe Button -->
+  
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse text-left" id="collapsibleNavbar">
+     
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link text-white " routerLink="/Home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/About Us">About Us</a>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/admin-dash">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white " routerLink="/vehicles">Vehicle</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/loan-Applications">Loan Application</a>
+          </li>
+       
+          <li class="nav-item">
+          <a class="nav-link text-white " routerLink="/approved-loans">Loan Approval</a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link text-white " routerLink="rejected-list">Rejected Loans</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-right ml-auto">
+          <li class="nav-item">
+            <a class="nav-link text-white"  (click)="logoutadmin()">Log Out</a>
+          </li>
+        </ul>
+      </div>
+  </nav>
+  </div>
+<!-- 
+          <div *ngIf="messageuser">
+            {{messageuser}}
+            <mat-toolbar class="bg-danger">
+              <mat-toolbar-row >
+                <button mat-icon-button class="text-light">
+                  <mat-icon (click)="sidenav.toggle()" >menu</mat-icon>
+                </button>
+                <span class="spacer" ></span>
+                <h1 class="text-light" align="center">Welcome User</h1>
+                <span class="spacer" ></span> -->
+                <!-- <a routerLink="edit-user">Profile</a> -->
+                <!-- <a routerLink="Home" (click)="logoutuser()">Log Out</a>
+              </mat-toolbar-row>
+            </mat-toolbar>
+          
+            <mat-sidenav-container>
+              <mat-sidenav #sidenav opened="false" >
+                <mat-nav-list >
+                  <a mat-list-item routerLink="Userdashboard">Dashboard</a>
+                  <a mat-list-item routerLink="#">Loans Available</a>
+                  <a mat-list-item routerLink="Userloanhistory" >History</a>
+                  <a mat-list-item routerLink="Userloansettings">Settings</a>
+                </mat-nav-list>
+              </mat-sidenav>
+              <mat-sidenav-content >
+                <div style="height: 88vh;">
+                  <router-outlet name="outlet-udash"></router-outlet>
+                </div>
+              </mat-sidenav-content>
+          </mat-sidenav-container>            
+          </div> -->
+          
+          <!-- <div *ngIf="messageadmin">
+            {{messageadmin}}
+            <mat-toolbar class="bg-primary" >
+              <mat-toolbar-row>
+                <button mat-icon-button class="text-light" >
+                  <mat-icon (click)="sidenav.toggle()" >menu</mat-icon>
+                </button>
+                <span class="spacer" ></span>
+                <h1 class="text-light" align="center">Welcome Admin</h1>
+                <span class="spacer" ></span>
+                <a  routerLink="Home" (click)="logoutadmin()" >Log Out</a>
+              </mat-toolbar-row>
+            </mat-toolbar>
+          
+            <mat-sidenav-container>
+              <mat-sidenav #sidenav opened="true"   >
+                <mat-nav-list color="text-light" >
+                  <a mat-list-item routerLink="Admindashboard">Dashboard</a>
+                  <a mat-list-item routerLink="Adminvehicle">Vehicles</a>
+                  <a mat-list-item routerLink="Adminloanapplication">Applications</a>
+                  <a mat-list-item routerLink="Adminapprovedloan">Approved Loans</a>
+                  <a mat-list-item routerLink="Adminrejectedloan">Rejected List</a>
+                </mat-nav-list>
+              </mat-sidenav>
+              <mat-sidenav-content>
+                <div style="height: 88vh;">
+                  <router-outlet name="outlet-adash"></router-outlet>     
+                </div>
+              </mat-sidenav-content>
+          </mat-sidenav-container>            
+          </div> -->
+
+            
+  
+
